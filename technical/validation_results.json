@@ -1,0 +1,565 @@
+﻿{
+  "scope": "Real Microsoft Access COM / DAO database and optional VBA helper tests; NOT UI tests or submission approval",
+  "database": "D:\\AIS\\outputs\\CW2_revision_2026-11-16\\technical\\run_20261116_111709\\CW2_validation_prototype.accdb",
+  "started": "2026-11-16T11:17:09.150670",
+  "checks": [
+    {
+      "name": "structure: ten business tables / twelve enforced non-cascade relationships",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "query opens: qry_00_AppointmentOwner",
+      "status": "PASS",
+      "actual": {
+        "rows": 2
+      }
+    },
+    {
+      "name": "query opens: qry_01_ParentPetCount",
+      "status": "PASS",
+      "actual": {
+        "rows": 2
+      }
+    },
+    {
+      "name": "query opens: qry_02_PrescriptionCharges",
+      "status": "PASS",
+      "actual": {
+        "rows": 2
+      }
+    },
+    {
+      "name": "query opens: qry_02b_AppointmentMedSummary",
+      "status": "PASS",
+      "actual": {
+        "rows": 1
+      }
+    },
+    {
+      "name": "query opens: qry_02c_AppointmentPaidSummary",
+      "status": "PASS",
+      "actual": {
+        "rows": 1
+      }
+    },
+    {
+      "name": "query opens: qry_03_AppointmentTotal",
+      "status": "PASS",
+      "actual": {
+        "rows": 2
+      }
+    },
+    {
+      "name": "query opens: qry_04_AppointmentBalance",
+      "status": "PASS",
+      "actual": {
+        "rows": 2
+      }
+    },
+    {
+      "name": "query opens: qry_05_ReceiptReconciliation",
+      "status": "PASS",
+      "actual": {
+        "rows": 2
+      }
+    },
+    {
+      "name": "query opens: qry_Ctrl_InvalidAllocations",
+      "status": "PASS",
+      "actual": {
+        "rows": 0
+      }
+    },
+    {
+      "name": "query opens: qry_Ctrl_DrugInteractionWarnings",
+      "status": "PASS",
+      "actual": {
+        "rows": 1
+      }
+    },
+    {
+      "name": "query opens: qry_06_PetMedicalHistory",
+      "status": "PASS",
+      "actual": {
+        "rows": 3
+      }
+    },
+    {
+      "name": "baseline amounts",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "parent counts",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "baseline anomalies",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "fictional drug pair warning",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "T01 negative weight",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'Pet weight must be greater than 0 kg.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T01 zero quantity",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'Enter whole units from 1 to 100000.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T02 fractional quantity",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'Enter whole units from 1 to 100000.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T02 fractional minutes",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'Enter whole minutes from 1 to 1440.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T03 future birth",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'Birth date cannot be in the future.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T04 invalid pet",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', \"由于数据表 'tblPet' 需要一个相关记录，不能添加或修改记录。\", 'jeterr40.chm', 5003201, -2146825087), None)"
+    },
+    {
+      "name": "T05 referenced pet delete",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', \"由于表 'tblAppointment' 中了包含相关记录，不能删除或改变该记录。\", 'jeterr40.chm', 5003200, -2146825088), None)"
+    },
+    {
+      "name": "T06 self pair",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'MedicationAID must be less than MedicationBID.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T06 reverse pair",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'MedicationAID must be less than MedicationBID.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T06 duplicate pair",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', '由于将在索引、 主关键字、或关系中创建重复的值，请求对表的改变没有成功。改变该字段中的或包含重复数据的字段中的数据，删除索引或重新定义索引以允许重复的值并再试一次。', 'jeterr40.chm', 5003022, -2146825266), None)"
+    },
+    {
+      "name": "T12 duplicate allocation",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', '由于将在索引、 主关键字、或关系中创建重复的值，请求对表的改变没有成功。改变该字段中的或包含重复数据的字段中的数据，删除索引或重新定义索引以允许重复的值并再试一次。', 'jeterr40.chm', 5003022, -2146825266), None)"
+    },
+    {
+      "name": "T19 third decimal amount",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', 'Enter a positive amount with at most two decimal places.', 'jeterr40.chm', 5003316, -2146824972), None)"
+    },
+    {
+      "name": "T20 invalid account",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', \"由于数据表 'tblCashAccount' 需要一个相关记录，不能添加或修改记录。\", 'jeterr40.chm', 5003201, -2146825087), None)"
+    },
+    {
+      "name": "T20 invalid collector",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', \"由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。\", 'jeterr40.chm', 5003201, -2146825087), None)"
+    },
+    {
+      "name": "T20 null account",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', \"必须在字段 'tblCashReceipt.AccountID' 中输入一个值。\", 'jeterr40.chm', 5003314, -2146824974), None)"
+    },
+    {
+      "name": "blank required name",
+      "status": "PASS",
+      "actual": "(-2147352567, '发生意外。', (0, 'DAO.Database', \"字段 'tblPetParent.ParentName' 不能是零长度的字符串。\", 'jeterr40.chm', 5003315, -2146824973), None)"
+    },
+    {
+      "name": "T07 isolated cross-parent",
+      "status": "PASS",
+      "actual": [
+        "Cross-Parent Allocation"
+      ]
+    },
+    {
+      "name": "T08 isolated receipt excess",
+      "status": "PASS",
+      "actual": [
+        "Receipt Over-Allocated"
+      ]
+    },
+    {
+      "name": "T09 isolated appointment excess",
+      "status": "PASS",
+      "actual": [
+        "Appointment Over-Paid"
+      ]
+    },
+    {
+      "name": "T10 unallocated receipt",
+      "status": "PASS",
+      "actual": 50.0
+    },
+    {
+      "name": "T10 partially allocated receipt",
+      "status": "PASS",
+      "actual": 20.0
+    },
+    {
+      "name": "T11 one receipt two visits",
+      "status": "PASS",
+      "actual": [
+        30.0,
+        10.0
+      ]
+    },
+    {
+      "name": "T13 edit existing allocation",
+      "status": "PASS",
+      "actual": 20.0
+    },
+    {
+      "name": "T14 reduced receipt",
+      "status": "PASS",
+      "actual": [
+        "Receipt Over-Allocated"
+      ]
+    },
+    {
+      "name": "T15 reduced fee",
+      "status": "PASS",
+      "actual": [
+        "Appointment Over-Paid"
+      ]
+    },
+    {
+      "name": "T17 historical price edit",
+      "status": "PASS",
+      "actual": [
+        "Appointment Over-Paid"
+      ]
+    },
+    {
+      "name": "T16 catalog price preserves history",
+      "status": "PASS",
+      "actual": 205.0
+    },
+    {
+      "name": "T18 duplicate vet name allowed",
+      "status": "PASS",
+      "actual": 2
+    },
+    {
+      "name": "T18 duplicate parent name allowed",
+      "status": "PASS",
+      "actual": 2
+    },
+    {
+      "name": "T21 documented ownership-history limitation",
+      "status": "PASS",
+      "actual": 2
+    },
+    {
+      "name": "T22 documented cross-table date limitation",
+      "status": "PASS",
+      "actual": 2020
+    },
+    {
+      "name": "V06 helper valid edit excludes old amount",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V06 helper unchanged amount",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V02 helper null",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V02 helper negative",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V02 helper decimal",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V07 helper edit keys",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "helper duplicate pair",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "helper missing record",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V01 helper valid new allocation",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V05 helper appointment overpaid",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V04 helper receipt overallocated",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V03 helper cross-parent",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "V08 helper fails closed on missing query",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "final clean baseline restored",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "relationship metadata: enforced, no cascade delete",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "three composite keys match dictionary",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "doctor name index allows duplicates",
+      "status": "PASS",
+      "actual": null
+    },
+    {
+      "name": "database reopen retains valid baseline",
+      "status": "PASS",
+      "actual": null
+    }
+  ],
+  "access_version": "16.0",
+  "vba_helper": "Executed by Access.Application.Eval; form event wiring not tested.",
+  "sample_counts": {
+    "tblPetParent": 2,
+    "tblPet": 2,
+    "tblVeterinarian": 2,
+    "tblAppointment": 2,
+    "tblMedication": 3,
+    "tblPrescriptionLine": 2,
+    "tblCashReceipt": 2,
+    "tblReceiptAllocation": 2,
+    "tblMedicationInteraction": 2,
+    "tblCashAccount": 2
+  },
+  "relation_snapshot": [
+    {
+      "name": "rel_1",
+      "table": "tblPetParent",
+      "foreign_table": "tblPet",
+      "attributes": 0,
+      "fields": [
+        [
+          "ParentID",
+          "ParentID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_2",
+      "table": "tblPetParent",
+      "foreign_table": "tblCashReceipt",
+      "attributes": 0,
+      "fields": [
+        [
+          "ParentID",
+          "ParentID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_3",
+      "table": "tblPet",
+      "foreign_table": "tblAppointment",
+      "attributes": 0,
+      "fields": [
+        [
+          "PetID",
+          "PetID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_4",
+      "table": "tblVeterinarian",
+      "foreign_table": "tblAppointment",
+      "attributes": 0,
+      "fields": [
+        [
+          "VetID",
+          "VetID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_5",
+      "table": "tblAppointment",
+      "foreign_table": "tblPrescriptionLine",
+      "attributes": 0,
+      "fields": [
+        [
+          "AppointmentID",
+          "AppointmentID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_6",
+      "table": "tblMedication",
+      "foreign_table": "tblPrescriptionLine",
+      "attributes": 0,
+      "fields": [
+        [
+          "MedicationID",
+          "MedicationID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_7",
+      "table": "tblCashReceipt",
+      "foreign_table": "tblReceiptAllocation",
+      "attributes": 0,
+      "fields": [
+        [
+          "ReceiptID",
+          "ReceiptID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_8",
+      "table": "tblAppointment",
+      "foreign_table": "tblReceiptAllocation",
+      "attributes": 0,
+      "fields": [
+        [
+          "AppointmentID",
+          "AppointmentID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_9",
+      "table": "tblMedication",
+      "foreign_table": "tblMedicationInteraction",
+      "attributes": 0,
+      "fields": [
+        [
+          "MedicationID",
+          "MedicationAID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_10",
+      "table": "tblMedication",
+      "foreign_table": "tblMedicationInteraction",
+      "attributes": 0,
+      "fields": [
+        [
+          "MedicationID",
+          "MedicationBID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_11",
+      "table": "tblCashAccount",
+      "foreign_table": "tblCashReceipt",
+      "attributes": 0,
+      "fields": [
+        [
+          "AccountID",
+          "AccountID"
+        ]
+      ]
+    },
+    {
+      "name": "rel_12",
+      "table": "tblVeterinarian",
+      "foreign_table": "tblCashReceipt",
+      "attributes": 0,
+      "fields": [
+        [
+          "VetID",
+          "CollectedByVetID"
+        ]
+      ]
+    }
+  ],
+  "primary_keys": {
+    "tblPetParent": [
+      "ParentID"
+    ],
+    "tblPet": [
+      "PetID"
+    ],
+    "tblVeterinarian": [
+      "VetID"
+    ],
+    "tblAppointment": [
+      "AppointmentID"
+    ],
+    "tblMedication": [
+      "MedicationID"
+    ],
+    "tblPrescriptionLine": [
+      "AppointmentID",
+      "MedicationID"
+    ],
+    "tblCashReceipt": [
+      "ReceiptID"
+    ],
+    "tblReceiptAllocation": [
+      "ReceiptID",
+      "AppointmentID"
+    ],
+    "tblMedicationInteraction": [
+      "MedicationAID",
+      "MedicationBID"
+    ],
+    "tblCashAccount": [
+      "AccountID"
+    ]
+  },
+  "finished": "2026-11-16T11:17:12.563106"
+}

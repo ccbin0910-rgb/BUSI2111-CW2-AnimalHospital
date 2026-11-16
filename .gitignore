@@ -1,0 +1,25 @@
+# Microsoft Access lock & temp files
+*.laccdb
+*.ldb
+~$*
+*.tmp
+*.bak
+
+# Generated local SQLite cache & summary report (rebuild anytime via handoff_logs/query_logs.py)
+handoff_logs/handoff_cache.sqlite3
+handoff_logs/LOG_SUMMARY.md
+
+# Local Access automation scratch runs & dirty test DB copies
+technical/run_*/
+technical/latest_run.json
+**/*_Test.accdb
+**/UAT_Sandbox_Test.accdb
+**/Clean_Baseline.accdb
+
+# Local OS clutter & pre-git snapshot folder
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/
+*.pyc
+备份_修订前_*/

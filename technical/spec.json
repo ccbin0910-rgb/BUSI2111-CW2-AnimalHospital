@@ -1,0 +1,601 @@
+﻿{
+  "tables": [
+    {
+      "name": "tblPetParent",
+      "fields": [
+        {
+          "name": "ParentID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique identifier for each pet parent"
+        },
+        {
+          "name": "ParentName",
+          "type": "Short Text",
+          "size": "100",
+          "key": "Indexed (Duplicates OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Full name of the pet parent/customer"
+        },
+        {
+          "name": "Address",
+          "type": "Short Text",
+          "size": "255",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Home mailing address of the parent"
+        },
+        {
+          "name": "DayPhone",
+          "type": "Short Text",
+          "size": "20",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Daytime phone number (text preserves leading zeros)"
+        },
+        {
+          "name": "EveningPhone",
+          "type": "Short Text",
+          "size": "20",
+          "key": "No",
+          "required": false,
+          "rule": "-",
+          "text": "-",
+          "description": "Evening phone number (optional)"
+        }
+      ]
+    },
+    {
+      "name": "tblPet",
+      "fields": [
+        {
+          "name": "PetID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique identifier for each pet"
+        },
+        {
+          "name": "ParentID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**FK** (Indexed Dup OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblPetParent.ParentID"
+        },
+        {
+          "name": "PetName",
+          "type": "Short Text",
+          "size": "80",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Pet's name"
+        },
+        {
+          "name": "Breed",
+          "type": "Short Text",
+          "size": "100",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Pet species and breed (e.g., British Shorthair Cat)"
+        },
+        {
+          "name": "Color",
+          "type": "Short Text",
+          "size": "50",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Coat/feather color of the pet"
+        },
+        {
+          "name": "BirthDate",
+          "type": "Date/Time",
+          "size": "Short Date",
+          "key": "No",
+          "required": true,
+          "rule": "<=Date()",
+          "text": "Birth date cannot be in the future.",
+          "description": "Pet's date of birth (must be on or before today)"
+        }
+      ]
+    },
+    {
+      "name": "tblVeterinarian",
+      "fields": [
+        {
+          "name": "VetID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique identifier for each veterinarian"
+        },
+        {
+          "name": "VetName",
+          "type": "Short Text",
+          "size": "100",
+          "key": "Indexed (Duplicates OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Full name/title of the veterinarian"
+        },
+        {
+          "name": "RoleTitle",
+          "type": "Short Text",
+          "size": "100",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Role in hospital (e.g., Co-Owner / Lead Veterinarian)"
+        }
+      ]
+    },
+    {
+      "name": "tblAppointment",
+      "fields": [
+        {
+          "name": "AppointmentID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique identifier for each single-pet appointment"
+        },
+        {
+          "name": "PetID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**FK** (Indexed Dup OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblPet.PetID (one pet per visit)"
+        },
+        {
+          "name": "VetID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**FK** (Indexed Dup OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblVeterinarian.VetID"
+        },
+        {
+          "name": "AppointmentDate",
+          "type": "Date/Time",
+          "size": "Short Date",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Date of the veterinary appointment"
+        },
+        {
+          "name": "DurationMin",
+          "type": "Number",
+          "size": "Double",
+          "key": "No",
+          "required": true,
+          "rule": ">0 And <=1440 And =Int([DurationMin])",
+          "text": "Enter whole minutes from 1 to 1440.",
+          "description": "Length of appointment in minutes"
+        },
+        {
+          "name": "WeightKg",
+          "type": "Number",
+          "size": "Double",
+          "key": "No",
+          "required": true,
+          "rule": ">0",
+          "text": "Pet weight must be greater than 0 kg.",
+          "description": "Pet weight recorded during this specific appointment (kg)"
+        },
+        {
+          "name": "VisitReason",
+          "type": "Short Text",
+          "size": "255",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Reason for the appointment reported by the parent"
+        },
+        {
+          "name": "Diagnosis",
+          "type": "Short Text",
+          "size": "255",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Veterinarian's clinical diagnosis"
+        },
+        {
+          "name": "AppointmentFee",
+          "type": "Currency",
+          "size": "Currency",
+          "key": "No",
+          "required": true,
+          "rule": "(>=0) And [AppointmentFee]=Round([AppointmentFee],2)",
+          "text": "Enter a non-negative amount with at most two decimal places.",
+          "description": "Base service fee charged for the appointment (excl. medicine)"
+        }
+      ]
+    },
+    {
+      "name": "tblMedication",
+      "fields": [
+        {
+          "name": "MedicationID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique identifier for each medication"
+        },
+        {
+          "name": "MedicationName",
+          "type": "Short Text",
+          "size": "100",
+          "key": "Indexed (Duplicates OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Display name of medication; ID identifies the catalog item"
+        },
+        {
+          "name": "ListPrice",
+          "type": "Currency",
+          "size": "Currency",
+          "key": "No",
+          "required": true,
+          "rule": "(>=0) And [ListPrice]=Round([ListPrice],2)",
+          "text": "Enter a non-negative amount with at most two decimal places.",
+          "description": "Current standard catalog price per unit"
+        }
+      ]
+    },
+    {
+      "name": "tblPrescriptionLine",
+      "fields": [
+        {
+          "name": "AppointmentID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**Composite PK (1/2) & FK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblAppointment.AppointmentID"
+        },
+        {
+          "name": "MedicationID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**Composite PK (2/2) & FK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblMedication.MedicationID"
+        },
+        {
+          "name": "Quantity",
+          "type": "Number",
+          "size": "Double",
+          "key": "No",
+          "required": true,
+          "rule": ">0 And <=100000 And =Int([Quantity])",
+          "text": "Enter whole units from 1 to 100000.",
+          "description": "Number of units prescribed for this medication"
+        },
+        {
+          "name": "UnitPriceCharged",
+          "type": "Currency",
+          "size": "Currency",
+          "key": "No",
+          "required": true,
+          "rule": "(>=0) And [UnitPriceCharged]=Round([UnitPriceCharged],2)",
+          "text": "Enter a non-negative amount with at most two decimal places.",
+          "description": "Actual unit price charged at the time of prescription"
+        }
+      ]
+    },
+    {
+      "name": "tblCashReceipt",
+      "fields": [
+        {
+          "name": "ReceiptID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique identifier for each cash receipt"
+        },
+        {
+          "name": "ParentID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**FK** (Indexed Dup OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing paying tblPetParent.ParentID"
+        },
+        {
+          "name": "AccountID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**FK** (Indexed Dup OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Cash account receiving this payment"
+        },
+        {
+          "name": "CollectedByVetID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**FK** (Indexed Dup OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Vet who collected payment under prototype staffing assumption"
+        },
+        {
+          "name": "ReceiptDate",
+          "type": "Date/Time",
+          "size": "Short Date",
+          "key": "No",
+          "required": true,
+          "rule": "<=Date()",
+          "text": "Receipt date cannot be in the future.",
+          "description": "Date payment was received"
+        },
+        {
+          "name": "ReceiptTotal",
+          "type": "Currency",
+          "size": "Currency",
+          "key": "No",
+          "required": true,
+          "rule": "(>0) And [ReceiptTotal]=Round([ReceiptTotal],2)",
+          "text": "Enter a positive amount with at most two decimal places.",
+          "description": "Total cash amount received from parent in this payment"
+        }
+      ]
+    },
+    {
+      "name": "tblReceiptAllocation",
+      "fields": [
+        {
+          "name": "ReceiptID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**Composite PK (1/2) & FK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblCashReceipt.ReceiptID"
+        },
+        {
+          "name": "AppointmentID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**Composite PK (2/2) & FK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Foreign key referencing tblAppointment.AppointmentID"
+        },
+        {
+          "name": "AppliedAmount",
+          "type": "Currency",
+          "size": "Currency",
+          "key": "No",
+          "required": true,
+          "rule": "(>0) And [AppliedAmount]=Round([AppliedAmount],2)",
+          "text": "Enter a positive amount with at most two decimal places.",
+          "description": "Portion of receipt amount applied to settle this appointment"
+        }
+      ]
+    },
+    {
+      "name": "tblMedicationInteraction",
+      "fields": [
+        {
+          "name": "MedicationAID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**Composite PK (1/2) & FK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Smaller MedicationID in the interacting pair (FK -> tblMedication)"
+        },
+        {
+          "name": "MedicationBID",
+          "type": "Number",
+          "size": "Long Integer",
+          "key": "**Composite PK (2/2) & FK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Larger MedicationID in the interacting pair (FK -> tblMedication)"
+        },
+        {
+          "name": "SeverityLevel",
+          "type": "Short Text",
+          "size": "20",
+          "key": "No",
+          "required": true,
+          "rule": "\"High\" Or \"Moderate\" Or \"Low\"",
+          "text": "Severity must be High, Moderate, or Low.",
+          "description": "Clinical severity category of the adverse interaction"
+        },
+        {
+          "name": "InteractionDescription",
+          "type": "Short Text",
+          "size": "255",
+          "key": "No",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Description of adverse interaction between Medication A and B"
+        }
+      ]
+    },
+    {
+      "name": "tblCashAccount",
+      "fields": [
+        {
+          "name": "AccountID",
+          "type": "AutoNumber",
+          "size": "Long Integer",
+          "key": "**PK**",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Unique cash account identifier"
+        },
+        {
+          "name": "AccountName",
+          "type": "Short Text",
+          "size": "60",
+          "key": "Indexed (Duplicates OK)",
+          "required": true,
+          "rule": "-",
+          "text": "-",
+          "description": "Cash register or bank account name"
+        },
+        {
+          "name": "AccountType",
+          "type": "Short Text",
+          "size": "30",
+          "key": "No",
+          "required": true,
+          "rule": "\"Cash\" Or \"Bank\"",
+          "text": "Choose Cash or Bank.",
+          "description": "Type of cash resource"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    [
+      "tblPetParent",
+      "ParentID",
+      "tblPet",
+      "ParentID"
+    ],
+    [
+      "tblPetParent",
+      "ParentID",
+      "tblCashReceipt",
+      "ParentID"
+    ],
+    [
+      "tblPet",
+      "PetID",
+      "tblAppointment",
+      "PetID"
+    ],
+    [
+      "tblVeterinarian",
+      "VetID",
+      "tblAppointment",
+      "VetID"
+    ],
+    [
+      "tblAppointment",
+      "AppointmentID",
+      "tblPrescriptionLine",
+      "AppointmentID"
+    ],
+    [
+      "tblMedication",
+      "MedicationID",
+      "tblPrescriptionLine",
+      "MedicationID"
+    ],
+    [
+      "tblCashReceipt",
+      "ReceiptID",
+      "tblReceiptAllocation",
+      "ReceiptID"
+    ],
+    [
+      "tblAppointment",
+      "AppointmentID",
+      "tblReceiptAllocation",
+      "AppointmentID"
+    ],
+    [
+      "tblMedication",
+      "MedicationID",
+      "tblMedicationInteraction",
+      "MedicationAID"
+    ],
+    [
+      "tblMedication",
+      "MedicationID",
+      "tblMedicationInteraction",
+      "MedicationBID"
+    ],
+    [
+      "tblCashAccount",
+      "AccountID",
+      "tblCashReceipt",
+      "AccountID"
+    ],
+    [
+      "tblVeterinarian",
+      "VetID",
+      "tblCashReceipt",
+      "CollectedByVetID"
+    ]
+  ],
+  "queries": {
+    "qry_00_AppointmentOwner": "SELECT A.AppointmentID, T.ParentID\nFROM tblAppointment AS A INNER JOIN tblPet AS T ON A.PetID=T.PetID;",
+    "qry_01_ParentPetCount": "SELECT\n    P.ParentID,\n    P.ParentName,\n    P.DayPhone,\n    Count(T.PetID) AS NumberOfPets\nFROM tblPetParent AS P\nLEFT JOIN tblPet AS T\n    ON P.ParentID = T.ParentID\nGROUP BY\n    P.ParentID,\n    P.ParentName,\n    P.DayPhone\nORDER BY P.ParentID;",
+    "qry_02_PrescriptionCharges": "SELECT\n    PL.AppointmentID,\n    PL.MedicationID,\n    M.MedicationName,\n    M.ListPrice,\n    PL.UnitPriceCharged,\n    PL.Quantity,\n    CCur(PL.Quantity * PL.UnitPriceCharged) AS LineCharge\nFROM tblPrescriptionLine AS PL\nINNER JOIN tblMedication AS M\n    ON PL.MedicationID = M.MedicationID\nORDER BY PL.AppointmentID, PL.MedicationID;",
+    "qry_02b_AppointmentMedSummary": "SELECT\n    PL.AppointmentID,\n    Sum(PL.Quantity * PL.UnitPriceCharged) AS TotalMedCharge\nFROM tblPrescriptionLine AS PL\nGROUP BY PL.AppointmentID;",
+    "qry_02c_AppointmentPaidSummary": "SELECT\n    RA.AppointmentID,\n    Sum(RA.AppliedAmount) AS TotalPaid\nFROM tblReceiptAllocation AS RA\nGROUP BY RA.AppointmentID;",
+    "qry_03_AppointmentTotal": "SELECT\n    A.AppointmentID,\n    A.AppointmentDate,\n    P.ParentName,\n    T.PetName,\n    V.VetName,\n    A.AppointmentFee,\n    CCur(Nz(M.TotalMedCharge, 0)) AS MedicineCharge,\n    CCur(A.AppointmentFee + Nz(M.TotalMedCharge, 0)) AS TotalAppointmentCharge\nFROM (((tblAppointment AS A\nINNER JOIN tblPet AS T ON A.PetID = T.PetID)\nINNER JOIN tblPetParent AS P ON T.ParentID = P.ParentID)\nINNER JOIN tblVeterinarian AS V ON A.VetID = V.VetID)\nLEFT JOIN qry_02b_AppointmentMedSummary AS M ON A.AppointmentID = M.AppointmentID\nORDER BY A.AppointmentID;",
+    "qry_04_AppointmentBalance": "SELECT\n    AT.AppointmentID,\n    AT.AppointmentDate,\n    AT.ParentName,\n    AT.PetName,\n    AT.AppointmentFee,\n    AT.MedicineCharge,\n    AT.TotalAppointmentCharge,\n    CCur(Nz(PS.TotalPaid, 0)) AS TotalCashApplied,\n    CCur(AT.TotalAppointmentCharge - Nz(PS.TotalPaid, 0)) AS OutstandingBalance\nFROM qry_03_AppointmentTotal AS AT\nLEFT JOIN qry_02c_AppointmentPaidSummary AS PS\n    ON AT.AppointmentID = PS.AppointmentID\nORDER BY AT.AppointmentID;",
+    "qry_05_ReceiptReconciliation": "SELECT\n    CR.ReceiptID,\n    CR.ReceiptDate,\n    P.ParentName,\n    CR.ReceiptTotal,\n    CCur(Nz(Sum(RA.AppliedAmount), 0)) AS TotalAllocated,\n    CCur(CR.ReceiptTotal - Nz(Sum(RA.AppliedAmount), 0)) AS UnappliedOrOverAllocated\nFROM (tblCashReceipt AS CR\nINNER JOIN tblPetParent AS P ON CR.ParentID = P.ParentID)\nLEFT JOIN tblReceiptAllocation AS RA ON CR.ReceiptID = RA.ReceiptID\nGROUP BY\n    CR.ReceiptID,\n    CR.ReceiptDate,\n    P.ParentName,\n    CR.ReceiptTotal\nORDER BY CR.ReceiptID;",
+    "qry_Ctrl_InvalidAllocations": "SELECT\n    'Cross-Parent Allocation' AS ExceptionType,\n    'Receipt #' & RA.ReceiptID & ' -> Appt #' & RA.AppointmentID AS RecordRef,\n    'Receipt ParentID (' & CR.ParentID & ') <> Pet ParentID (' & T.ParentID & ')' AS Details,\n    RA.AppliedAmount AS ExceptionAmount\nFROM ((tblReceiptAllocation AS RA\nINNER JOIN tblCashReceipt AS CR ON RA.ReceiptID = CR.ReceiptID)\nINNER JOIN tblAppointment AS A ON RA.AppointmentID = A.AppointmentID)\nINNER JOIN tblPet AS T ON A.PetID = T.PetID\nWHERE CR.ParentID <> T.ParentID\n\nUNION ALL\n\nSELECT\n    'Receipt Over-Allocated' AS ExceptionType,\n    'Receipt #' & ReceiptID AS RecordRef,\n    'Total allocated exceeds ReceiptTotal' AS Details,\n    UnappliedOrOverAllocated AS ExceptionAmount\nFROM qry_05_ReceiptReconciliation\nWHERE UnappliedOrOverAllocated < 0\n\nUNION ALL\n\nSELECT\n    'Appointment Over-Paid' AS ExceptionType,\n    'Appointment #' & AppointmentID AS RecordRef,\n    'Total cash applied exceeds TotalAppointmentCharge' AS Details,\n    OutstandingBalance AS ExceptionAmount\nFROM qry_04_AppointmentBalance\nWHERE OutstandingBalance < 0;",
+    "qry_Ctrl_DrugInteractionWarnings": "SELECT\n    P1.AppointmentID,\n    A.AppointmentDate,\n    T.PetName,\n    M1.MedicationName AS MedicationA,\n    M2.MedicationName AS MedicationB,\n    MI.SeverityLevel,\n    MI.InteractionDescription\nFROM (((((tblPrescriptionLine AS P1\nINNER JOIN tblPrescriptionLine AS P2\n    ON P1.AppointmentID = P2.AppointmentID)\nINNER JOIN tblMedicationInteraction AS MI\n    ON (P1.MedicationID = MI.MedicationAID) AND (P2.MedicationID = MI.MedicationBID))\nINNER JOIN tblMedication AS M1\n    ON P1.MedicationID = M1.MedicationID)\nINNER JOIN tblMedication AS M2\n    ON P2.MedicationID = M2.MedicationID)\nINNER JOIN tblAppointment AS A\n    ON P1.AppointmentID = A.AppointmentID)\nINNER JOIN tblPet AS T\n    ON A.PetID = T.PetID\nWHERE P1.MedicationID < P2.MedicationID\nORDER BY P1.AppointmentID;",
+    "qry_06_PetMedicalHistory": "SELECT\n    T.PetID,\n    T.PetName,\n    T.Breed,\n    P.ParentName,\n    A.AppointmentID,\n    A.AppointmentDate,\n    V.VetName,\n    A.WeightKg,\n    A.VisitReason,\n    A.Diagnosis,\n    M.MedicationName,\n    PL.Quantity,\n    PL.UnitPriceCharged\nFROM ((((tblPet AS T\nINNER JOIN tblPetParent AS P ON T.ParentID = P.ParentID)\nINNER JOIN tblAppointment AS A ON T.PetID = A.PetID)\nINNER JOIN tblVeterinarian AS V ON A.VetID = V.VetID)\nLEFT JOIN tblPrescriptionLine AS PL ON A.AppointmentID = PL.AppointmentID)\nLEFT JOIN tblMedication AS M ON PL.MedicationID = M.MedicationID\nORDER BY T.PetID, A.AppointmentDate DESC;"
+  }
+}

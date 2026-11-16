@@ -1,0 +1,21 @@
+Option Compare Database
+Option Explicit
+
+Private Sub Form_BeforeUpdate(Cancel As Integer)
+    On Error GoTo Failed
+    Dim issue As String, oldR As Variant, oldA As Variant
+    oldR = Null: oldA = Null
+    If Not Me.NewRecord Then
+        oldR = Me!ReceiptID.OldValue
+        oldA = Me!AppointmentID.OldValue
+    End If
+    issue = AllocationIssue(Me!ReceiptID, Me!AppointmentID, Me!AppliedAmount, oldR, oldA)
+    If Len(issue) > 0 Then
+        Cancel = True
+        MsgBox issue, vbExclamation, "Allocation check"
+    End If
+    Exit Sub
+Failed:
+    Cancel = True
+    MsgBox "Validation failed: " & Err.Description, vbExclamation, "Allocation check"
+End Sub
