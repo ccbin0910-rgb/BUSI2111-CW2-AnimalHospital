@@ -2,7 +2,7 @@
 
 > **版本：2026-11-16 R4（Rubric 4×25 保分优先重构版）**（已校准至《Grading Rubrics》4×25、《Computer Lab 2》14 页与 [05 AI 思考约束边界](05_AI思考约束边界_课程对齐Prompt.md)）。  
 > **核心策略调整**：官方 Rubric **4 项满分全在表/字段规则与三轮越界录入测试、主外键、12 条关系方向与 REA 完整性**，未单独给复杂窗体或 VBA 计分。因此全组 **100% 先保四大核心大项零漏项**，默认 **不上 VBA**，**轻量无宏窗体降为核心全部通过后的可选体验补充**！  
-> **使用铁律**：① 设备预设 **2 Mac + 6 Windows**，**10 表 / 46 字段英文命名以 [02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 为唯一标准**；② 每次求助外部 AI 前先看 [05 约束边界](05_AI思考约束边界_课程对齐Prompt.md)；③ **所有字段拦截、关系方向、查询结果与测试结论必须亲手运行真实 Access 核实**。
+> **使用铁律**：① 设备预设 **1 Mac + 7 Windows**（唯一 Mac 同学专责成员 1 REA 建模与边界卡，其余 7 位 Windows 同学均可直接运行与复核 MS Access），**10 表 / 46 字段英文命名以 [02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 为唯一标准**；② 每次求助外部 AI 前先看 [05 约束边界](05_AI思考约束边界_课程对齐Prompt.md)；③ **所有字段拦截、关系方向、查询结果与测试结论必须亲手运行真实 Access 核实**。
 
 ---
 
@@ -10,10 +10,10 @@
 
 | 成员 | 对应 Rubric 得分线 | 上游收到什么 | 本人要做什么 / 交出什么 | 硬性验收怎么看 | 卡住找谁 |
 |---|---|---|---|---|---|
-| **成员 1** (Mac 友好) | **Completeness (25)** | 官方指南 + 02 第 1/2 节 | `REA_Diagram.png` + 可编辑源文件 + `REA_Assumptions.md` | 用 `\|, O, <` 与 `▶` 画全 7 实体（含 `CashAccount` 对齐 Lab 2） | 成员 2、组长 |
-| **成员 2** (Mac 友好) | **Completeness + Functionality + PK/FK (75)** | 02 第 3–5 节 + 1 的 REA 图 | `Schema_Freeze.xlsx`（10 表/46 字段规则/`12 关系`/`Handout_normalization` Schema） | 与成员 3 建好的 Access 表 46 个字段逐列属性比对零差异 | 成员 1、3 |
+| **成员 1** (Mac 专岗/无需 Access) | **Completeness (25)** | 官方指南 + 02 第 1/2 节 | `REA_Diagram.png` + 可编辑源文件 + `REA_Assumptions.md` | 用 `\|, O, <` 与 `▶` 画全 7 实体（含 `CashAccount` 对齐 Lab 2） | 成员 2、组长 |
+| **成员 2** (Win/可直核 Access) | **Completeness + Functionality + PK/FK (75)** | 02 第 3–5 节 + 1 的 REA 图 | `Schema_Freeze.xlsx`（10 表/46 字段规则/`12 关系`/`Handout_normalization` Schema） | 与成员 3 建好的 Access 表 46 个字段逐列属性比对零差异 | 成员 1、3 |
 | **成员 3** (Win/Access) | **全部 4×25 (100) 技术底座** | 冻结口径 + 4 的样例表 | **Phase 2** `v1_Core_Seeded.accdb`；**Phase 4** 合并终版 `GroupXX_animalhospital.accdb` | 10 表/46 字段全规则/3 组联合 PK/12 条 `1→∞` RI 关系准确；合并绝不导 Tables | 成员 2、8 |
-| **成员 4** (Mac 友好) | **Completeness + Functionality (50)** | 02 第 4–6 节 | `Sample_Data_Master.xlsx`（`Seed` / `Expected` / **`46字段×3轮越界压测矩阵`** / `Tests`） | 独立手算 205/90 与余额 0/90；46 字段每列至少 1 个违规测试值分配至 Round 1–3 | 成员 2、6 |
+| **成员 4** (Win/可交叉验证) | **Completeness + Functionality (50)** | 02 第 4–6 节 | `Sample_Data_Master.xlsx`（`Seed` / `Expected` / **`46字段×3轮越界压测矩阵`** / `Tests`） | 独立手算 205/90 与余额 0/90；46 字段每列至少 1 个违规测试值分配至 Round 1–3 | 成员 2、6 |
 | **成员 5** (Win/Access) | **Completeness (25，Page 3 衍生值)** | 成员 3 的 `v1_Core_Seeded.accdb` | `v2_R5_Queries.accdb`（顺序建齐 11 个核心与控制查询） | 双击全跑无“输入参数值”，金额行数与成员 4 手算零误差 | 成员 3、4 |
 | **成员 6** (Win/Access) | **Functionality "3 Rounds" (25)** | 底库副本 + 4 压测矩阵 + 5 查询 | `Control_Test_Log_R1R2.md`（执行 **Round 1–2 表录入压测 + T01–T22**） | 逐表直接在 Datasheet 录坏数据确认全拦截；异常查询准确暴露跨主人/超额；T21/T22 标 `KNOWN_LIMITATION` | 成员 4、5 |
 | **成员 7** (Win/Access) | **Functionality Round 3 + PK/FK + Relationships (75)** | 底库副本 + 4 矩阵 + 6 的 R1–R2 记录 | **【P0】`Round3_Audit_Log.md`**（盲测第 3 轮全字段非法录入 + **逐一核验 PK/复合PK/FK 与 12 关系 `1→∞` 方向**）；**【P1 可选】**核心全过后建无 VBA 轻量录入窗体 `v2_R7_Forms.accdb` | 必须交出 46 字段 Round 3 盲测全阻断、12 条关系方向零反向的独立签收单；不强求复杂菜单或 VBA | 成员 3、8 |
@@ -26,7 +26,7 @@
 ## 1. 全组开工前的 7 条共同铁律
 
 1. **先过 D1 与 D3 门槛（目标 `11-19` 前）**：`Grading Rubrics` (4×25) 与 `Computer Lab 2` (14 页) **已确认**：不考复杂窗体/VBA，核心考 REA、10 表、46 字段三轮录入拦截、PK/FK 与 12 关系方向；全组仅剩 **D1（2 条 vs 3 药）** 与 **D3（`CollectedByVetID` 必填假设）** 待 11-19 前由组长问老师/拍板。
-2. **禁止网盘实时协同编辑 `.accdb`**：Windows 同学建好本地工作目录（如 `D:\CW2_Work\`），每次备份与发群前**务必先彻底关闭 Access 再复制文件**。Mac 同学负责成员 1/2/4 任务，不强求原生安装 Access。
+2. **禁止网盘实时协同编辑 `.accdb`**：Windows 同学建好本地工作目录（如 `D:\CW2_Work\`），每次备份与发群前**务必先彻底关闭 Access 再复制文件**。唯一使用 Mac 的同学专责成员 1（完全不依赖本地安装 Access），其余 7 位 Windows 同学均可直接打开 `v1_Core_Seeded.accdb` 核对或运行测试。
 3. **统一口径先冻结后动手**：成员 3 在 `11-20` 发出 `v1_Core_Seeded.accdb` 后，5/6/7/8 **一律克隆该底座**，严禁各建各的表（否则合并时 AutoNumber ID 和字段拼写一定报错）。
 4. **测试副本严格隔离**：所有 `T01–T22` / `V01–V09` 异常和破坏测试只能在后缀 `_Test.accdb` 的副本里做；成员 6 **只交测试日志**，不要让脏数据回流主库。
 5. **AutoNumber 跳号正常**：录入或新增时如果 ID 跳过成 `3、4`，记下真实生成的 ID 去填子表外键即可，不要强迫连续而频繁删库重来。
@@ -35,7 +35,7 @@
 
 ---
 
-## 2. 成员 1（Mac 友好）｜REA 概念图与业务假设设计师
+## 2. 成员 1（唯一 Mac 专岗｜无需 Access）｜REA 概念图与业务假设设计师
 
 - **依赖**：官方指南 + [02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 第一、二节。
 - **交付**：`REA_Diagram.png`（白底高清）、`REA_Diagram.drawio`（或 `.pptx` 源文件）、`REA_Assumptions.md`。
@@ -88,7 +88,7 @@
 
 ---
 
-## 3. 成员 2（Mac 友好）｜数据字典、3NF 与课堂 Schema 审计官
+## 3. 成员 2（Windows｜可直接进 Access 核对表结构）｜数据字典、3NF 与课堂 Schema 审计官
 
 - **依赖**：[02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 第三至五节 + 成员 1 的 REA 图。
 - **交付**：`Schema_Freeze.xlsx`（或 `.md`），包含 `1_Tables_Fields`、`2_Relationships_12`、`3_Attribute_Trace`、`4_Schema_3NF` 四页。
@@ -160,7 +160,7 @@
 3. **排错防重名**：导入后立刻检查 Queries/Forms/Reports 列表，若发现 `qry_...1` 或 `frm_...1` 后缀重名对象，说明之前导入冲突，先备份后删错保留唯一正确版本，确保按钮与子窗体引用名 100% 匹配。
 4. **收尾设置**：
    - 在集成库再次打开 `Database Tools -> Relationships`，微调 10 个方框和别名框使 12 条线互不压字 → 点 **Relationship Report** 生成并覆盖保存为 `rpt_00_Relationships_Report`（这样报表标题里才是正式文件名）。
-   - 点 **File → Options → Current Database → Display Form** 设为 `frm_00_MainMenu` → 保存关闭重开验证首页弹出。
+   - *（仅当团队启用 P1 可选窗体并测过 `F01–F06` 时，才点 **File → Options → Current Database → Display Form** 设为 `frm_00_MainMenu`；默认留空，打开直接展示左侧导航窗格中的表/查询/报表）*。
    - 若启用可选 VBA，打开 `Alt+F11` → `Debug -> Compile` 确认零编译错误（基础版不要改全局宏安全级别）。
    - 确认所有对象窗口关闭后执行 **Database Tools → Compact and Repair Database**，然后连同备份交成员 8 验收。
 
@@ -188,7 +188,7 @@
 
 ---
 
-## 5. 成员 4（Mac 友好）｜测试数据、独立手算 & 46 字段三轮压测矩阵师
+## 5. 成员 4（Windows｜可直接在本机验证样例与压测值）｜测试数据、独立手算 & 46 字段三轮压测矩阵师
 
 - **依赖**：[02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 第四至六节 + 03 第 7 节测试清单。
 - **交付**：`Sample_Data_Master.xlsx`（或 CSV/Markdown），含 **`Seed`（录入底数）**、**`Expected`（手算预期）**、**`Field_3Rounds_Matrix`（46 字段 × 3 轮非法录入矩阵 — 支撑 Rubric Functionality 25 分！）**、**`Tests`（T07–T20 隔离场景）** 四页。
