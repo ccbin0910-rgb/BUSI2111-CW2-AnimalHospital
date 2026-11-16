@@ -47,18 +47,14 @@ git worktree add D:\AIS_CW2_wt_M7 -b role/M7-forms
 - 因为所有 `.sql` 日志都是独立新文件，**合并永远零冲突**！
 
 ### 场景 2：多台不同电脑上的组员 & 各自 Agent 协作
-1. **建私有远程仓库**：组长在 GitHub 或 Gitee 建一个**私有仓库（Private）**，把 `D:\AIS CW_2` 推到 `origin main`：
-   ```powershell
-   git remote add origin <你的私有仓库URL>
-   git push -u origin main
-   ```
+1. **远程仓库地址（已建好）**：`https://github.com/ccbin0910-rgb/BUSI2111-CW2-AnimalHospital.git`
 2. **每位组员在自己电脑克隆仓库**（如 Mac 同学放 `~/Desktop/CW2_Repo`，**不在 iCloud/OneDrive 里建**）：
    ```bash
-   git clone <私有仓库URL>
-   cd <仓库目录>
+   git clone https://github.com/ccbin0910-rgb/BUSI2111-CW2-AnimalHospital.git
+   cd BUSI2111-CW2-AnimalHospital
    git config user.name "你的英文名或学号"
    git config user.email "你的邮箱"
-   git checkout -b role/M1-rea   # 按自己角色编号建分支
+   git checkout -b role/M1-rea   # 按自己角色编号建分支（或直接拉最新 main 后按约定提交）
    ```
 3. **每次开工前先拉最新汇总，看看前面人/AI 干了什么**：
    ```bash
