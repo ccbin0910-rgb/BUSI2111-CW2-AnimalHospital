@@ -29,7 +29,7 @@
 
 ## 三、每次做完实质变更后的强制动作（必须写出 SQL Log）
 
-只要你在本工作区修改了文档、数据字典、SQL、VBA、Python、测试记录或提交了新的 `.accdb` 版本，**结束本轮工作前必须执行以下 3 步**：
+只要你在本工作区修改了文档、数据字典、SQL、VBA、Python、测试记录或提交了新的 `.accdb` 版本，**结束本轮工作前必须执行以下 4 步**：
 
 1. **在 `handoff_logs/entries/` 新建 1 个唯一命名的 `.sql` 文件**  
    文件命名：`YYYYMMDD_HHMM_<MEMBER_ROLE>_<short_slug>.sql`（例：`20261117_1430_M5_add_queries_run_check.sql`，若同分钟重名可在分钟后加两位序号如 `_01`）。
@@ -42,3 +42,6 @@
    python -X utf8 handoff_logs/query_logs.py --check --summary
    ```
    若团队有可执行的 `revision_manifest.json` 校验或对应角色验收，须在同一轮一并说明实测与未测项。
+4. **明确询问组员是否立即提交并推送到 GitHub（禁止静默推送或未推误报“已更新”）**：
+   - 结束前须向组员列出本轮全部本地修改与新增文件/截图，主动询问：**“是否现在执行 `commit` 并 `push` 到 GitHub 共享？”**
+   - 只有组员确认后才执行 `git commit` 与 `git push`；未执行推送前，绝不能汇报“GitHub 已更新”。

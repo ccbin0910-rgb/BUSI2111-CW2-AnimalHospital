@@ -1,30 +1,31 @@
 # 八人分工 SOP 与 AI 辅助手册（傻瓜式操作 + 自检版）
 
-> **版本：2026-11-16 R3**（融合 [05 AI 思考约束边界](05_AI思考约束边界_课程对齐Prompt.md) 与课堂规范校准）。  
-> **使用铁律**：① 设备预设 **2 Mac + 6 Windows**，组长可按实际电脑调换人员，但**10 表 / 46 字段英文命名以 [02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 为唯一标准，任何人不得私改**；② 每次求助外部 AI 前先看 [05 约束边界](05_AI思考约束边界_课程对齐Prompt.md)，只让 AI 帮写草稿和挑错，**所有数据、SQL、界面与测试结论必须由本人理解并亲手跑出真实结果**；③ 本手册不预设虚假工时或分数，按阶段验收推进。
+> **版本：2026-11-16 R4（Rubric 4×25 保分优先重构版）**（已校准至《Grading Rubrics》4×25、《Computer Lab 2》14 页与 [05 AI 思考约束边界](05_AI思考约束边界_课程对齐Prompt.md)）。  
+> **核心策略调整**：官方 Rubric **4 项满分全在表/字段规则与三轮越界录入测试、主外键、12 条关系方向与 REA 完整性**，未单独给复杂窗体或 VBA 计分。因此全组 **100% 先保四大核心大项零漏项**，默认 **不上 VBA**，**轻量无宏窗体降为核心全部通过后的可选体验补充**！  
+> **使用铁律**：① 设备预设 **2 Mac + 6 Windows**，**10 表 / 46 字段英文命名以 [02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 为唯一标准**；② 每次求助外部 AI 前先看 [05 约束边界](05_AI思考约束边界_课程对齐Prompt.md)；③ **所有字段拦截、关系方向、查询结果与测试结论必须亲手运行真实 Access 核实**。
 
 ---
 
-## 0. 一页交接总览表
+## 0. 一页交接总览表（紧扣 Rubric 4×25 保分）
 
-| 成员 | 上游收到什么 | 本人要做什么 / 交出什么 | 硬性验收怎么看 | 卡住找谁 |
-|---|---|---|---|---|
-| **成员 1** (Mac 友好) | 官方指南 + 02 第 1/2 节 | `REA_Diagram.png` + 可编辑源文件 + `REA_Assumptions.md` | 按 `Handout_cardinality` 用 `\|, O, <` 与 `▶` 画全 7 实体；逐条能口头读出基数 | 成员 2、组长 |
-| **成员 2** (Mac 友好) | 02 第 3–5 节 + 1 的 REA 图 | `Schema_Freeze.xlsx` (或 `.md`)，含 10 表/46 字段/`Handout_normalization` Schema 与 3NF 异常解释 | 与成员 3 建好的真实 Access 表逐列核对无漏、无错 | 成员 1、3 |
-| **成员 3** (Win/Access) | 冻结口径 + 4 的样例表 | **Phase 2** `v1_Core_Seeded.accdb`；**Phase 4** 合并集成库 `GroupXX_animalhospital.accdb` | 表/键/验证规则/12 条关系准确；合并只导查询/窗体/报表不导 Tables | 成员 2、8 |
-| **成员 4** (Mac 友好) | 02 第 6 节开发样例 | `Sample_Data_Master.xlsx`（`Seed` / `Expected` / `Tests` 三页） | 独立手算验证 205/90 与余额 0/90；明确区分开发 3 药 vs 提交 D1 待定 | 成员 5、6 |
-| **成员 5** (Win/Access) | 成员 3 的 `v1_Core_Seeded.accdb` | `v2_R5_Queries.accdb`，含顺序建好的 11 个保存查询 | 双击全跑一遍无“输入参数值”，金额和行数与 4 手算完全一致 | 成员 3、4 |
-| **成员 6** (Win/Access) | 底库副本 + 5 的 11 个查询 | `Control_Test_Log.md` + 隔离测试副本（不回传脏数据） | 完成 `T01–T22`（标注 `T21/T22` 为已知限制）；若启用 VBA 再测 `V01–V09` | 成员 5、8 |
-| **成员 7** (Win/Access) | 底库副本 + 5 的查询 | `v2_R7_Forms.accdb`（`frm_00_MainMenu` + 3 套主子窗体 + 下拉组合框） | 完成 `F01–F05` 实际点测并与成员 8 在另一台电脑完成 `F06` | 成员 5、8 |
-| **成员 8** (Win/Access) | 1 的图、2 字典、5 查询、3 合并库 | 库内报表 (`rpt_00/01/02`)、Documenter PDF、`UAT_Signoff.md`、Rubric 核对 | 离线换路径验证图片嵌入、协助 3 合并与 7 跨机测试、核实提交封面 AI 声明 | 组长、3 |
+| 成员 | 对应 Rubric 得分线 | 上游收到什么 | 本人要做什么 / 交出什么 | 硬性验收怎么看 | 卡住找谁 |
+|---|---|---|---|---|---|
+| **成员 1** (Mac 友好) | **Completeness (25)** | 官方指南 + 02 第 1/2 节 | `REA_Diagram.png` + 可编辑源文件 + `REA_Assumptions.md` | 用 `\|, O, <` 与 `▶` 画全 7 实体（含 `CashAccount` 对齐 Lab 2） | 成员 2、组长 |
+| **成员 2** (Mac 友好) | **Completeness + Functionality + PK/FK (75)** | 02 第 3–5 节 + 1 的 REA 图 | `Schema_Freeze.xlsx`（10 表/46 字段规则/`12 关系`/`Handout_normalization` Schema） | 与成员 3 建好的 Access 表 46 个字段逐列属性比对零差异 | 成员 1、3 |
+| **成员 3** (Win/Access) | **全部 4×25 (100) 技术底座** | 冻结口径 + 4 的样例表 | **Phase 2** `v1_Core_Seeded.accdb`；**Phase 4** 合并终版 `GroupXX_animalhospital.accdb` | 10 表/46 字段全规则/3 组联合 PK/12 条 `1→∞` RI 关系准确；合并绝不导 Tables | 成员 2、8 |
+| **成员 4** (Mac 友好) | **Completeness + Functionality (50)** | 02 第 4–6 节 | `Sample_Data_Master.xlsx`（`Seed` / `Expected` / **`46字段×3轮越界压测矩阵`** / `Tests`） | 独立手算 205/90 与余额 0/90；46 字段每列至少 1 个违规测试值分配至 Round 1–3 | 成员 2、6 |
+| **成员 5** (Win/Access) | **Completeness (25，Page 3 衍生值)** | 成员 3 的 `v1_Core_Seeded.accdb` | `v2_R5_Queries.accdb`（顺序建齐 11 个核心与控制查询） | 双击全跑无“输入参数值”，金额行数与成员 4 手算零误差 | 成员 3、4 |
+| **成员 6** (Win/Access) | **Functionality "3 Rounds" (25)** | 底库副本 + 4 压测矩阵 + 5 查询 | `Control_Test_Log_R1R2.md`（执行 **Round 1–2 表录入压测 + T01–T22**） | 逐表直接在 Datasheet 录坏数据确认全拦截；异常查询准确暴露跨主人/超额；T21/T22 标 `KNOWN_LIMITATION` | 成员 4、5 |
+| **成员 7** (Win/Access) | **Functionality Round 3 + PK/FK + Relationships (75)** | 底库副本 + 4 矩阵 + 6 的 R1–R2 记录 | **【P0】`Round3_Audit_Log.md`**（盲测第 3 轮全字段非法录入 + **逐一核验 PK/复合PK/FK 与 12 关系 `1→∞` 方向**）；**【P1 可选】**核心全过后建无 VBA 轻量录入窗体 `v2_R7_Forms.accdb` | 必须交出 46 字段 Round 3 盲测全阻断、12 条关系方向零反向的独立签收单；不强求复杂菜单或 VBA | 成员 3、8 |
+| **成员 8** (Win/Access) | **Guide 文档化 + 4×25 终审** | 1 的图、2 字典、5 查询、6/7 测试单、3 合并库 | `rpt_01_REA_Diagram`、`rpt_02_System_Design_Notes`、`rpt_00_Relationships_Report`、`Database Documenter PDF`、`UAT_Signoff.md` | 46 字段 `Description` 全满；离线换路径打开嵌图无断链；核对 `GroupNo` 与 AI 封面声明 | 组长、3 |
 
-> **协作补位原则**：成员 3 和成员 7 工作量最集中——**成员 8** 全程协助成员 3 合并回归并协同成员 7 跨机测 `F06`，**成员 5** 支援成员 7 调试下拉框 Row Source SQL。
+> **协作补位原则**：成员 6 与成员 7 形成**相互独立的双人三轮压测闭环**（完全对应 Rubric *"After three rounds of data entry tests..."* 条款）；成员 8 协助成员 3 做 Phase 4 合并、关系排版与跨机重开校验。
 
 ---
 
 ## 1. 全组开工前的 7 条共同铁律
 
-1. **先过 D1 与 D3 门槛（目标 `11-19` 前）**：组长先查 Moodle 是否有新放出的 `Computer Lab 2` / `Rubric` 确认 **D1（每表 2 条 vs 3 种药）** 与 **D3（`CollectedByVetID` 必填假设）**；未获许可前，全组按“开发原型”推进，**绝不对外宣称已是可提交终版**。
+1. **先过 D1 与 D3 门槛（目标 `11-19` 前）**：`Grading Rubrics` (4×25) 与 `Computer Lab 2` (14 页) **已确认**：不考复杂窗体/VBA，核心考 REA、10 表、46 字段三轮录入拦截、PK/FK 与 12 关系方向；全组仅剩 **D1（2 条 vs 3 药）** 与 **D3（`CollectedByVetID` 必填假设）** 待 11-19 前由组长问老师/拍板。
 2. **禁止网盘实时协同编辑 `.accdb`**：Windows 同学建好本地工作目录（如 `D:\CW2_Work\`），每次备份与发群前**务必先彻底关闭 Access 再复制文件**。Mac 同学负责成员 1/2/4 任务，不强求原生安装 Access。
 3. **统一口径先冻结后动手**：成员 3 在 `11-20` 发出 `v1_Core_Seeded.accdb` 后，5/6/7/8 **一律克隆该底座**，严禁各建各的表（否则合并时 AutoNumber ID 和字段拼写一定报错）。
 4. **测试副本严格隔离**：所有 `T01–T22` / `V01–V09` 异常和破坏测试只能在后缀 `_Test.accdb` 的副本里做；成员 6 **只交测试日志**，不要让脏数据回流主库。
@@ -187,19 +188,24 @@
 
 ---
 
-## 5. 成员 4（Mac 友好）｜测试数据设计与独立手算审计官
+## 5. 成员 4（Mac 友好）｜测试数据、独立手算 & 46 字段三轮压测矩阵师
 
-- **依赖**：[02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 第六节 + 03 第 7 节测试清单。
-- **交付**：`Sample_Data_Master.xlsx`（无 Excel 可交 CSV/Markdown），含 **`Seed`（录入底数）**、**`Expected`（手算预期）**、**`Tests`（异常变更场景）** 三页。
+- **依赖**：[02 蓝图](02_最终版数据库架构蓝图与技术规范.md) 第四至六节 + 03 第 7 节测试清单。
+- **交付**：`Sample_Data_Master.xlsx`（或 CSV/Markdown），含 **`Seed`（录入底数）**、**`Expected`（手算预期）**、**`Field_3Rounds_Matrix`（46 字段 × 3 轮非法录入矩阵 — 支撑 Rubric Functionality 25 分！）**、**`Tests`（T07–T20 隔离场景）** 四页。
 
 ### 傻瓜式操作步骤
-1. **`Seed` 页**：按 02 第六节录入顺序列出全部 10 张表的虚拟数据行，在表格正上方醒目标注 **“开发验证集：药品 3 条、其余 9 表各 2 条；D1 提交合规待组长 11-19 确认，不擅自加造 ConditionCode”**。
+1. **`Seed` 页**：按 02 第六节录入顺序列出全部 10 张表的虚拟数据行，醒目标注 **“开发验证集：药品 3 条、其余 9 表各 2 条；D1 提交合规待组长 11-19 确认，不擅自加造 ConditionCode”**。
 2. **`Expected` 页（独立算一遍，不抄蓝图结论！）**：自己拿计算器按原始单行重新汇总核验：
    - **主人宠物数**：Emily (`Parent 1`) 名下 `Mochi`、`Boba` 共 `2` 只；David (`Parent 2`) 无宠物 = **`0`**；
    - **处方与诊费**：`Appt 1` 开 `Med 1` (`2 × 30.00 = 60.00`，目录价 `35.00`) 与 `Med 2` (`1 × 25.00 = 25.00`，目录价 `25.00`) → 药费 **`85.00`** + 诊费 `120.00` = 就诊总额 **`205.00`**；`Appt 2` 无药费 (`0.00`) + 诊费 `90.00` = 总额 **`90.00`**；
    - **收款与余额**：`R1 (100.00) + R2 (105.00) = 205.00` 全部分配给 `Appt 1` → `Appt 1` 余额 **`0.00`**，`Appt 2` 未收款余额 **`90.00`**；两笔收款未分配余额均为 **`0.00`**；
    - **异常基准**：`InvalidAllocations = 0 行`；`DrugInteractionWarnings = 1 行`（命中 `Appt 1` 的 `(1, 2)` 虚构温和冲突）。
-3. **`Tests` 页**：逐条为成员 6 写清 `T07–T20` 每个异常场景的 **4 要素**：**① 初始基线状态 → ② 本次唯一变更操作 → ③ 预期返回几行什么类型异常 → ④ 测完如何删除/改回原值恢复基线**（注意 `T07/T08/T09` 必须彼此隔离，绝不混在一起测试后声称返回 3 行）。
+3. **`Field_3Rounds_Matrix` 页（紧扣 Rubric "three rounds of data entry tests"）**：按 02 第四节全部 **10 张表、46 个字段**逐行建表，给**每一个字段**写出 **3 轮不同非法输入测试值**（分配给成员 6 测 Round 1–2、成员 7 盲测 Round 3），覆盖：
+   - **必填短文本**：Round 1 留空；Round 2 输空字符串 `""`（测 `Allow Zero Length=No`）；Round 3 输超长字符串（测 Size 截断/限制）；
+   - **数字字段**：Round 1 输负数/0；Round 2 输字母 `"abc"` 或小数 `1.5`（测 `Double+Int()`）；Round 3 输超上界（如 `1441` 分钟）；
+   - **货币字段**：Round 1 输负值/0（适用处）；Round 2 输文本 `"$abc"`；Round 3 输 `100.001`（测 `Round(...,2)`）；
+   - **日期与外键**：Round 1 输文本 `"Pickle"`（Lab 2 原例！）；Round 2 输未来日期 `2099-01-01`（适用处）；Round 3 输不存在的外键 `999` 或重复主键！
+4. **`Tests` 页**：为成员 6 写清 `T07–T20` 每个隔离异常场景的 4 要素：**① 初始基线 → ② 唯一变更 → ③ 预期返回行与类型 → ④ 测完恢复步骤**（绝不把两个异常混在一个副本）。
 4. **变更通知机制**：只要 D1/D3 使组内调整了任何价格、名称或样例行数，你必须重算 `Expected` 与 `Tests` 预期值并第一时间同步成员 3、5、6、8。
 
 ### AI Prompt
@@ -271,18 +277,21 @@
 
 ---
 
-## 7. 成员 6（Windows + Access 必需）｜内控、异常与回归测试官
+## 7. 成员 6（Windows + Access 必需）｜表级 Round 1–2 压测与内控测试官（Functionality 25 主力）
 
-- **依赖**：底库副本 + 成员 5 的 11 个查询 + 成员 4 的预期与恢复步骤（注：若 11-19 D3 改变 `CollectedByVetID`，`T20` 同步调整）。
-- **交付**：`Control_Test_Log.md`（列名：`TestID | 版本 | 环境 | 前置基线 | 唯一操作 | 期望结果 | 实际结果与证据 | 结论`）+ 独立 `_Test.accdb` 副本（**严禁把测试副本交成员 3 合并！**）。
+> **R4 角色聚焦**：直接对应 Rubric **`Functionality and Reliability (25)`**（*"After three rounds of data entry tests, some fields can be entered with data outside the rules"*）。你负责**直接打开每张表（Datasheet View）执行第 1–2 轮 46 字段越界录入测试**与 **`T01–T22` 完整性/对账异常测试**；**无需做 `V01–V09` VBA 测试**（R4 已停用默认 VBA）。
+
+- **依赖**：底库副本 + 成员 4 的 `Field_3Rounds_Matrix` 与预期 + 成员 5 的 11 个查询（若 D3 改动 `CollectedByVetID`，`T20` 同步调）。
+- **交付**：`Control_Test_Log_R1R2.md`（含 46 字段 R1/R2 勾选结果 + `T01–T22` 逐条日志）+ 隔离 `_Test.accdb` 副本（**严禁把测试副本交成员 3 合并！**）。
 
 ### 傻瓜式操作步骤
-1. 复制成员 3 底库为 `v2_R6_Control_Test.accdb`，用 `External Data -> Import` 导入成员 5 的 **11 个 Queries**（不要导 Tables），核对全部查询和干净基线正常，再另复制一份备份 `Clean_Baseline.accdb` 方便随时还原。
-2. 逐项跑表中 **22 项核心异常测试（`T01–T22`）**。**原则**：先写预期再改数；**涉及破坏或增删改的用例（`T07–T17`、`T21–T22`）每次只用一个干净副本或恢复后单测一个场景**；只能填入亲自执行看到的真实结论，尚未测标 `NOT RUN`。
-3. **严格区分 3 种测试性质（对齐 `05` 规则 4 & 5）**：
-   - `T01–T06, T12, T18–T20`：验证**表约束 / 参照完整性 / 主键（Preventive）**能否拒绝违规写入或保留正当支持；
-   - `T07–T11, T13–T17`：验证**账务核算与侦测查询（Detective）**能否正确发现异常及准确重算；
-   - **`T21–T22`：确认已知未实现边界**——这两项在文档和日志中**必须写为 `KNOWN_LIMITATION`（已证实边界存在）**，**绝不能**在给老师说明时说“测试通过，已拦截”。
+1. 复制成员 3 底库为 `v2_R6_Control_Test.accdb`，用 `External Data -> Import` 导入成员 5 的 **11 个 Queries**（不要导 Tables），核对基线无误后再另存一份 `Clean_Baseline.accdb`。
+2. **执行 Round 1 & Round 2 全表 46 字段 Datasheet 录入压测**：逐个双击打开 10 张表，照成员 4 的 `Field_3Rounds_Matrix`，依次在**新行中**尝试把 Round 1 和 Round 2 坏数据直接打进格子并按 `Tab/Enter`（每次报错拦截后按 **`Esc` 撤回该未保存行**），逐个打勾确认 **46 个字段 0 漏网**！若发现任何字段竟然被允许存进去（例如 `""` 空串、小数 `1.5`、错用 `TODAY()` 漏检），**立刻写求助卡退回成员 3 修复再重测**！
+3. 逐项跑完下方 **22 项完整性与对账场景（`T01–T22`）**。**原则**：先写预期再改数；**涉及增删改的 `T07–T17`、`T21–T22` 每次只用一个干净副本单测**；只能填亲眼所见，未测标 `NOT RUN`。
+4. **严格区分 3 种结论标签（对齐 `05` 规则 4 & 5）**：
+   - `T01–T06, T12, T18–T20`：验证**表约束 / 参照完整性 / 主键（Preventive）**能否直接拦截；
+   - `T07–T11, T13–T17`：验证**账务核算与侦测查询（Detective）**能否正确发现异常；
+   - **`T21–T22`：确认已知未实现边界**——**必须标为 `KNOWN_LIMITATION`**，**绝不能**谎称“系统已阻止”。
 
 | ID | 隔离操作（只在测试副本执行） | 期望表现与应标结论性质 |
 |---|---|---|
@@ -309,9 +318,7 @@
 | **T21** | 把已有历史就诊的 `Pet 1` 的主人改挂给 `Parent 2`，查看 `qry_00` 与余额 | **实际行为**：历史就诊所属主人会随当前档案变为 `Parent 2` → **必须标为 `KNOWN_LIMITATION`（未做宠物转主人历史追踪）** |
 | **T22** | 把 `Appt 1` 的就诊日期改成早于 `Pet 1` 出生日期的 `2020-01-01` | **实际行为**：Access 允许保存 → **必须标为 `KNOWN_LIMITATION`（缺跨表日期校验）** |
 
-4. **可选核销 VBA 测试（仅当组长决定挂载 [02 第八节](02_最终版数据库架构蓝图与技术规范.md) 的 `modAllocationValidation` 与事件代码时执行）**：
-   - 先在测试副本按 02 第八节导入 ASCII 无 BOM 的标准模块，粘贴 `sfrm_ReceiptAllocations_events.txt` 到核销子窗体，确保 `Debug -> Compile` 通过；新增收款时先保存主记录再录子记录，`ReceiptID` / `AppointmentID` 绑定控件存在；
-   - 按 `V01–V09` 测试：合法增改（`V01/V06`）、空/负/3 位小数（`V02`）、跨主人（`V03`）、收款超额（`V04`）、就诊超付（`V05`）、已有分配企图修改主外键（`V07`）、测试副本临时改名 `qry_00_AppointmentOwner` 验证依赖缺失 fail-closed 报错拒绝（`V08`）、**直接开表或改上游诊费确认 VBA 只护子窗体入口而非全局保护（`V09`）**。
+4. **把未拦截/漏项与 Round 1–2 全表字段矩阵交接给成员 7**：通知成员 7 在完全独立的另一台电脑上用干净副本执行 **Round 3 盲测**。*(注：若全组未来极少数情况决定额外启用 `02` 第八节备选 VBA，才需补跑可选 V 系列测试，当前 R4 默认停用 VBA)*。
 
 ### AI Prompt
 ```text
@@ -335,88 +342,62 @@
 
 ---
 
-## 8. 成员 7（Windows + Access 必需）｜用户窗体、下拉与跨机点击官
+## 8. 成员 7（Windows + Access 必需）｜Round 3 盲测、PK/FK & 关系方向审计官（附可选轻量窗体）
 
-- **依赖**：底库副本 + 成员 5 的 11 个查询（如调整 `CollectedByVetID` 需配合简化 8.2 下拉）。
-- **交付**：`v2_R7_Forms.accdb`（`frm_00_MainMenu` + 3 主 3 子窗体）+ **`F01–F06` 实机点击记录**（**含在另一台 Windows/Access 电脑的 `F06` 记录**）。
+> **R4 核心重排**：按照官方 Rubric 4×25，**PK/FK (25 分) + Relationships (25 分) + Functionality Round 3 占绝对权重**！你的 **【P0 必做】** 是在独立 Windows 电脑亲自审计全部主键、外键、12 条关系方向与第 3 轮 46 字段坏数据拦截，确保那 75 分一块都不掉；**【P1 可选】** 只有当 P0 全数 `PASS` 且仍有时间时，才用 Form Wizard 做不带 VBA 的极简录入窗体！
 
-### 8.1 三套主子窗体建设与常见点击坑点
-1. 复制底库，导入成员 5 的 **11 个查询**，命名 `v2_R7_Forms.accdb`。
-2. 依次用 **Create → Form Wizard（窗体向导）** 建 3 套主子窗体：先选主表全部显示字段 → 在上方 `Tables/Queries` 下拉切到子表选全部非自动外键或所需字段 → 下一步选“按主表查看” → 选 **`Form with subform(s)`（带子窗体的窗体）** + `Datasheet（数据表）` → 严格命名：
-   - `frm_01_ParentAndPets`（主 `tblPetParent`，子窗体控件名建议 `sfrm_Pets` / `tblPet`，关联 `ParentID / ParentID`）
-   - `frm_02_AppointmentAndRx`（主 `tblAppointment`，子窗体控件 `sfrm_PrescriptionLines` / `tblPrescriptionLine`，关联 `AppointmentID / AppointmentID`）
-   - `frm_03_CashReceiptAndAlloc`（主 `tblCashReceipt`，子窗体控件 `sfrm_ReceiptAllocations` / `tblReceiptAllocation`，关联 `ReceiptID / ReceiptID`）
-3. **最容易点错的边界提醒（必查！）**：向导完成后切进主窗体 **Design View**，用鼠标**点击子窗体灰色框的外边框线（Subform Control）**，再看右侧 Property Sheet → `Data` 页签：确认 **`Source Object`、`Link Master Fields`、`Link Child Fields`** 与上表一模一样（如果点到子窗体里面某个格子，是看不到这三项的！）。同时确认主子窗体 `Record Source` 都指向真实基础表，保证可更新。
-4. 主键防篡改：主窗体 `AutoNumber` 文本框设 **`Locked = Yes`、`Tab Stop = No`**。在 `frm_01` 子窗体把 `ParentID` 设 `Locked = Yes`（配合 `Link Master/Child` 新增时自动继承当前主人，日常界面不自由改挂已有宠物归属，减轻 `T21` 风险）。若核销子窗体准备挂载 VBA，确保 `ReceiptID`、`AppointmentID`、`AppliedAmount` 三个绑定文本框即使隐藏也保留在子窗体上。
+- **依赖**：成员 3 的 `v1_Core_Seeded.accdb` + 成员 4 的 `Field_3Rounds_Matrix` + 成员 6 的 Round 1–2 日志。
+- **交付**：
+  1. **【P0 必交】`Round3_And_Relationship_Audit.md`**（46 字段第 3 轮独立盲测日志 + 10 表 PK/FK/12 关系方向逐条签收表）；
+  2. **【P1 可选】** 若团队需要简化界面才交 `v2_R7_Forms.accdb`（3 套轻量无 VBA 窗体 + `F01–F06` 实机点击记录）。
 
-### 8.2 外键全改下拉框（Combo Box）防错
-切到各窗体/子窗体 **Design View**，右键外键文本框 → **Change To → Combo Box（更改为组合框）**，打开 Property Sheet：
-- `Control Source` = 原外键字段名（**绝不能留空！否则选完不保存！**）
-- `Row Source Type` = `Table/Query`；`Bound Column` = `1`；`Column Count` = `2`；`Column Widths` = `0cm;7cm`；`Limit To List` = `Yes`
-- 分别粘贴对应 `Row Source` SQL（如有问题找成员 5 协助）：
+### 8.1 【P0 必做】PK / FK（25 分）与 12 条关系方向（25 分）逐表盲审
+打开一份独立复制的 **`v1_Core_Seeded_R7Audit.accdb`**：
+1. **逐表进 Design View 核验 PK & 联合主键 & FK（保 25 分）**：
+   - 检查 7 张单主键表钥匙图标位置无错位，Data Type 为 `AutoNumber`；
+   - **重点抽查 3 张联合主键表**：`tblPrescriptionLine` (`AppointmentID` + `MedicationID`)、`tblReceiptAllocation` (`ReceiptID` + `AppointmentID`)、`tblMedicationInteraction` (`MedicationAID` + `MedicationBID`) —— **两行左侧都必须有钥匙图标**！若只看到一把钥匙，立刻通知成员 3 重建！
+   - 核对所有 12 个外键字段数据类型全部是 `Number -> Long Integer`（才能与 `AutoNumber` 连起），且 `Required` 属性与 02 蓝图完全一致。
+2. **逐线核验 `Database Tools -> Relationships`（保 25 分：`all in the right direction`）**：
+   - 检查 10 张表 + 别名框全部显示完整（拉高小窗格，**不要把任何字段遮到滚动条下面看不到！**）；
+   - 数清共 **12 条线**，逐条双击连线本身看 `Edit Relationships` 弹窗：
+     - Left Table (`Table/Query`) 必须是 **“1”方（主表 PK）**，Right Table (`Related Table/Query`) 必须是 **“∞”方（子表 FK）** —— 重点防反：`tblVeterinarian (1) -> tblAppointment (∞)`、`tblCashAccount (1) -> tblCashReceipt (∞)`、`tblPetParent (1) -> tblPet (∞)`、`tblPetParent (1) -> tblCashReceipt (∞)`；
+     - 每条线两端必须看得见 **`1` 和 `∞`**（代表已勾选 `Enforce Referential Integrity`），且 **`Cascade Delete Related Records` 全部不勾**。
 
-```sql
--- 1) frm_02 就诊的 PetID
-SELECT PetID, CStr(PetID) & ' - ' & PetName & ' (Parent #' & ParentID & ')' AS DisplayName FROM tblPet ORDER BY PetName, PetID;
-```
-```sql
--- 2) frm_02 就诊的 VetID & frm_03 收款的 CollectedByVetID（若保留该列）
-SELECT VetID, CStr(VetID) & ' - ' & VetName AS DisplayName FROM tblVeterinarian ORDER BY VetName, VetID;
-```
-```sql
--- 3) frm_02 子窗体开药的 MedicationID
-SELECT MedicationID, CStr(MedicationID) & ' - ' & MedicationName & ' | List ' & Format(ListPrice,'0.00') AS DisplayName FROM tblMedication ORDER BY MedicationName, MedicationID;
-```
-```sql
--- 4) frm_03 收款的 ParentID
-SELECT ParentID, CStr(ParentID) & ' - ' & ParentName & ' | ' & DayPhone AS DisplayName FROM tblPetParent ORDER BY ParentName, ParentID;
-```
-```sql
--- 5) frm_03 收款的 AccountID
-SELECT AccountID, CStr(AccountID) & ' - ' & AccountName AS DisplayName FROM tblCashAccount ORDER BY AccountID;
-```
-```sql
--- 6) frm_03 子窗体核销的 AppointmentID
-SELECT A.AppointmentID, 'Appt #' & A.AppointmentID & ' | ' & T.PetName & ' | Parent #' & T.ParentID AS DisplayName FROM tblAppointment AS A INNER JOIN tblPet AS T ON A.PetID=T.PetID ORDER BY A.AppointmentID;
-```
+### 8.2 【P0 必做】Round 3 独立 46 字段越界盲测（保 Functionality 25 分）
+在同一隔离副本（测完不回传脏数据！）按成员 4 矩阵的 **Round 3** 列，独立测试老师最爱试的坏数据：
+1. 在所有文本表输入超出 `Field Size` 或空字符串 `""`；
+2. 在所有日期字段输入 `"Pickle"` 非法文本与 `2099-01-01` 未来日期；
+3. 在所有 `Currency` 字段输入 `100.001`（三位小数）与文本字符；
+4. 在 `Quantity / DurationMin` 输 `1.5`、`1441`；在各外键列直接填 `999`；
+5. 记录结果并确认 **46 字段 100% 拒绝违规数据**（如发现任何一条能存进去，立即贴求助卡通知成员 3 修复并让成员 6+7 一起复测！）。
 
-> **边界提示**：基础版中 `AppointmentID` 下拉仅在名称旁显示 `Parent #` 供目视对照，**并非**自动级联筛选或事前阻断；实际成交单价 `UnitPriceCharged` 由录入人员参考目录价确认填写（若额外加自动带价事件，务必只初始化新增行且不覆盖已有旧行）。
-
-### 8.3 建导航主页与按钮（认清嵌入式宏）
-1. **Create → Blank Form → Design View** 保存为 `frm_00_MainMenu`，加入医院标题和分组按钮区域。
-2. 用 **Command Button Wizard（命令按钮向导）** 放按钮（注意：**向导生成的按钮在 Property Sheet → Event → On Click 显示为 `[Embedded Macro]`**，因此无 VBA 并不代表“没有任何宏”，只采用安全的内置 `OpenForm / OpenReport / OpenQuery` 动作，**OpenQuery 只许连向 SELECT 查询**！）：
-   - 3 个打开窗体按钮：`frm_01_ParentAndPets`、`frm_02_AppointmentAndRx`、`frm_03_CashReceiptAndAlloc`
-   - 核心查询与审计入口：`qry_01_ParentPetCount`、`qry_04_AppointmentBalance`、`qry_05_ReceiptReconciliation`、`qry_Ctrl_InvalidAllocations`、`qry_Ctrl_DrugInteractionWarnings`
-   - 报表入口（待成员 8 合并后指向）：`rpt_01_REA_Diagram`、`rpt_00_Relationships_Report`、`rpt_02_System_Design_Notes`
-3. 按钮文字规范、不挡住数据显示区；明确区分“开单计费 (`frm_02`)”和“现金收款核销 (`frm_03`)”；**不要禁用/彻底隐藏左侧 Access 导航窗格（Navigation Pane）**，保留直接打开表/查询的备用通道以防他机禁止按钮运行；**绝不为消黄条去全局降低系统宏安全设置**。
-
-### 8.4 真实界面点击验收（`F01–F06`，只留真实记录，SQL 不能代替 UI）
-- **F01**：依次点按 `frm_00_MainMenu` 上每一个按钮，验证都能打开正确对象且不报缺失或弹出“输入参数值”（合并前后各点一次）。
-- **F02**：在独立测试副本上通过窗体翻页确认子表随之更新；完整走一圈闭环：“`frm_01` 新增主人+宠物 → 关重开窗体再进 `frm_02` 为新宠录就诊开药 → 关重开进 `frm_03` 录收款并核销一部分”，确认主外键全部自动带正。
-- **F03**：测出同名同姓下列表能凭 `ID / Phone` 辨认，主键值只读且底层保存为真实数字 ID。
-- **F04**：新增主人或药品后提示先保存记录并关重开（或做并测试 `Requery`）可见新项；更改目录价确认历史处方窗体显示不变。
-- **F05**：全关重开确认写入持久化，且对半填记录按 `Esc` 取消未保存编辑不留残缺记录。
-- **F06（跨机实地验收，和成员 8 协作）**：把合并文件发到**另一台已装 Access、且文件所在文件夹不在“受信任位置”的 Windows 电脑**打开，真实记录黄条出现与否、点击每个按钮的实际结果（若被组织策略禁用如实记入交接并依赖左侧导航窗格入口，不谎称“所有电脑零问题”）。
+### 8.3 【P1 可选 · 仅核心全过后考虑】极简无 VBA 窗体（不计入 Rubric 4×25）
+如果 P0 审计全部零失误、成员 5 查询也已完成、且团队仍希望为“Dr. Nottingham 非 IT 背景”提供更友好的操作界面：
+1. 复制**成员 3 确认后的干净底库**改名为 `v2_R7_Forms.accdb`，用 **Create → Form Wizard（窗体向导）** 仅生成 3 个无 VBA 基础主子窗体：`frm_01_ParentAndPets`、`frm_02_AppointmentAndRx`、`frm_03_CashReceiptAndAlloc`（如要做导航可建简版 `frm_00_MainMenu`，向导按钮产生的 `[Embedded Macro]` 仅允许 `OpenForm / OpenQuery (SELECT) / OpenReport`）。
+2. **两个必查细节**：① 设计视图点**子窗体边框外框**查 `Source Object / Link Master / Link Child Fields` 正确；② 外键改成 ComboBox 时 `Control Source` 必须绑回原外键列名、`Bound Column=1`、`Limit To List=Yes`，下拉里拼上 `ID + Name/Phone`（区分重名）。
+3. 若制作了任何窗体或按钮，**必须补测 `F01–F06`（含与成员 8 在另一台不放白名单的 Windows 电脑打开测试按钮与导航窗格）**，否则不要把未经实测的窗体并入最终交付！
 
 ### AI Prompt
 ```text
-请先遵守《05 AI 思考约束边界》：仅针对我在 MS Access 窗体与控件属性遇到的问题给出操作定位，不要把普通全表下拉说成已做跨主人自动过滤，也不要承诺换任何电脑都能零安全警告打开。
+请先遵守《05 AI 思考约束边界》：仅协助我核查 10 表/46 字段/PK-FK/12 关系方向或排查简化无 VBA 窗体的原生属性；不要建议引入 BeforeUpdate VBA，也不要仅凭静态设计声称“已通过三轮测试”。
 
-我在修改窗体 [写窗体或子窗体名] 时遇到问题：
-- 当前涉及的表、外键、下拉 Row Source 与 Control Source：[粘贴]
-- 子窗体的 Link Master / Link Child Fields 设置：[粘贴]
-- 实际遇到的症状（如无法保存/不保存外键/选完显示数字/报参数错/下拉不刷新）：[描述]
+我正在执行《Assignment 2》Rubric 核心审计（Round 3 + PK/FK + 12 关系方向）：
+- 我当前检查的表/关系/字段属性截图文字：[粘贴]
+- 我在 Round 3 直接向 Datasheet 输入 [填测试值] 时 Access 的真实表现（是报错拒绝、静默四舍五入、还是居然保存成功？）：[描述]
 
-请给出 Property Sheet 中英文精确检查项，区分 Control Source、Row Source 与 Link 字段，并提醒哪些更改会影响已测过的历史价格或需要补充哪项 F/V 测试。
+请告诉我：
+1. 根据 Rubric Functionality (25) / PK&FK (25) / Relationships (25) 标准，这是否算失分隐患；
+2. 应当建议成员 3 在 Table Design 或 Relationships 窗口修改哪个具体属性（包括英文与中文 Access 选项名）；
+3. 改完后我需要复核哪几项避免连带影响。
 ```
 
 ### 交接前 3 个自检问题（对应 `05` 规则 6）
-1. **在 `frm_03` 把 `AccountID` 改成下拉框后，如果忘了设 `Control Source` 但设了 `Row Source`，界面上能下拉但实际发生了什么？**  
-   *要点*：能看到账户名称列表也能选中，但因为未绑定到底层表字段，保存记录时 `tblCashReceipt.AccountID` 仍是空的（被必填规则拦下），等于白选。
-2. **为什么我们在向导后一定要保留“主窗体翻页同步子表”和“用另一台电脑点按钮（F06）”的实测，而不能只看 SQL 测试全对就算窗体完成？**  
-   *要点*：SQL 测试不检验窗体的主子关联字段 (`Link Master/Child`)、控件锁定、ComboBox 写回 ID，也不检验按钮向导的嵌入式宏在未经信任策略电脑上是否会被禁用。
-3. **如果操作员刚在 `frm_01` 新增完一只新猫，马上切到旁边原本就开着的 `frm_02` 却在下拉里找不到这只猫，是因为没存进表里吗？**  
-   *要点*：不是没存盘，而是旧窗体打开时缓存了当时的下拉列表未刷新（`Requery`）；保存主表后关闭重开 `frm_02`（或按 `Shift+F9` 刷新组合框）即可见到。
+1. **在 `Relationships` 窗口里，如果你看见一条连线没有显示 `1` 和 `∞`，即使字段名都连上了，Rubric 的 Relationships (25 分) 会面临什么风险？**  
+   *要点*：没有 `1` 和 `∞` 说明未勾选 `Enforce Referential Integrity`，既未发挥参照完整性拦截垃圾外键，也可能被评阅者认为关系未有效建立或无法直观看出 `1→∞` 正确方向。
+2. **为什么我们把 `tblPrescriptionLine` 等 3 张桥接表设为双列联合主键，如果误把其中一列设成单主键会坏在哪里？**  
+   *要点*：若 `tblPrescriptionLine` 只设 `AppointmentID` 为主键，同一次就诊只能开 1 种药（第 2 种药立即报主键冲突）；同时设两列联合主键才能既允许一诊多药，又防止同诊同药重复插两行。
+3. **如果你做了可选窗体但时间不够没在另一台电脑做 `F06`，或者发现跨机禁用了向导按钮宏，交接时应该怎么处理？**  
+   *要点*：未测实写 `NOT RUN`；若只是想靠它加分体验却来不及完整验收，宁可暂不放进最终提交库（或保留左侧导航窗格直接打开表/查询/报表并如实写清边界），绝不能拿未经跨机检验的界面冒充稳定。
 
 ---
 
@@ -438,10 +419,10 @@ SELECT A.AppointmentID, 'Appt #' & A.AppointmentID & ' | ' & T.PetName & ' | Par
 5. **（可选）病历或账单报表**：如确认制作，以 `qry_06_PetMedicalHistory` 为源时按 **`PetID` 分组并在页眉显示 `PetName`**（绝不能按 `PetName` 分组以免同名宠物串单！）；账单统计以 **`qry_04_AppointmentBalance`** 为源，严禁从处方行表直接把基础诊费反复累加。
 
 ### 9.2 最终候选库 9 项放行核验（`U01–U09`，在只读/独立副本执行）
-- [ ] **U01**：确认 **D1** 与 **D3** 已拍板并对照已获知的 Lab 2 / Rubric 要求（未获 Rubric 前明确标记哪几项是依当前指南、哪几项待核实）。
-- [ ] **U02**：REA 图 ↔ 数据字典 (`Schema_Freeze`) ↔ 最终合并文件 10 表/46 字段/12 条参照完整性关系 100% 一致（若之前改过 D1/D3 必须同步全套文件与测试）。
-- [ ] **U03**：逐表确认数据条数符合拍板方案、全字段 `Description` 非空、11 个查询双击全部正常出数无弹窗报错、金额对照成员 4 手算表零误差。
-- [ ] **U04**：成员 6 的 `T01–T22` 全部核清（`T21/T22` 确已标 `KNOWN_LIMITATION` 未夸大），且若启用 VBA 或按钮已完成全部 `V/F` 实测（重点：不把侦测写成已阻止）。
+- [ ] **U01**：确认 **D1** 与 **D3** 已拍板，且全库 100% 对标已获取的官方 **Grading Rubrics（4×25）** 与 **Computer Lab 2** 规范。
+- [ ] **U02**：REA 图 ↔ 数据字典 (`Schema_Freeze`) ↔ 最终合并文件 10 表/46 字段/全 PK-复合PK-FK/12 条 `1→∞` 参照完整性关系完全一致（已通过成员 7 的 8.1 独立方向审计）。
+- [ ] **U03**：逐表确认数据条数符合拍板方案、46 个字段 `Description` 全非空、11 个查询双击正常出数（支撑 Completeness Page 3 衍生指标）、金额与成员 4 零误差。
+- [ ] **U04**：确认成员 6（Round 1–2 + `T01–T22`）与成员 7（Round 3 盲测）**三轮 46 字段越界录入全部拦截**（`T21/T22` 标 `KNOWN_LIMITATION` 未夸大）；若有可选无 VBA 窗体则确认已测 `F01–F06`，否则确认已从纯净合并稿剔除未测半成品。
 - [ ] **U05**：**离线换路径实测**：把候选 `.accdb` 拷到**另一电脑或不含原 PNG 的全新文件夹**打开 `rpt_01_REA_Diagram`，确认图片清晰还在（真正嵌入未断链）。
 - [ ] **U06**：记录两台电脑的 `F06` 按钮、关闭重开及安全性表现，有受限行为如实交接保留导航窗格。
 - [ ] **U07**：核对即将上传的 `GroupNo_animalhospital.accdb` 未留有任何 `T/V/F` 测试脏数据，且已完成 `Compact and Repair`。
@@ -466,8 +447,8 @@ SELECT A.AppointmentID, 'Appt #' & A.AppointmentID & ' | ' & T.PetName & ' | Par
    *要点*：`Linked` 只在文件内保存成员 8 电脑硬盘上的路径字符串（例如 `C:\Users\...\REA.png`），文件一传到 Moodle 在老师电脑打开就找不到源图；只有改成 `Embedded` 并在不含原图的文件夹/另一台机器离线打开验证（`U05`），才证明真正打包进 `.accdb`。
 2. **如果可选病历报表按 `PetName` 而不是 `PetID` 分组，在有同名同姓宠物时会出现什么严重事故？**  
    *要点*：会把两只恰好都叫 “Mochi” 的不同主人宠物病历、诊断、体重和开药记录混到同一页甚至同一个账单里，造成严重医疗档案混乱与对账错误。
-3. **交接终审时，成员 6 发来一份“65 项全 `PASS`”的自动化结果或全部自己手测 `PASS`，你能仅凭这句就批准提交吗？**  
-   *要点*：不能；还要核查窗体 (`F01–F06`) 与报表是否在集成后的最终库实机点击过、另一台机表现如何、已知限制 (`T21/T22`) 是否被错写为已阻止、提交库中是否清净无脏数据，以及 D1/D2/D4 是否均已核实。
+3. **交接终审时，成员 6 发来一份“65 项全 `PASS`”的自动化结果或 R1–R2 测试通过，你能仅凭这句就批准提交吗？**  
+   *要点*：不能；官方 Rubric 要求 **三轮数据录入测试 + 全部关系方向正确 + 表定义文档化**，必须看到成员 7 独立完成的 **Round 3 盲测与 12 条关系方向审计**、你自己的 **`rpt_01` 离线嵌图实测（`U05`）**、**46 字段 Description & Relationship Report**、以及无测试脏数据的干净压缩版（`U07`）才能放行。
 
 ---
 

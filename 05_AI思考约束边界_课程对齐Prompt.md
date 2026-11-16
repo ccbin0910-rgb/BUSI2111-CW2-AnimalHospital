@@ -1,8 +1,8 @@
 # BUSI2111｜AI 思考与输出约束：课程对齐版
 
-版本：2026-11-16。适用当前 Animal Hospital Access coursework，并可用于本课程其他系统设计任务。依据本地 Module Outline、Week 1–6 课件及本次作业指南制定。
+版本：2026-11-16 R4（已并入正式《Assignment 2 Grading Rubrics》4×25=100 分标准与《Computer Lab 2 - MS ACCESS》14 页指南）。适用当前 Animal Hospital Access coursework。
 
-**定位：这是我们根据课程目标制定的 AI 协作约定，不是老师发布的 AI 使用政策，也不是新的评分表。** 它约束 AI 的方案选择、证据、复杂度和交付方式，不要求披露模型内部思维过程。需要的是可检查的依据、简明理由和实际验证结果。
+**定位：这是我们根据官方指南、Grading Rubrics（4×25）、Computer Lab 2 与 Module Outline/Week 1–6 课件制定的 AI 协作与思考约束约定（不是课程额外评分表，也不是免披露声明）。** 它约束 AI 的方案选择、证据、复杂度和交付方式，不要求披露模型内部思维过程。需要的是可检查的依据、简明理由和实际验证结果。
 
 ## 一、总原则
 
@@ -31,7 +31,11 @@ AI 可以提供完整草稿、SQL、代码、测试数据和修复；同时应�
 - [Week 3：控制分类](<D:/AIS/Week03_2026-10-19_to_25/markdown/Week 3 - Lecture slides [BUSI2111].md:158>)。
 - [Week 4：测试](<D:/AIS/Week04_2026-10-26_to_11-01/markdown/Week04/3-Week-4-Lecture-slides-BUSI2111-.md:148>)；[简化、培训与现实预期](<D:/AIS/Week04_2026-10-26_to_11-01/markdown/Week04/3-Week-4-Lecture-slides-BUSI2111-.md:201>)。
 - [Week 5：REA 学习成果](<D:/AIS/Week05_2026-11-02_to_08/markdown/Week 5 - Lecture slides [BUSI2111].md:20>)；[Week 6：规范化讲义](<D:/AIS/Week06_2026-11-09_to_15/markdown/Handout_normalization.md:19>)。
-- [Assessment 2 官方原文](<D:/AIS CW_2/assignment2_source.md:55>)。学习成果不自动等于具体作业的评分细则。
+- [Assessment 2 官方原文](<D:/AIS CW_2/assignment2_source.md:55>)；官方《BUSI2111 Group Assignment 2 - MS ACCESS - Grading Rubrics》（1 页，**4×25=100 分**）与《Computer Lab 2 - MS ACCESS》（14 页，For Practice only）：
+  - **Completeness (25/100)**：设计须符合作业要求并严格按 **REA 方法论**构建；最高档（25–21）要求“In-depth coverage of all the elements of a database, including all relevant tables”。`Computer Lab 2` 第 2 页条 1a 明示 *“a table is made for each entity modeled”*，Figure 4 实操演示建有 `Cash (R)` 表（支持本组 `tblCashAccount` 建表选择）。
+  - **Functionality and Reliability (25/100)**：规则之外的数据不能录入数据库；最高档（25–21）要求“All fields in all tables have been set with data types and associated requirements”；中档明确写出 **“After three rounds of data entry tests, it is found that some fields can be entered with data outside the rules”**——即评分直接以**全表全字段三轮越界录入实测**判定！
+  - **Primary Key and Foreign Key (25/100)**：最高档要求“All primary and foreign keys are accurately assigned”（涵盖单列主键、联合主键与全部外键）。
+  - **Relationships (25/100)**：最高档要求“All relationships are accurately established according to the assignment, and all in the right direction”（1 与 ∞ 参照完整性及 `1 → ∞` 方向全部正确），且配合 Guide 第 1 页 `Document table definitions and the relationship window`。
 
 ## 三、可直接复制给 AI 的主 Prompt
 
@@ -43,8 +47,8 @@ AI 可以提供完整草稿、SQL、代码、测试数据和修复；同时应�
 目标：帮助我们完成符合本次作业要求、会计逻辑正确、能够解释和验证的成果，并培养分析问题、数据建模、内控判断及协作能力。不要以功能数量、代码长度、复杂架构或漂亮界面作为成功标准。
 
 1. 证据边界
-以本次作业 guideline、rubric、老师针对本任务的明确说明确定提交要求；用 Module Outline 与课件决定学习重点；用适用的官方技术资料核实软件行为。
-组内方案和以前 AI 的结论均可修正，不能充当官方要求。Assignment 1 的细则不能自动套到 Assignment 2。
+以本次作业 guideline、已获取的官方 Grading Rubrics（Completeness 25 / Functionality & Reliability 25 / PK & FK 25 / Relationships 25）与 Computer Lab 2（For Practice only；聚焦建表、字段类型/限制、主外键、关系与文档化）及老师明确回复确定要求；用 Module Outline 与 Week 1–6 课件辅助规范（如 Handout_cardinality `|, O, <` 与 `▶`，Handout_normalization 下划线/斜体记法）。
+组内方案和以前 AI 的结论均可修正，不能充当官方要求。Assignment 1 的“5×20分 / 5个弱点反思”已正式确认**不适用**于本次 Assignment 2。
 重要结论标明“明确要求 / 设计假设 / 改进建议 / 待核实”，提供实际读过的出处。没有读到的文件不能声称已读，不虚构分值、教师偏好、政策或测试结果。
 出现资料冲突时明确列出冲突和受影响决定。涉及提交合规或实体/主键粒度的歧义，保留待确认；可独立完成的工作继续做。不要擅自把 two 改成 at least two。
 
@@ -56,19 +60,20 @@ AI 可以提供完整草稿、SQL、代码、测试数据和修复；同时应�
 区分目录价、实际收费、数量、小计、实收和核销。派生数据通常优先查询计算；如保存快照，必须说明历史业务需求及一致性维护方法。
 
 3. 复杂度边界
-优先采用满足明确要求和重要风险控制所需的、可解释且可验证的简单方案。不能为了简单牺牲必要实体、正确金额、完整性或明确要求。
-核心通常围绕课程涉及的表、键、关系、验证、查询和适量原生窗体/报表。VBA等进阶方法可以使用，但不是默认加分项。
+紧扣本次 4×25 Grading Rubrics 与 Computer Lab 2 第 1 页（"This lab focuses on tables"）决定工作优先级：
+- **核心必保项**：REA 概念图、10 张表/46 字段数据类型与 Format/Required/AllowZeroLength/Validation Rule、全部 PK/联合 PK/FK、12 条参照完整性关系与 `1→∞` 正确方向、每表样例记录、Guide 第 3 页衍生指标所需计算查询，以及表定义与关系窗口文档化（Database Documenter / Relationship Report / 库内嵌入 REA）。
+- **明确降级项**：复杂导航菜单、多表联动 ComboBox 与 `BeforeUpdate` VBA 在本次 4×25 Rubric 中 **无独立分项**。默认停用 VBA（避免宏编译与跨机安全拦截负担）；轻量简易窗体**只能作为上述核心 4×25 与“三轮表级录入测试”全部零漏洞通过后的可选体验补充**，绝不能抢占表规则和关系核验工时。
 增加超出当前教学/团队掌握范围的功能前，说明：解决什么具体问题、简单办法为何不足、增加哪些依赖/测试/兼容性负担，以及负责同学如何理解和维护。不为展示技术自动引入外部服务器、复杂权限平台、云服务或额外运行时。
 不要求“所有真实医院功能”或“适配任何电脑”才能完成课程原型；明确未覆盖业务范围。不能承诺零风险、零返工或固定得分。
 
 4. 内控边界
-按风险说明控制是预防、侦测还是纠正，作用于输入、处理还是输出。
-区分表级规则、窗体事件和人工复核。能发现异常不等于能阻止异常；按钮禁用不等于数据库权限；无VBA不等于无宏；本机成功不等于跨环境兼容。
+鉴于 Functionality (25/100) 明确按“数据表规则外的数据不能录入”及三轮录入测试评分，**第一道且最根本的防线必须是表级字段类型、Required/AllowZeroLength、Validation Rule、表级跨字段规则、联合主键与参照完整性**——因为窗体 VBA 事件完全拦不住评分者在 Table Datasheet 直接录错！
+按风险说明控制是预防（表规则/参照完整性）、侦测（异常与预警查询）还是人工复核。能发现异常不等于能阻止异常；按钮禁用不等于数据库权限；本机成功不等于跨环境兼容。
 可直接修复的错误应修复，不能故意留作weakness。合理未实现的功能可以作为范围限制，但必须说明用户影响和可能改进。
 
 5. 验证边界
-先写预期，再运行；正常业务、边界输入和关键异常都要覆盖。至少用独立手算或另一种方法交叉验证关键金额，不能只用同一段生成逻辑验证自己。
-修改、新增、删除、空值、重复、历史数据变化、保存重开及功能依赖需要按影响测试，不无限扩大无关压力测试。
+严格对齐 Rubric **“After three rounds of data entry tests, it is found that some fields can be entered with data outside the rules”**：在提交前必须对 **全部 10 张表、全部 46 个字段、全部 12 条关系与 PK/FK** 完成**独立分工的三轮非法数据录入压测（Round 1–2 + Round 3 跨人盲测）**，确认零遗漏。
+先写预期，再运行；正常业务、边界输入（负数、0、小数、空字符串 `""`、超长文本、超两位小数、未来日期、不存在外键、反向交互、重复主键、带子女删父行）和关键异常都要覆盖。至少用独立手算交叉验证查询金额。
 使用独立测试副本；每个场景交代基线和恢复方法。区分静态审阅、实际执行和未测试。
 只报告实际观察到的结果，附对象/版本、输入、期望、实际与证据。确认某个限制存在不能写成该缺陷已修复；后端测试不能替代未做的窗体或跨机测试。
 
@@ -89,7 +94,7 @@ AI 可以提供完整草稿、SQL、代码、测试数据和修复；同时应�
 ⑤ 已完成验证、结果与未测范围；
 ⑥ 同学需要掌握的要点和下一步。
 简单修改只保留相关部分。给可复核的简明理由，不输出冗长思维独白，不用模板篇幅掩盖缺少证据。
-每次完成实质修改前须遵守根目录 AGENTS.md：在 handoff_logs/entries/ 新建一条纯文本 INSERT .sql 交接日志（记改动范围、决策理由、引用依据、新增假设、实测/未测范围与 AI 用途，不改写他人日志也不直写 .sqlite3），并运行 python -X utf8 handoff_logs/query_logs.py --check --summary 校验。
+每次完成实质修改前须遵守根目录 AGENTS.md：在 handoff_logs/entries/ 新建一条纯文本 INSERT .sql 交接日志（记改动范围、决策理由、引用依据、新增假设、实测/未测范围与 AI 用途，不改写他人日志也不直写 .sqlite3），运行 python -X utf8 handoff_logs/query_logs.py --check --summary 校验；并在回复末尾列出本地改动清单，主动询问组员是否立即 commit 并 push 到 GitHub，未推送不得声称远端已同步。
 
 当前资料与任务：[在此提供本次指南、相关课程原文、现有方案及具体任务。]
 ```
@@ -105,14 +110,13 @@ AI 可以提供完整草稿、SQL、代码、测试数据和修复；同时应�
 
 这不是“没教过的一律不能用”。判断标准是能否服务明确目标、解释为何需要，并承担验证和维护成本。也不是“越简单越好”：缺少必要关系或算错金额的简单系统仍不合格。
 
-## 五、用于当前 CW2 的具体例子
+## 五、用于当前 CW2 的具体例子（结合新 Rubric 与 Lab 2）
 
-- 现金账户是否独立落表：根据 REA 资源与实现一致性解释取舍；当前10表是组内方案，不是老师指定答案。新增经办人字段需标出“兽医兼收款”的假设。
-- 第三种药：可以支持开发测试，但不自动视为符合“每表两条”的提交要求；确认前不改写官方原文。
-- 药品输入下拉：能减少记ID和误选，通常有直接使用价值；应展示足以区分同名对象的信息，并检验保存的是正确ID。
-- 核销VBA：若目的为保存前拦截，要检验两侧额度及实际事件挂载；如果只实现异常查询，就准确说明是事后侦测。
-- 登录界面和复杂权限系统：除非本次要求或具体风险能支持其必要性，否则不作为默认优先项。不能把一个密码输入框称为可靠的数据库授权控制。
-- AI生成复杂SQL：可以接受，但负责同学应能用“两笔付款、两条处方”的小例子解释重复汇总风险，而不是只说“AI生成所以正确”。
+- **现金账户 `tblCashAccount` 独立落表**：`Computer Lab 2` 第 2 页 1a 明确要求 *“a table is made for each entity modeled”*，且第 14 页 Figure 4 直接建有 `Cash (R)` 表，印证本组 10 表对齐设计；而 `CollectedByVetID` 仍属原型假设，待 11-19 前确认 D3。
+- **表名与主键风格（`tbl... + AutoNumber + Currency` vs Lab 2 示例）**：Lab 2 示例采用 `Customer (EA)`、`Sale-Inventory`、`CUST-01` 短文本编号与 `Single` 货币格式，但 Assignment 2 Rubric 并不强制前缀编码，只考核唯一 PK、有效 FK、准确类型/限制与正确方向关系；保留现 `tbl... + AutoNumber + Currency`（无空格不需方括号，已在 Access 16.0 实测 65 项）稳妥且风险最低。
+- **第三种药（D1）**：用于开发演示 2 个不重复无方向药对，但是否能按 3 行提交仍待向老师确认，确认前不改写官方 `two records`。
+- **窗体与核销 VBA 让位于表规则 3 轮压测**：因 Rubric 4×25 不为窗体或 VBA 单独给分，而 `Functionality (25)` 严查全字段三轮越界录入，团队默认不上 `BeforeUpdate` VBA，将主要精力投入全表 46 字段三轮压测与关系方向复核；简易窗体仅作核心全过后的可选补充。
+- **AI 生成 SQL 与计算查询**：必须保留以支撑 Guide 第 3 页 `Number of pets` / `Total charge` 等指标（保 `Completeness`），且负责同学须能用“两笔付款、两条处方”讲清为何不会重复加总。
 
 ## 六、组员交接前的三个问题（自检建议，不是新增评分要求）
 
