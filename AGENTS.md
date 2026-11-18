@@ -14,6 +14,23 @@
 
 ---
 
+## 每位成员使用固定角色分支
+
+| 成员 | GitHub 分支 | 工作目录 |
+| --- | --- | --- |
+| 1 | `role/M1-rea` | `workspaces/R1_REA/` |
+| 2 | `role/M2-review` | `workspaces/R2_Dictionary/` |
+| 3 | `role/M3-review` | `workspaces/R3_CoreAndMerge/` |
+| 4 | `role/M4-review` | `workspaces/R4_SampleData/` |
+| 5 | `role/M5-queries` | `workspaces/R5_Queries/` |
+| 6 | `role/M6-controls` | `workspaces/R6_ControlTestLog/` |
+| 7 | `role/M7-audit` | `workspaces/R7_Forms/` |
+| 8 | `role/M8-reports` | `workspaces/R8_Reports_UAT/` |
+
+成员及其 AI 开工前先 fetch，确认当前分支和上游均为本人对应角色。个人交付物、测试和回执写入本人目录，SQL 交接日志按下文追加。需要改共享规范时，在本人分支提出，获团队授权后单独集成到 main。main 用于共享规则及已接收成果。日常提交和推送只发往本人的角色分支，由成员确认后执行。
+
+跨角色交接使用来源提交和文件的 GitHub 永久链接。接收方从指定提交读取输入，将需要编辑的副本放入本人目录。交付时回传本人分支、提交及结果链接。角色分支长期保留。
+
 ## 二、禁止跨过的 5 条硬红线
 
 1. **禁止篡改官方源文件**：不得修改 `Group Project Assignment 2 - MS ACCESS.pdf` 与 `assignment2_source.md`；不得把组内假设写成指南原文要求，不得擅自将 `two` 改成 `at least two`。
