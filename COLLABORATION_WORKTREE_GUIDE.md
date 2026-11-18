@@ -4,75 +4,21 @@
 
 ---
 
-## 一、核心架构图（文本/SQL 走 Git，二进制按角色分目录，SQL Log 只追加）
+## 日常操作
 
-```text
-           [ GitHub / Gitee 私有远程仓库 (origin/main) ]
-                  ▲                       ▲
-         push/pull (纯文本+角色物)   push/pull (纯文本+角色物)
-                  │                       │
-      ┌───────────┴──────────┐ ┌──────────┴───────────┐
-      │   组员 A 电脑 (Win)    │ │   组员 B 电脑 (Mac)    │
-      │   D:\AIS CW_2\       │ │   ~/Projects/CW2/    │
-      │  (如本机开多Agent:    │ │                      │
-      │   可用 git worktree) │ │  分支: role/M1-rea   │
-      └──────────────────────┘ └──────────────────────┘
-                  │                       │
-      只编辑 workspaces/R5_Queries/     只编辑 workspaces/R1_REA/
-      只新增 handoff_logs/entries/      只新增 handoff_logs/entries/
-             *.sql                            *.sql
+在 [AGENTS.md](AGENTS.md) 查本人编号对应的固定分支和工作目录。以下以成员 5 为例，其他成员替换分支名与目录名。每位成员只向自己的 GitHub 分支上传。
+
+```bash
+git fetch origin
+git switch role/M5-queries
+git branch -vv
+git pull --ff-only origin role/M5-queries
+python -X utf8 handoff_logs/query_logs.py --check --summary
 ```
 
-### ⚠️ 两条绝对不能犯的网盘与二进制忌讳
-1. **不要把 `.git/` 仓库放在 OneDrive / 百度网盘同步目录里**：网盘会在两台机器同时操作时把 `.git/index` 和对象文件撞出冲突副本导致整个仓库损坏。本方案已把本地 Git 建在纯本地磁盘目录。
-2. **不要多人直接修改同一个 `.accdb` 或 `.sqlite3`**：Git 无法合并二进制文件。因此：
-   - `.accdb` 必须放在各自角色的 `workspaces/R{N}_*/` 里编辑（成员 3 最后在 `workspaces/R3_CoreAndMerge/` 通过 Access 原生 `External Data -> Import` 合并对象）；
-   - AI 协作日志不直接写入单份 `.sqlite3`，而是每次**只新建一条 `.sql` 插入脚本**放入 `handoff_logs/entries/`，靠 Python 随时零冲突重建 `handoff_cache.sqlite3`！
+新克隆的仓库会在首次切换时跟踪对应的远端分支。已有未提交工作的同学先检查 `git status`，保留原有改动。多角色共用一台电脑时可为每个固定分支开独立 worktree，例如从仓库根目录运行 `git worktree add ../CW2-M5 role/M5-queries`（本地已有该分支且尚未检出时）。
 
----
-
-## 二、常见三种日常场景怎么用
-
-### 场景 1：在一台电脑上开多个 Agent 并行干不同活（用 `git worktree`）
-假设你在自己电脑上既想让 Agent A 审 `02` 蓝图，又想让 Agent B 在隔离目录里改成员 5 的 SQL 查询，互不污染工作目录：
-
-```powershell
-# 在主仓库 D:\AIS CW_2 执行（前提：主仓库已有至少 1 次 commit）
-git worktree add D:\AIS_CW2_wt_M5 -b role/M5-queries
-git worktree add D:\AIS_CW2_wt_M7 -b role/M7-forms
-```
-- Agent A 在 `D:\AIS CW_2` 干活；Agent B 在 `D:\AIS_CW2_wt_M5` 干活；
-- 各自结束前都会在各自的 `handoff_logs/entries/` 下生成一个**文件名绝不重复的 `.sql`**；
-- 做完后回到主仓库合并分支：`git merge role/M5-queries` → 删除临时 worktree：`git worktree remove D:\AIS_CW2_wt_M5`；
-- 因为所有 `.sql` 日志都是独立新文件，**合并永远零冲突**！
-
-### 场景 2：多台不同电脑上的组员 & 各自 Agent 协作
-1. **远程仓库地址（已建好）**：`https://github.com/ccbin0910-rgb/BUSI2111-CW2-AnimalHospital.git`
-2. **每位组员在自己电脑克隆仓库**（如 Mac 同学放 `~/Desktop/CW2_Repo`，**不在 iCloud/OneDrive 里建**）：
-   ```bash
-   git clone https://github.com/ccbin0910-rgb/BUSI2111-CW2-AnimalHospital.git
-   cd BUSI2111-CW2-AnimalHospital
-   git config user.name "你的英文名或学号"
-   git config user.email "你的邮箱"
-   git checkout -b role/M1-rea   # 按自己角色编号建分支（或直接拉最新 main 后按约定提交）
-   ```
-3. **每次开工前先拉最新汇总，看看前面人/AI 干了什么**：
-   ```bash
-   git pull origin main
-   python -X utf8 handoff_logs/query_logs.py --check --summary
-   ```
-   然后查看刚生成的 `handoff_logs/LOG_SUMMARY.md` 或用 SQL 查特定问题（见下节）。
-4. **每次改完交给你的 Agent 写完 `.sql` Log 后提交推送**：
-   ```bash
-   git status
-   git add .
-   git commit -m "M1: complete REA diagram and add handoff sql log"
-   git push origin role/M1-rea
-   ```
-5. **如有成员不会用 Git 命令行怎么办？**  
-   没关系！不会 Git 的同学把最终产物按要求起好名发群文件或共享盘对应角色文件夹；由组长或成员 8 收齐放进对应 `workspaces/R*_*/` 并让本地 Agent 补一条对应交接 `.sql` 日志即可追踪。
-
----
+从派工方给出的提交读取输入，把待编辑的数据库复制到本人角色目录。只暂存本轮具体交付文件和新增 SQL 日志，检查 `git diff --cached --stat`，经成员确认后提交，并执行例如 `git push origin HEAD:role/M5-queries`。向接收方返回结果文件的固定提交链接。集成者核对交付物后按任务选取文件；Access 对象由成员 3 在集成副本中导入。
 
 ## 三、如何用 SQL 秒查历史问题与 AI 协作记录
 
