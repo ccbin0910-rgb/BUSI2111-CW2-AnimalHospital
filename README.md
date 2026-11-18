@@ -18,7 +18,7 @@ git clone https://github.com/ccbin0910-rgb/BUSI2111-CW2-AnimalHospital.git
 cd BUSI2111-CW2-AnimalHospital
 ```
 
-*(如果不会用命令行 Git：直接在 GitHub 页面右上角点绿色的 **`<> Code` → `Download ZIP`** 解压到本地桌面，做完自己那部分后把产物发群里，由组长或成员 8 放入对应 `workspaces/R*_*/` 目录代为提交。)*
+克隆后按 [角色分支表](AGENTS.md) 切换到本人固定分支。例如成员 1 执行 `git fetch origin` 和 `git switch role/M1-rea`。交付物推送到本人分支，并把提交链接交给接收人。
 
 ### 第 2 步：按编号认领自己的任务（只看这 3 份文件就够了）
 1. 先花 3 分钟看 [00_先读我_总览与待核实清单.md](00_先读我_总览与待核实清单.md)：看清全组时间轴与你属于 **成员 1～8** 哪一号。
@@ -43,10 +43,11 @@ cd BUSI2111-CW2-AnimalHospital
 ### 第 4 步：日常开工前 & 完工后跑哪两条命令？
 ```bash
 # 每天开工前：拉取全组最新进度 + 查看前人/AI 干了什么
-git pull origin main
+git branch -vv
+git pull --ff-only
 python -X utf8 handoff_logs/query_logs.py --check --summary
 ```
-查看生成的本地 `handoff_logs/LOG_SUMMARY.md` 即可看到最近所有人的进度与未解问题。
+查看生成的本地 `handoff_logs/LOG_SUMMARY.md` 即可看到当前分支已收录的进度与未解问题。
 
 ---
 
