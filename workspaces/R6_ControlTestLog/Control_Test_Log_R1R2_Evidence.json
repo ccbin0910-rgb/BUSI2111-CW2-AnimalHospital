@@ -1,6 +1,6 @@
 {
   "access_version": "16.0",
-  "method": "Microsoft Access COM / DAO recordsets and saved-query runs; not Datasheet UI interaction",
+  "method": "Microsoft Access COM / DAO for full engine matrix and T01-T22, plus a visible Datasheet View subset on tblPetParent; DAO used for final restoration after CUA keyboard timeout",
   "source_hashes": {
     "base": "5779B94439854514F6B32F3BADBF8B132ABF8FD22CAC35AECF3D000D14974127",
     "workbook": "92458044B9B0DDBB211FE63C7B04B821C4D8C5442B6702C1EE56298943087034",
@@ -1500,5 +1500,107 @@
       "Error": ""
     }
   ],
-  "note": "Test database is reset from Clean_Baseline.accdb after each case and left clean; no test data is for merge."
+  "visible_ui_checks": [
+    {
+      "Table": "tblPetParent",
+      "Field": "ParentID",
+      "Round": "R1",
+      "Input": "Type 2 over ParentID 1, then Tab.",
+      "Observed": "Cell remained 1; focus advanced to ParentName; no dialog.",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "ParentID",
+      "Round": "R2",
+      "Input": "Copy ParentID 2 and paste over ParentID 1 using Ctrl+C / Ctrl+V.",
+      "Observed": "Cell remained 1; no dialog.",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "ParentName",
+      "Round": "R1",
+      "Input": "F2, Delete, Tab to test Null.",
+      "Observed": "必须在字段 'tblPetParent.ParentName' 中输入一个值。",
+      "FinalValue": "Emily Chen"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "ParentName",
+      "Round": "R2",
+      "Input": "Type literal two quote marks, then Tab.",
+      "Observed": "字段 'tblPetParent.ParentName' 不能是零长度的字符串。",
+      "FinalValue": "Emily Chen"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "Address",
+      "Round": "R1",
+      "Input": "F2, Delete, Tab to test Null.",
+      "Observed": "必须在字段 'tblPetParent.Address' 中输入一个值。",
+      "FinalValue": "199 Taikang East Road, Ningbo"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "Address",
+      "Round": "R2",
+      "Input": "Type literal two quote marks, then Tab.",
+      "Observed": "字段 'tblPetParent.Address' 不能是零长度的字符串。",
+      "FinalValue": "199 Taikang East Road, Ningbo"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "DayPhone",
+      "Round": "R1",
+      "Input": "F2, Delete, Tab to test Null.",
+      "Observed": "必须在字段 'tblPetParent.DayPhone' 中输入一个值。",
+      "FinalValue": "0574-88180001"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "DayPhone",
+      "Round": "R2",
+      "Input": "Type literal two quote marks, then Tab.",
+      "Observed": "字段 'tblPetParent.DayPhone' 不能是零长度的字符串。",
+      "FinalValue": "0574-88180001"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "EveningPhone",
+      "Round": "R1",
+      "Input": "F2, Delete, Tab to test Null.",
+      "Observed": "Null accepted; Tab advanced to the next record.",
+      "FinalValue": "13805740001"
+    },
+    {
+      "Table": "tblPetParent",
+      "Field": "EveningPhone",
+      "Round": "R2",
+      "Input": "Type literal two quote marks, then Tab.",
+      "Observed": "字段 'tblPetParent.EveningPhone' 不能是零长度的字符串。",
+      "FinalValue": "13805740001"
+    }
+  ],
+  "final_restore_check": {
+    "method": "Read-only Access OleDb/DAO query after DAO restoration",
+    "rows": [
+      {
+        "ParentID": 1,
+        "ParentName": "Emily Chen",
+        "Address": "199 Taikang East Road, Ningbo",
+        "DayPhone": "0574-88180001",
+        "EveningPhone": "13805740001"
+      },
+      {
+        "ParentID": 2,
+        "ParentName": "David Wang",
+        "Address": "88 Qianhu North Road, Ningbo",
+        "DayPhone": "0574-88180002",
+        "EveningPhone": "13905740002"
+      }
+    ],
+    "status": "PASS"
+  },
+  "note": "Engine tests reset the test database from Clean_Baseline.accdb after each case. Visible UI tests covered only the listed tblPetParent cases. Test-only data is not for merge."
 }

@@ -2,8 +2,8 @@
 
 - **Date:** 2026-11-20 (Asia/Shanghai)
 - **Branch:** `role/M6-controls` (start commit `98d8c7e7e7f180a190e587e93de28b1f8de4e68d`)
-- **Database:** Microsoft Access 16.0, tested through Access COM / DAO against the isolated test copy.
-- **Overall status:** `PARTIAL` — database-engine checks below completed; the SOP-required visible Datasheet View keyboard/paste interaction was not performed.
+- **Database:** Microsoft Access 16.0; the field matrix and T01–T22 used Access COM / DAO against the isolated test copy, with a supplemental visible Datasheet View subset on `tblPetParent`.
+- **Overall status:** `PARTIAL` — engine checks cover the full matrix and T01–T22, while visible UI evidence covers only the cases listed below. The complete 46-field × 2-round UI procedure remains unrun.
 
 ## Fixed inputs and baseline
 
@@ -17,11 +17,11 @@ All three fixed input snapshots are kept in this role folder under `Inputs/`; th
 
 The test copy imported the 11 saved queries from the M5 library; no tables were imported. Baseline row counts were 2 in each of nine tables and 3 in `tblMedication` (21 rows total). Query baseline: A1 total 205.00, paid 205.00, balance 0.00; A2 total 90.00, paid 0.00, balance 90.00; `qry_Ctrl_InvalidAllocations` 0 rows; `qry_Ctrl_DrugInteractionWarnings` 1 row.
 
-After each scenario the copy was reset from `Clean_Baseline.accdb`. A final read-only DAO check found 10 tables, 11 queries, original table row counts, `Pet 1.ParentID=1`, `A1.AppointmentDate=2026-11-10`, and the original `EveningPhone`; the test copy hash remained unchanged during that read-only check.
+After each engine scenario the copy was reset from `Clean_Baseline.accdb`. After visible UI attempts, a read-only DAO check found that `ParentName`, `DayPhone`, and `EveningPhone` had acquired leading quote characters during a direct-typing restore attempt. A DAO update restored the original values; a subsequent read-only DAO check confirmed both seeded `tblPetParent` rows and all five displayed fields match the baseline. The database remained open in Access, so a post-repair file hash was not read.
 
 ## Round 1–2 field matrix
 
-The 46 rows below use the inputs in Member 4 `Field_3Rounds_Matrix` and the first seeded row of each table. Each value was applied with an Access SQL `UPDATE`, checked against the Access response and stored value, and restored before the next attempt. `Null` for optional `EveningPhone` in R1 is the expected positive control; the R2 empty-string attempt was rejected.
+The 46 rows below use the inputs in Member 4 `Field_3Rounds_Matrix` and the first seeded row of each table. These are Access engine checks: each value was applied with an Access SQL `UPDATE`, checked against the Access response and stored value, and restored before the next attempt. `Null` for optional `EveningPhone` in R1 is the expected positive control; the R2 empty-string attempt was rejected. They are not per-cell UI results.
 
 | Table.Field | Round 1 actual | Round 2 actual |
 |---|---|---|
@@ -72,7 +72,21 @@ The 46 rows below use the inputs in Member 4 `Field_3Rounds_Matrix` and the firs
 | tblCashAccount.AccountName | `Null` → 拒绝：必须在字段 'tblCashAccount.AccountName' 中输入一个值。 | `"" (zero-length)` → 拒绝：字段 'tblCashAccount.AccountName' 不能是零长度的字符串。 |
 | tblCashAccount.AccountType | `Null` → 拒绝：必须在字段 'tblCashAccount.AccountType' 中输入一个值。 | `Card` → 拒绝：Choose Cash or Bank. |
 
-**Round totals:** R1 46/46 expected outcomes (45 invalid values rejected; optional `EveningPhone=Null` accepted and restored); R2 46/46 expected outcomes (all 46 rejected). Evidence includes the full input instruction, literal attempt, Access response, stored value, and restoration status for each field in `Control_Test_Log_R1R2_Evidence.json`.
+**Engine-check totals:** R1 46/46 expected outcomes (45 invalid values rejected; optional `EveningPhone=Null` accepted and restored); R2 46/46 expected outcomes (all 46 rejected). These counts do not imply a full UI run. Evidence includes the full input instruction, literal attempt, Access response, stored value, and restoration status for each field in `Control_Test_Log_R1R2_Evidence.json`.
+
+## Visible Datasheet View keyboard subset
+
+These additional cases were entered in the open `tblPetParent` Datasheet View on the first seeded row. The cells were selected visibly, edited with the keyboard, and committed with `Tab`; `Return` dismissed Access validation dialogs. No screenshots were saved as files.
+
+| Field | R1 visible action and result | R2 visible action and result | Final saved value |
+|---|---|---|---|
+| `ParentID` | Typed `2` over ID 1; the cell stayed `1` and `Tab` moved to `ParentName`. | Copied ID 2 and pasted into ID 1 with `Ctrl+C` / `Ctrl+V`; ID 1 stayed `1`, with no dialog. | `1` |
+| `ParentName` | `F2` → `Delete` → `Tab`; Access showed `必须在字段 'tblPetParent.ParentName' 中输入一个值。` | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.ParentName' 不能是零长度的字符串。` | `Emily Chen` |
+| `Address` | `F2` → `Delete` → `Tab`; Access showed `必须在字段 'tblPetParent.Address' 中输入一个值。` | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.Address' 不能是零长度的字符串。` | `199 Taikang East Road, Ningbo` |
+| `DayPhone` | `F2` → `Delete` → `Tab`; Access showed `必须在字段 'tblPetParent.DayPhone' 中输入一个值。` | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.DayPhone' 不能是零长度的字符串。` | `0574-88180001` |
+| `EveningPhone` | `F2` → `Delete` → `Tab`; the optional Null was accepted and the selection advanced to the next row. | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.EveningPhone' 不能是零长度的字符串。` | `13805740001` |
+
+**Restoration exception:** after rejecting empty strings, direct typing of the original values started at the cell's insertion point and left leading quote characters in three cells. A later `F2`/selection recovery was attempted; the CUA keyboard helper timed out at `Shift+End` before the UI could confirm the full repair. To leave the isolated copy usable, an Access OleDb/DAO update restored `ParentName`, `DayPhone`, and `EveningPhone`. A subsequent read-only DAO query confirmed the original values for both rows and confirmed `Address` remained unchanged. This restoration step was engine-level, not a visible UI result.
 
 ## T01–T22 integrity and reconciliation scenarios
 
@@ -108,7 +122,7 @@ T01–T20 subcases matched their expected preventive or detective behavior. `qry
 
 ## Not tested / handoff
 
-- The requested SOP method says to type/paste and commit each case directly in visible Datasheet View. The CUA session could not activate the minimized Windows desktop app. This run used Access 16.0 COM/DAO SQL and saved queries instead; it validates the Access data engine but not Datasheet focus, clipboard, cell-edit, Enter/Tab, Esc, visual error dialogs, or UI normalization.
+- Visible Datasheet testing is partial: only `tblPetParent.ParentID`, `ParentName`, `Address`, `DayPhone`, and `EveningPhone` were exercised. The 46-field × 2-round matrix and T01–T22 were not replayed in the visible UI. The CUA helper timed out during the later keyboard cleanup; the saved data was repaired and confirmed by read-only DAO. All Access UI cases beyond the listed subset remain untested.
 - Supplemental M4 cases C01–C04 were outside this request and were not run. C05–C07 are covered by T06. VBA cases V01–V09 were not run (VBA is disabled by the current design). Round 3 plus PK/FK and 12 relationship-direction review remain in M7 scope.
 - **D1 source conflict for M3:** The 2026-11-18 M3 handoff says the lecturer confirmed D1, while the fixed M4 workbook Seed sheet still says `D1 OPEN` and marks M3/M2–M3 provisional. The tested 3-medication/2-interaction fixture matches the file contents; reconcile the workbook status before final integration.
 - D3 (`CollectedByVetID` required) is treated as confirmed per M1/M2 handoff; T20 exercised both invalid ID and Null for both required receipt FKs.
@@ -116,4 +130,4 @@ T01–T20 subcases matched their expected preventive or detective behavior. `qry
 
 ## Evidence file
 
-`workspaces/R6_ControlTestLog/Control_Test_Log_R1R2_Evidence.json` records Access version, fixed-input hashes, query import, baseline values, all 92 field attempts, each T subcase, and the final expected result. The `_Test.accdb` and `Clean_Baseline.accdb` are gitignored local copies.
+`workspaces/R6_ControlTestLog/Control_Test_Log_R1R2_Evidence.json` records Access version, fixed-input hashes, query import, baseline values, all 92 engine field attempts, each T subcase, the visible UI subset, and the final restoration check. The `_Test.accdb` and `Clean_Baseline.accdb` are local copies; they are not included in this commit.
