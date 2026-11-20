@@ -2,7 +2,7 @@
 
 - **Date:** 2026-11-20 (Asia/Shanghai)
 - **Branch:** `role/M6-controls` (start commit `98d8c7e7e7f180a190e587e93de28b1f8de4e68d`)
-- **Database:** Microsoft Access 16.0; the field matrix and T01–T22 used Access COM / DAO against the isolated test copy, with a supplemental visible Datasheet View subset on `tblPetParent`.
+- **Database:** Microsoft Access 16.0; the field matrix and T01–T22 used Access COM / DAO against the isolated test copy, with supplemental visible Datasheet View cases on `tblPetParent` and `tblAppointment`.
 - **Overall status:** `PARTIAL` — engine checks cover the full matrix and T01–T22, while visible UI evidence covers only the cases listed below. The complete 46-field × 2-round UI procedure remains unrun.
 
 ## Fixed inputs and baseline
@@ -74,7 +74,7 @@ The 46 rows below use the inputs in Member 4 `Field_3Rounds_Matrix` and the firs
 
 **Engine-check totals:** R1 46/46 expected outcomes (45 invalid values rejected; optional `EveningPhone=Null` accepted and restored); R2 46/46 expected outcomes (all 46 rejected). These counts do not imply a full UI run. Evidence includes the full input instruction, literal attempt, Access response, stored value, and restoration status for each field in `Control_Test_Log_R1R2_Evidence.json`.
 
-## Visible Datasheet View keyboard subset
+## Visible Datasheet View keyboard evidence (partial)
 
 These additional cases were entered in the open `tblPetParent` Datasheet View on the first seeded row. The cells were selected visibly, edited with the keyboard, and committed with `Tab`; `Return` dismissed Access validation dialogs. No screenshots were saved as files.
 
@@ -87,6 +87,77 @@ These additional cases were entered in the open `tblPetParent` Datasheet View on
 | `EveningPhone` | `F2` → `Delete` → `Tab`; the optional Null was accepted and the selection advanced to the next row. | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.EveningPhone' 不能是零长度的字符串。` | `13805740001` |
 
 **Restoration exception:** after rejecting empty strings, direct typing of the original values started at the cell's insertion point and left leading quote characters in three cells. A later `F2`/selection recovery was attempted; the CUA keyboard helper timed out at `Shift+End` before the UI could confirm the full repair. To leave the isolated copy usable, an Access OleDb/DAO update restored `ParentName`, `DayPhone`, and `EveningPhone`. A subsequent read-only DAO query confirmed the original values for both rows and confirmed `Address` remained unchanged. This restoration step was engine-level, not a visible UI result.
+
+### `tblAppointment` visible supplement
+
+The first seeded appointment row was tested in the same isolated database. Each rejected or exploratory edit was undone with `Ctrl+Z`; where a temporary type-mismatch menu appeared, it was dismissed with `Esc` first. Screenshots after those restores showed the seeded row values again. No post-supplement DAO baseline query was run, so restoration evidence here is visual only.
+
+| Field | R1 visible input and result | R2 visible input and result | Restore / boundary |
+|---|---|---|---|
+| `AppointmentID` | Typed `2` over `1`; the displayed ID remained `1`, and `Tab` moved to `PetID`. | Typed `2` into the selected AutoNumber cell; the displayed ID remained `1`, and focus advanced to `PetID`. | ID remained `1`; no validation dialog. |
+| `PetID` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.PetID' 中输入一个值。` | Entered `Pickle`; Access showed a temporary menu: `所输入的值与此列中的 数字 数据类型不匹配。` | `Ctrl+Z`; seeded value `1` visible. |
+| `VetID` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.VetID' 中输入一个值。` | Entered `Pickle`; Access showed the numeric-type mismatch menu. | Two `Ctrl+Z` actions restored seeded value `1`. |
+| `AppointmentDate` | Entered `Pickle`; Access showed a temporary 日期/时间 type-mismatch menu. | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.AppointmentDate' 中输入一个值。` | Dismissed/closed the prompt and used `Ctrl+Z`; seeded date `2026/11/10` visible. |
+| `DurationMin` | Entered `0`; Access showed `Enter whole minutes from 1 to 1440.` | Entered `1.5`; Access showed `Enter whole minutes from 1 to 1440.` | `Ctrl+Z`; seeded value `30` visible. |
+| `WeightKg` | Entered `0`; Access showed `Pet weight must be greater than 0 kg.` | Entered `Pickle`; the text briefly appeared in the cell, but no stable validation dialog was observed. | `Ctrl+Z`; seeded value `4.20` visible. R2 is `PARTIAL`, not a confirmed rejection. |
+| `VisitReason` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.VisitReason' 中输入一个值。` | Zero-length text cannot be entered reliably in Datasheet View; no `""` keystroke substitute was counted as ZLS. | R1 restore via `Ctrl+Z`; R2 remains not expressible in this view. |
+| `Diagnosis` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.Diagnosis' 中输入一个值。` | Zero-length text cannot be entered reliably in Datasheet View; no `""` keystroke substitute was counted as ZLS. | R1 restore via `Ctrl+Z`; R2 remains not expressible in this view. |
+| `AppointmentFee` | Entered `-0.01`; Access showed `Enter a non-negative amount with at most two decimal places.` | Entered `$abc`; Access showed a temporary menu: `所输入的值与此列中的 货币 数据类型不匹配。` | Dismissed with `Esc` and used `Ctrl+Z`; seeded `$120.00` visible. |
+
+### Visible matrix status across all 46 fields
+
+This matrix tracks visible UI coverage separately from the engine matrix above. `NOT_RUN` means the field was not tested in the visible datasheet; `PARTIAL` means the attempted input did not produce a stable, attributable validation result. The quoted-pair attempts on `tblPetParent` are recorded as literal keystrokes and do not establish a valid ZLS input.
+
+| Table.Field | R1 visible status | R2 visible status |
+|---|---|---|
+| `tblPetParent.ParentID` | `OBSERVED`: typed `2`; ID stayed `1` | `OBSERVED`: copied/pasted ID `2`; ID stayed `1` |
+| `tblPetParent.ParentName` | `OBSERVED`: required-value dialog | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
+| `tblPetParent.Address` | `OBSERVED`: required-value dialog | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
+| `tblPetParent.DayPhone` | `OBSERVED`: required-value dialog | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
+| `tblPetParent.EveningPhone` | `OBSERVED`: Null accepted | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
+| `tblPet.PetID` | `NOT_RUN` | `NOT_RUN` |
+| `tblPet.ParentID` | `NOT_RUN` | `NOT_RUN` |
+| `tblPet.PetName` | `NOT_RUN` | `NOT_RUN` |
+| `tblPet.Breed` | `NOT_RUN` | `NOT_RUN` |
+| `tblPet.Color` | `NOT_RUN` | `NOT_RUN` |
+| `tblPet.BirthDate` | `NOT_RUN` | `NOT_RUN` |
+| `tblVeterinarian.VetID` | `NOT_RUN` | `NOT_RUN` |
+| `tblVeterinarian.VetName` | `NOT_RUN` | `NOT_RUN` |
+| `tblVeterinarian.RoleTitle` | `NOT_RUN` | `NOT_RUN` |
+| `tblAppointment.AppointmentID` | `OBSERVED`: typed `2`; stayed `1` | `OBSERVED`: attempted edit; stayed `1` |
+| `tblAppointment.PetID` | `OBSERVED`: required-value dialog | `OBSERVED`: numeric mismatch menu for `Pickle` |
+| `tblAppointment.VetID` | `OBSERVED`: required-value dialog | `OBSERVED`: numeric mismatch menu for `Pickle` |
+| `tblAppointment.AppointmentDate` | `OBSERVED`: date/time mismatch menu for `Pickle` | `OBSERVED`: required-value dialog |
+| `tblAppointment.DurationMin` | `OBSERVED`: 0 rejected by whole-minutes rule | `OBSERVED`: 1.5 rejected by whole-minutes rule |
+| `tblAppointment.WeightKg` | `OBSERVED`: 0 rejected by positive-weight rule | `PARTIAL`: `Pickle` appeared; no stable error observed |
+| `tblAppointment.VisitReason` | `OBSERVED`: required-value dialog | `NOT EXPRESSIBLE`: ZLS not entered in Datasheet View |
+| `tblAppointment.Diagnosis` | `OBSERVED`: required-value dialog | `NOT EXPRESSIBLE`: ZLS not entered in Datasheet View |
+| `tblAppointment.AppointmentFee` | `OBSERVED`: negative amount rejected | `OBSERVED`: currency mismatch menu for `$abc` |
+| `tblMedication.MedicationID` | `NOT_RUN` | `NOT_RUN` |
+| `tblMedication.MedicationName` | `NOT_RUN` | `NOT_RUN` |
+| `tblMedication.ListPrice` | `NOT_RUN` | `NOT_RUN` |
+| `tblPrescriptionLine.AppointmentID` | `NOT_RUN` | `NOT_RUN` |
+| `tblPrescriptionLine.MedicationID` | `NOT_RUN` | `NOT_RUN` |
+| `tblPrescriptionLine.Quantity` | `NOT_RUN` | `NOT_RUN` |
+| `tblPrescriptionLine.UnitPriceCharged` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashReceipt.ReceiptID` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashReceipt.ParentID` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashReceipt.AccountID` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashReceipt.CollectedByVetID` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashReceipt.ReceiptDate` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashReceipt.ReceiptTotal` | `NOT_RUN` | `NOT_RUN` |
+| `tblReceiptAllocation.ReceiptID` | `NOT_RUN` | `NOT_RUN` |
+| `tblReceiptAllocation.AppointmentID` | `NOT_RUN` | `NOT_RUN` |
+| `tblReceiptAllocation.AppliedAmount` | `NOT_RUN` | `NOT_RUN` |
+| `tblMedicationInteraction.MedicationAID` | `NOT_RUN` | `NOT_RUN` |
+| `tblMedicationInteraction.MedicationBID` | `NOT_RUN` | `NOT_RUN` |
+| `tblMedicationInteraction.SeverityLevel` | `NOT_RUN` | `NOT_RUN` |
+| `tblMedicationInteraction.InteractionDescription` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashAccount.AccountID` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashAccount.AccountName` | `NOT_RUN` | `NOT_RUN` |
+| `tblCashAccount.AccountType` | `NOT_RUN` | `NOT_RUN` |
+
+**Coverage count:** visible interaction occurred on 14 of 46 fields; 32 fields remain `NOT_RUN` in both rounds. Six text-field R2 ZLS slots (four `tblPetParent` text fields and two `tblAppointment` text fields) remain unexpressed or invalidly represented and must not be counted as ZLS UI passes.
 
 ## T01–T22 integrity and reconciliation scenarios
 
@@ -122,7 +193,7 @@ T01–T20 subcases matched their expected preventive or detective behavior. `qry
 
 ## Not tested / handoff
 
-- Visible Datasheet testing is partial: only `tblPetParent.ParentID`, `ParentName`, `Address`, `DayPhone`, and `EveningPhone` were exercised. The 46-field × 2-round matrix and T01–T22 were not replayed in the visible UI. The CUA helper timed out during the later keyboard cleanup; the saved data was repaired and confirmed by read-only DAO. All Access UI cases beyond the listed subset remain untested.
+- Visible Datasheet testing is partial: `tblPetParent` (5 fields) and `tblAppointment` (9 fields) have some visible cases, as itemized above; 32 fields have no visible attempts, some text-field R2 zero-length cases are not expressible in Datasheet View, and WeightKg R2 is inconclusive. Visible T01–T22 replay remains unrun. During the earlier table switch, Access surfaced an unexpected “Database Backup As” dialog; it was canceled without saving. In this continuation, I reopened the isolated database and attempted to open `tblCashAccount`; the CUA state capture returned `Accessibility state unavailable for window 5837828`. A refreshed window inventory showed the database window minimized, and a fresh binding to window 12715224 surfaced the “Database Backup As” dialog again. It was canceled without saving; no additional field attempt was counted and no backup was saved. Resume only after Access exposes a targetable Datasheet View window.
 - Supplemental M4 cases C01–C04 were outside this request and were not run. C05–C07 are covered by T06. VBA cases V01–V09 were not run (VBA is disabled by the current design). Round 3 plus PK/FK and 12 relationship-direction review remain in M7 scope.
 - **D1 source conflict for M3:** The 2026-11-18 M3 handoff says the lecturer confirmed D1, while the fixed M4 workbook Seed sheet still says `D1 OPEN` and marks M3/M2–M3 provisional. The tested 3-medication/2-interaction fixture matches the file contents; reconcile the workbook status before final integration.
 - D3 (`CollectedByVetID` required) is treated as confirmed per M1/M2 handoff; T20 exercised both invalid ID and Null for both required receipt FKs.

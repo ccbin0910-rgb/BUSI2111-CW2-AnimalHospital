@@ -1,6 +1,6 @@
 {
   "access_version": "16.0",
-  "method": "Microsoft Access COM / DAO for full engine matrix and T01-T22, plus a visible Datasheet View subset on tblPetParent; DAO used for final restoration after CUA keyboard timeout",
+  "method": "Microsoft Access COM / DAO for full engine matrix and T01-T22, plus visible Datasheet View cases on tblPetParent and tblAppointment; DAO restoration was used for the earlier tblPetParent cleanup, while the appointment edits were undone visibly",
   "source_hashes": {
     "base": "5779B94439854514F6B32F3BADBF8B132ABF8FD22CAC35AECF3D000D14974127",
     "workbook": "92458044B9B0DDBB211FE63C7B04B821C4D8C5442B6702C1EE56298943087034",
@@ -1580,8 +1580,161 @@
       "Input": "Type literal two quote marks, then Tab.",
       "Observed": "字段 'tblPetParent.EveningPhone' 不能是零长度的字符串。",
       "FinalValue": "13805740001"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "AppointmentID",
+      "Round": "R1",
+      "Input": "Type 2 over AppointmentID 1, then Tab.",
+      "Observed": "Cell remained 1; Tab moved to PetID; no validation dialog.",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "AppointmentID",
+      "Round": "R2",
+      "Input": "Attempt to type 2 into the selected AutoNumber cell, then Tab.",
+      "Observed": "Cell remained 1; focus advanced to PetID; no validation dialog.",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "PetID",
+      "Round": "R1",
+      "Input": "Clear field to Null and commit with Tab.",
+      "Observed": "必须在字段 'tblAppointment.PetID' 中输入一个值。",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "PetID",
+      "Round": "R2",
+      "Input": "Enter Pickle and commit with Tab.",
+      "Observed": "所输入的值与此列中的 数字 数据类型不匹配。",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "VetID",
+      "Round": "R1",
+      "Input": "Clear field to Null and commit with Tab.",
+      "Observed": "必须在字段 'tblAppointment.VetID' 中输入一个值。",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "VetID",
+      "Round": "R2",
+      "Input": "Enter Pickle; the numeric type-mismatch menu appeared.",
+      "Observed": "所输入的值与此列中的 数字 数据类型不匹配。",
+      "FinalValue": "1"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "AppointmentDate",
+      "Round": "R1",
+      "Input": "Enter Pickle in the date field.",
+      "Observed": "所输入的值与此列中的 日期/时间 数据类型不匹配。",
+      "FinalValue": "2026/11/10"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "AppointmentDate",
+      "Round": "R2",
+      "Input": "Clear field to Null and commit with Tab.",
+      "Observed": "必须在字段 'tblAppointment.AppointmentDate' 中输入一个值。",
+      "FinalValue": "2026/11/10"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "DurationMin",
+      "Round": "R1",
+      "Input": "Enter 0 and commit with Tab.",
+      "Observed": "Enter whole minutes from 1 to 1440.",
+      "FinalValue": "30"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "DurationMin",
+      "Round": "R2",
+      "Input": "Enter 1.5 and commit with Tab.",
+      "Observed": "Enter whole minutes from 1 to 1440.",
+      "FinalValue": "30"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "WeightKg",
+      "Round": "R1",
+      "Input": "Enter 0 and commit with Tab.",
+      "Observed": "Pet weight must be greater than 0 kg.",
+      "FinalValue": "4.20"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "WeightKg",
+      "Round": "R2",
+      "Input": "Enter Pickle and attempt to commit.",
+      "Observed": "Text briefly appeared in the cell; no stable validation dialog was captured. Ctrl+Z restored the value.",
+      "FinalValue": "4.20",
+      "Result": "PARTIAL"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "VisitReason",
+      "Round": "R1",
+      "Input": "Clear field to Null and commit with Tab.",
+      "Observed": "必须在字段 'tblAppointment.VisitReason' 中输入一个值。",
+      "FinalValue": "Seeded value restored"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "VisitReason",
+      "Round": "R2",
+      "Input": "Datasheet View cannot reliably enter a zero-length string; quote-pair typing is not a valid substitute.",
+      "Observed": "NOT EXPRESSIBLE in Datasheet View; not tested as a ZLS input.",
+      "FinalValue": "Seeded value unchanged",
+      "Result": "KNOWN_LIMITATION"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "Diagnosis",
+      "Round": "R1",
+      "Input": "Clear field to Null and commit with Tab.",
+      "Observed": "必须在字段 'tblAppointment.Diagnosis' 中输入一个值。",
+      "FinalValue": "Seeded value restored"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "Diagnosis",
+      "Round": "R2",
+      "Input": "Datasheet View cannot reliably enter a zero-length string; quote-pair typing is not a valid substitute.",
+      "Observed": "NOT EXPRESSIBLE in Datasheet View; not tested as a ZLS input.",
+      "FinalValue": "Seeded value unchanged",
+      "Result": "KNOWN_LIMITATION"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "AppointmentFee",
+      "Round": "R1",
+      "Input": "Enter -0.01 and commit with Tab.",
+      "Observed": "Enter a non-negative amount with at most two decimal places.",
+      "FinalValue": "$120.00"
+    },
+    {
+      "Table": "tblAppointment",
+      "Field": "AppointmentFee",
+      "Round": "R2",
+      "Input": "Enter $abc; dismiss the type menu with Esc.",
+      "Observed": "所输入的值与此列中的 货币 数据类型不匹配。",
+      "FinalValue": "$120.00"
     }
   ],
+  "appointment_supplement_restore_check": {
+    "method": "Visible screenshots after Return/Escape and Ctrl+Z",
+    "result": "Original seeded appointment values were visible again after each edited case.",
+    "status": "PARTIAL",
+    "not_checked": "No post-supplement read-only DAO query was run; 32 other fields were not opened in visible Datasheet View."
+  },
   "final_restore_check": {
     "method": "Read-only Access OleDb/DAO query after DAO restoration",
     "rows": [
@@ -1602,5 +1755,14 @@
     ],
     "status": "PASS"
   },
-  "note": "Engine tests reset the test database from Clean_Baseline.accdb after each case. Visible UI tests covered only the listed tblPetParent cases. Test-only data is not for merge."
+  "ui_recovery_attempts": [
+    {
+      "database": "R6_Round1-2_Test.accdb",
+      "table_open_attempt": "tblCashAccount",
+      "observed": "After reopening the isolated database and attempting the table switch, CUA returned Accessibility state unavailable for window 5837828. Refreshed enumeration reported the database window minimized; binding to window 12715224 surfaced the Access Database Backup As dialog.",
+      "recovery": "Canceled the backup dialog without saving. No new field attempt was counted, and no backup was saved.",
+      "result": "BLOCKED"
+    }
+  ],
+  "note": "Engine tests reset the test database from Clean_Baseline.accdb after each case. Visible UI cases cover tblPetParent and a partial tblAppointment subset; 32 fields remain without visible attempts, ZLS entry is not expressible for the documented text R2 cases, and visible T01-T22 replay was not run. This continuation attempted tblCashAccount but CUA could not capture the reopened database window (see ui_recovery_attempts). Test-only data is not for merge."
 }
