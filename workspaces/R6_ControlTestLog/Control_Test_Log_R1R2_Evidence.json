@@ -1760,9 +1760,9 @@
       "database": "R6_Round1-2_Test.accdb",
       "table_open_attempt": "tblCashAccount",
       "observed": "After reopening the isolated database and attempting the table switch, CUA returned Accessibility state unavailable for window 5837828. Refreshed enumeration reported the database window minimized; binding to window 12715224 surfaced the Access Database Backup As dialog.",
-      "recovery": "Canceled the backup dialog without saving. No new field attempt was counted, and no backup was saved.",
-      "result": "BLOCKED"
+      "recovery": "An earlier backup dialog was canceled. The dialog reappeared in the fresh binding and remained open at the last observation; no save was clicked and no backup was created.",
+      "result": "BLOCKED_WITH_DIALOG_OPEN"
     }
   ],
-  "note": "Engine tests reset the test database from Clean_Baseline.accdb after each case. Visible UI cases cover tblPetParent and a partial tblAppointment subset; 32 fields remain without visible attempts, ZLS entry is not expressible for the documented text R2 cases, and visible T01-T22 replay was not run. This continuation attempted tblCashAccount but CUA could not capture the reopened database window (see ui_recovery_attempts). Test-only data is not for merge."
+  "note": "Engine tests reset the test database from Clean_Baseline.accdb after each case. Visible UI cases cover tblPetParent and a partial tblAppointment subset; 32 fields remain without visible attempts, ZLS entry is not expressible for the documented text R2 cases, and visible T01-T22 replay was not run. This continuation attempted tblCashAccount but CUA could not capture the reopened database window; a later fresh binding showed Database Backup As still open (see ui_recovery_attempts). No backup was created. Test-only data is not for merge."
 }
