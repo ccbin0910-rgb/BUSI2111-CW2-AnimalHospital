@@ -1,0 +1,1917 @@
+{
+  "source": "810b603:workspaces/R3_CoreAndMerge/v1_Core_Seeded.accdb",
+  "source_sha256": "5779b94439854514f6b32f3badbf8b132abf8fd22cac35aecf3d000d14974127",
+  "method": "Windows Access DAO/SQL",
+  "rounds": [
+    {
+      "round": 1,
+      "cases": [
+        {
+          "matrix_row": 8,
+          "table": "tblPetParent",
+          "field": "ParentName",
+          "row": "[ParentID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 9,
+          "table": "tblPetParent",
+          "field": "Address",
+          "row": "[ParentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 10,
+          "table": "tblPetParent",
+          "field": "DayPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 11,
+          "table": "tblPetParent",
+          "field": "EveningPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 12,
+          "table": "tblPet",
+          "field": "PetName",
+          "row": "[PetID]=1",
+          "input": "81 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 80,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 13,
+          "table": "tblPet",
+          "field": "Breed",
+          "row": "[PetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 14,
+          "table": "tblPet",
+          "field": "Color",
+          "row": "[PetID]=1",
+          "input": "51 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 50,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 15,
+          "table": "tblVeterinarian",
+          "field": "VetName",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 16,
+          "table": "tblVeterinarian",
+          "field": "RoleTitle",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 17,
+          "table": "tblAppointment",
+          "field": "VisitReason",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 18,
+          "table": "tblAppointment",
+          "field": "Diagnosis",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 19,
+          "table": "tblMedication",
+          "field": "MedicationName",
+          "row": "[MedicationID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 20,
+          "table": "tblMedicationInteraction",
+          "field": "SeverityLevel",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "21 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Severity must be High, Moderate, or Low.",
+          "stored_unchanged": true,
+          "stored_length": 8,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 21,
+          "table": "tblMedicationInteraction",
+          "field": "InteractionDescription",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 22,
+          "table": "tblCashAccount",
+          "field": "AccountName",
+          "row": "[AccountID]=1",
+          "input": "61 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 60,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 23,
+          "table": "tblCashAccount",
+          "field": "AccountType",
+          "row": "[AccountID]=1",
+          "input": "31 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Choose Cash or Bank.",
+          "stored_unchanged": true,
+          "stored_length": 4,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 25,
+          "table": "tblAppointment",
+          "field": "PetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPet' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 26,
+          "table": "tblAppointment",
+          "field": "VetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 27,
+          "table": "tblPrescriptionLine",
+          "field": "AppointmentID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 28,
+          "table": "tblPrescriptionLine",
+          "field": "MedicationID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 29,
+          "table": "tblCashReceipt",
+          "field": "ParentID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPetParent' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 30,
+          "table": "tblCashReceipt",
+          "field": "AccountID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashAccount' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 31,
+          "table": "tblCashReceipt",
+          "field": "CollectedByVetID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 32,
+          "table": "tblReceiptAllocation",
+          "field": "ReceiptID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashReceipt' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 33,
+          "table": "tblReceiptAllocation",
+          "field": "AppointmentID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 34,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationAID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": -999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 35,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationBID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 2,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "cases": [
+        {
+          "matrix_row": 8,
+          "table": "tblPetParent",
+          "field": "ParentName",
+          "row": "[ParentID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 9,
+          "table": "tblPetParent",
+          "field": "Address",
+          "row": "[ParentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 10,
+          "table": "tblPetParent",
+          "field": "DayPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 11,
+          "table": "tblPetParent",
+          "field": "EveningPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 12,
+          "table": "tblPet",
+          "field": "PetName",
+          "row": "[PetID]=1",
+          "input": "81 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 80,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 13,
+          "table": "tblPet",
+          "field": "Breed",
+          "row": "[PetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 14,
+          "table": "tblPet",
+          "field": "Color",
+          "row": "[PetID]=1",
+          "input": "51 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 50,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 15,
+          "table": "tblVeterinarian",
+          "field": "VetName",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 16,
+          "table": "tblVeterinarian",
+          "field": "RoleTitle",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 17,
+          "table": "tblAppointment",
+          "field": "VisitReason",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 18,
+          "table": "tblAppointment",
+          "field": "Diagnosis",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 19,
+          "table": "tblMedication",
+          "field": "MedicationName",
+          "row": "[MedicationID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 20,
+          "table": "tblMedicationInteraction",
+          "field": "SeverityLevel",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "21 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Severity must be High, Moderate, or Low.",
+          "stored_unchanged": true,
+          "stored_length": 8,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 21,
+          "table": "tblMedicationInteraction",
+          "field": "InteractionDescription",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 22,
+          "table": "tblCashAccount",
+          "field": "AccountName",
+          "row": "[AccountID]=1",
+          "input": "61 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 60,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 23,
+          "table": "tblCashAccount",
+          "field": "AccountType",
+          "row": "[AccountID]=1",
+          "input": "31 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Choose Cash or Bank.",
+          "stored_unchanged": true,
+          "stored_length": 4,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 25,
+          "table": "tblAppointment",
+          "field": "PetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPet' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 26,
+          "table": "tblAppointment",
+          "field": "VetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 27,
+          "table": "tblPrescriptionLine",
+          "field": "AppointmentID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 28,
+          "table": "tblPrescriptionLine",
+          "field": "MedicationID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 29,
+          "table": "tblCashReceipt",
+          "field": "ParentID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPetParent' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 30,
+          "table": "tblCashReceipt",
+          "field": "AccountID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashAccount' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 31,
+          "table": "tblCashReceipt",
+          "field": "CollectedByVetID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 32,
+          "table": "tblReceiptAllocation",
+          "field": "ReceiptID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashReceipt' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 33,
+          "table": "tblReceiptAllocation",
+          "field": "AppointmentID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 34,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationAID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": -999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 35,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationBID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 2,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "cases": [
+        {
+          "matrix_row": 8,
+          "table": "tblPetParent",
+          "field": "ParentName",
+          "row": "[ParentID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 9,
+          "table": "tblPetParent",
+          "field": "Address",
+          "row": "[ParentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 10,
+          "table": "tblPetParent",
+          "field": "DayPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 11,
+          "table": "tblPetParent",
+          "field": "EveningPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 12,
+          "table": "tblPet",
+          "field": "PetName",
+          "row": "[PetID]=1",
+          "input": "81 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 80,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 13,
+          "table": "tblPet",
+          "field": "Breed",
+          "row": "[PetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 14,
+          "table": "tblPet",
+          "field": "Color",
+          "row": "[PetID]=1",
+          "input": "51 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 50,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 15,
+          "table": "tblVeterinarian",
+          "field": "VetName",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 16,
+          "table": "tblVeterinarian",
+          "field": "RoleTitle",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 17,
+          "table": "tblAppointment",
+          "field": "VisitReason",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 18,
+          "table": "tblAppointment",
+          "field": "Diagnosis",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 19,
+          "table": "tblMedication",
+          "field": "MedicationName",
+          "row": "[MedicationID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 20,
+          "table": "tblMedicationInteraction",
+          "field": "SeverityLevel",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "21 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Severity must be High, Moderate, or Low.",
+          "stored_unchanged": true,
+          "stored_length": 8,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 21,
+          "table": "tblMedicationInteraction",
+          "field": "InteractionDescription",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 22,
+          "table": "tblCashAccount",
+          "field": "AccountName",
+          "row": "[AccountID]=1",
+          "input": "61 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 60,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 23,
+          "table": "tblCashAccount",
+          "field": "AccountType",
+          "row": "[AccountID]=1",
+          "input": "31 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Choose Cash or Bank.",
+          "stored_unchanged": true,
+          "stored_length": 4,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 25,
+          "table": "tblAppointment",
+          "field": "PetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPet' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 26,
+          "table": "tblAppointment",
+          "field": "VetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 27,
+          "table": "tblPrescriptionLine",
+          "field": "AppointmentID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 28,
+          "table": "tblPrescriptionLine",
+          "field": "MedicationID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 29,
+          "table": "tblCashReceipt",
+          "field": "ParentID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPetParent' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 30,
+          "table": "tblCashReceipt",
+          "field": "AccountID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashAccount' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 31,
+          "table": "tblCashReceipt",
+          "field": "CollectedByVetID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 32,
+          "table": "tblReceiptAllocation",
+          "field": "ReceiptID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashReceipt' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 33,
+          "table": "tblReceiptAllocation",
+          "field": "AppointmentID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 34,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationAID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": -999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 35,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationBID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 2,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "cases": [
+        {
+          "matrix_row": 8,
+          "table": "tblPetParent",
+          "field": "ParentName",
+          "row": "[ParentID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 9,
+          "table": "tblPetParent",
+          "field": "Address",
+          "row": "[ParentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 10,
+          "table": "tblPetParent",
+          "field": "DayPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 11,
+          "table": "tblPetParent",
+          "field": "EveningPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 12,
+          "table": "tblPet",
+          "field": "PetName",
+          "row": "[PetID]=1",
+          "input": "81 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 80,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 13,
+          "table": "tblPet",
+          "field": "Breed",
+          "row": "[PetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 14,
+          "table": "tblPet",
+          "field": "Color",
+          "row": "[PetID]=1",
+          "input": "51 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 50,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 15,
+          "table": "tblVeterinarian",
+          "field": "VetName",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 16,
+          "table": "tblVeterinarian",
+          "field": "RoleTitle",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 17,
+          "table": "tblAppointment",
+          "field": "VisitReason",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 18,
+          "table": "tblAppointment",
+          "field": "Diagnosis",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 19,
+          "table": "tblMedication",
+          "field": "MedicationName",
+          "row": "[MedicationID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 20,
+          "table": "tblMedicationInteraction",
+          "field": "SeverityLevel",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "21 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Severity must be High, Moderate, or Low.",
+          "stored_unchanged": true,
+          "stored_length": 8,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 21,
+          "table": "tblMedicationInteraction",
+          "field": "InteractionDescription",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 22,
+          "table": "tblCashAccount",
+          "field": "AccountName",
+          "row": "[AccountID]=1",
+          "input": "61 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 60,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 23,
+          "table": "tblCashAccount",
+          "field": "AccountType",
+          "row": "[AccountID]=1",
+          "input": "31 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Choose Cash or Bank.",
+          "stored_unchanged": true,
+          "stored_length": 4,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 25,
+          "table": "tblAppointment",
+          "field": "PetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPet' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 26,
+          "table": "tblAppointment",
+          "field": "VetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 27,
+          "table": "tblPrescriptionLine",
+          "field": "AppointmentID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 28,
+          "table": "tblPrescriptionLine",
+          "field": "MedicationID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 29,
+          "table": "tblCashReceipt",
+          "field": "ParentID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPetParent' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 30,
+          "table": "tblCashReceipt",
+          "field": "AccountID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashAccount' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 31,
+          "table": "tblCashReceipt",
+          "field": "CollectedByVetID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 32,
+          "table": "tblReceiptAllocation",
+          "field": "ReceiptID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashReceipt' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 33,
+          "table": "tblReceiptAllocation",
+          "field": "AppointmentID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 34,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationAID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": -999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 35,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationBID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 2,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "cases": [
+        {
+          "matrix_row": 8,
+          "table": "tblPetParent",
+          "field": "ParentName",
+          "row": "[ParentID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 9,
+          "table": "tblPetParent",
+          "field": "Address",
+          "row": "[ParentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 10,
+          "table": "tblPetParent",
+          "field": "DayPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 11,
+          "table": "tblPetParent",
+          "field": "EveningPhone",
+          "row": "[ParentID]=1",
+          "input": "21 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 20,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 12,
+          "table": "tblPet",
+          "field": "PetName",
+          "row": "[PetID]=1",
+          "input": "81 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 80,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 13,
+          "table": "tblPet",
+          "field": "Breed",
+          "row": "[PetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 14,
+          "table": "tblPet",
+          "field": "Color",
+          "row": "[PetID]=1",
+          "input": "51 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 50,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 15,
+          "table": "tblVeterinarian",
+          "field": "VetName",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 16,
+          "table": "tblVeterinarian",
+          "field": "RoleTitle",
+          "row": "[VetID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 17,
+          "table": "tblAppointment",
+          "field": "VisitReason",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 18,
+          "table": "tblAppointment",
+          "field": "Diagnosis",
+          "row": "[AppointmentID]=1",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 19,
+          "table": "tblMedication",
+          "field": "MedicationName",
+          "row": "[MedicationID]=1",
+          "input": "101 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 100,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 20,
+          "table": "tblMedicationInteraction",
+          "field": "SeverityLevel",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "21 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Severity must be High, Moderate, or Low.",
+          "stored_unchanged": true,
+          "stored_length": 8,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 21,
+          "table": "tblMedicationInteraction",
+          "field": "InteractionDescription",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": "256 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 255,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 22,
+          "table": "tblCashAccount",
+          "field": "AccountName",
+          "row": "[AccountID]=1",
+          "input": "61 characters",
+          "error_codes": [],
+          "engine_message": null,
+          "stored_unchanged": false,
+          "stored_length": 60,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 23,
+          "table": "tblCashAccount",
+          "field": "AccountType",
+          "row": "[AccountID]=1",
+          "input": "31 characters",
+          "error_codes": [
+            3316
+          ],
+          "engine_message": "Choose Cash or Bank.",
+          "stored_unchanged": true,
+          "stored_length": 4,
+          "stored_key": null,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 25,
+          "table": "tblAppointment",
+          "field": "PetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPet' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 26,
+          "table": "tblAppointment",
+          "field": "VetID",
+          "row": "[AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 27,
+          "table": "tblPrescriptionLine",
+          "field": "AppointmentID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 28,
+          "table": "tblPrescriptionLine",
+          "field": "MedicationID",
+          "row": "[AppointmentID]=1 AND [MedicationID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 29,
+          "table": "tblCashReceipt",
+          "field": "ParentID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblPetParent' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 30,
+          "table": "tblCashReceipt",
+          "field": "AccountID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashAccount' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 31,
+          "table": "tblCashReceipt",
+          "field": "CollectedByVetID",
+          "row": "[ReceiptID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblVeterinarian' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 32,
+          "table": "tblReceiptAllocation",
+          "field": "ReceiptID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblCashReceipt' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 33,
+          "table": "tblReceiptAllocation",
+          "field": "AppointmentID",
+          "row": "[ReceiptID]=1 AND [AppointmentID]=1",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblAppointment' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 34,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationAID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": -999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 1,
+          "status": "PASS"
+        },
+        {
+          "matrix_row": 35,
+          "table": "tblMedicationInteraction",
+          "field": "MedicationBID",
+          "row": "[MedicationAID]=1 AND [MedicationBID]=2",
+          "input": 999,
+          "error_codes": [
+            3201
+          ],
+          "engine_message": "由于数据表 'tblMedication' 需要一个相关记录，不能添加或修改记录。",
+          "stored_unchanged": true,
+          "stored_length": null,
+          "stored_key": 2,
+          "status": "PASS"
+        }
+      ]
+    }
+  ]
+}
