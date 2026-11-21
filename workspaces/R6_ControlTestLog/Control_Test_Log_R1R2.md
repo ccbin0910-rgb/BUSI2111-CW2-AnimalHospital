@@ -1,9 +1,9 @@
 # Control Test Log — Member 6 — Round 1–2 and T01–T22
 
-- **Date:** 2026-11-20 (Asia/Shanghai)
+- **Date:** 2026-11-20–21 (Asia/Shanghai)
 - **Branch:** `role/M6-controls` (start commit `98d8c7e7e7f180a190e587e93de28b1f8de4e68d`)
-- **Database:** Microsoft Access 16.0; the field matrix and T01–T22 used Access COM / DAO against the isolated test copy, with supplemental visible Datasheet View cases on `tblPetParent` and `tblAppointment`.
-- **Overall status:** `PARTIAL` — engine checks cover the full matrix and T01–T22, while visible UI evidence covers only the cases listed below. The complete 46-field × 2-round UI procedure remains unrun.
+- **Database:** Microsoft Access 16.0 on Windows. Visible keyboard testing covers all 46 fields in R1–R2. Existing T01–T22 results use Access COM/DAO, with nine visible scenario supplements.
+- **Overall status:** KNOWN_LIMITATION. Visible field matrix 92/92 expected outcomes; T01–T20 matched expected engine behavior; T21/T22 retain documented design limitations. Full visible replay of all T scenarios remains unrun.
 
 ## Fixed inputs and baseline
 
@@ -74,93 +74,81 @@ The 46 rows below use the inputs in Member 4 `Field_3Rounds_Matrix` and the firs
 
 **Engine-check totals:** R1 46/46 expected outcomes (45 invalid values rejected; optional `EveningPhone=Null` accepted and restored); R2 46/46 expected outcomes (all 46 rejected). These counts do not imply a full UI run. Evidence includes the full input instruction, literal attempt, Access response, stored value, and restoration status for each field in `Control_Test_Log_R1R2_Evidence.json`.
 
-## Visible Datasheet View keyboard evidence (partial)
+## Visible Datasheet View matrix completed on 2026-11-21
 
-These additional cases were entered in the open `tblPetParent` Datasheet View on the first seeded row. The cells were selected visibly, edited with the keyboard, and committed with `Tab`; `Return` dismissed Access validation dialogs. No screenshots were saved as files.
+All 46 fields have both rounds recorded below. **92/92 visible outcomes matched expectations**, comprising 91 blocked invalid attempts and one accepted optional Null (EveningPhone R1). AutoNumber edits used unused value 9876 in R1 and keyboard copy/paste of seeded ID 2 over ID 1 in R2.
 
-| Field | R1 visible action and result | R2 visible action and result | Final saved value |
-|---|---|---|---|
-| `ParentID` | Typed `2` over ID 1; the cell stayed `1` and `Tab` moved to `ParentName`. | Copied ID 2 and pasted into ID 1 with `Ctrl+C` / `Ctrl+V`; ID 1 stayed `1`, with no dialog. | `1` |
-| `ParentName` | `F2` → `Delete` → `Tab`; Access showed `必须在字段 'tblPetParent.ParentName' 中输入一个值。` | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.ParentName' 不能是零长度的字符串。` | `Emily Chen` |
-| `Address` | `F2` → `Delete` → `Tab`; Access showed `必须在字段 'tblPetParent.Address' 中输入一个值。` | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.Address' 不能是零长度的字符串。` | `199 Taikang East Road, Ningbo` |
-| `DayPhone` | `F2` → `Delete` → `Tab`; Access showed `必须在字段 'tblPetParent.DayPhone' 中输入一个值。` | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.DayPhone' 不能是零长度的字符串。` | `0574-88180001` |
-| `EveningPhone` | `F2` → `Delete` → `Tab`; the optional Null was accepted and the selection advanced to the next row. | Typed literal `""` then `Tab`; Access showed `字段 'tblPetParent.EveningPhone' 不能是零长度的字符串。` | `13805740001` |
+Early tblPetParent and tblAppointment cases edited the first seeded row as instructed by the fixed M4 workbook. Subsequent cases used new rows as instructed by SOP section 7, except AutoNumber tests. JSON identifies the row method and database for every slot. Required-new-row checks supplied valid companions and used Shift+Enter. Field-level checks used Tab. Return dismissed dialogs, then the draft cell was refocused and Esc pressed twice. Type-error menus were opened with Alt+Shift+F10 where needed. CUA screenshots and accessibility output were inspected. No screenshot files were saved.
 
-**Restoration exception:** after rejecting empty strings, direct typing of the original values started at the cell's insertion point and left leading quote characters in three cells. A later `F2`/selection recovery was attempted; the CUA keyboard helper timed out at `Shift+End` before the UI could confirm the full repair. To leave the isolated copy usable, an Access OleDb/DAO update restored `ParentName`, `DayPhone`, and `EveningPhone`. A subsequent read-only DAO query confirmed the original values for both rows and confirmed `Address` remained unchanged. This restoration step was engine-level, not a visible UI result.
+### Recovery and input-method correction
 
-### `tblAppointment` visible supplement
+R6_UIFlat_Test.accdb was copied from hash-verified Clean_Baseline.accdb containing the 11 M5 queries. To recover the interface, this working copy had the ten tables' SubdatasheetName display property set to [None], and Access opened with /safe. CashAccount and Pet then remained usable. Earlier crashes named MSACCESS.EXE 16.0.20527.20196 and mso20win32client.dll, offset 0x4678ad, in Windows event 1000. The subdatasheet explanation remains a hypothesis. Earlier backup-dialog observations are retained in JSON as history.
 
-The first seeded appointment row was tested in the same isolated database. Each rejected or exploratory edit was undone with `Ctrl+Z`; where a temporary type-mismatch menu appeared, it was dismissed with `Esc` first. Screenshots after those restores showed the seeded row values again. No post-supplement DAO baseline query was run, so restoration evidence here is visual only.
+The fixed workbook's Field_3Rounds_Matrix row 5 says typing two quotes does not enter zero length. Microsoft documents this exact Datasheet entry method. All 14 text-field R2 attempts produced the named zero-length rejection. This corrects the receipt's earlier NOT EXPRESSIBLE / unconfirmed-ZLS classification and the interpretation recorded in 20261120_1534_M6_visible_datasheet_supplement.sql. The append-only historical log and fixed workbook retain their original contents. M3/M4 should reconcile the workbook instruction before M7 uses it. [Microsoft instructions](https://support.microsoft.com/en-us/access/ways-to-add-edit-and-delete-records)
 
-| Field | R1 visible input and result | R2 visible input and result | Restore / boundary |
-|---|---|---|---|
-| `AppointmentID` | Typed `2` over `1`; the displayed ID remained `1`, and `Tab` moved to `PetID`. | Typed `2` into the selected AutoNumber cell; the displayed ID remained `1`, and focus advanced to `PetID`. | ID remained `1`; no validation dialog. |
-| `PetID` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.PetID' 中输入一个值。` | Entered `Pickle`; Access showed a temporary menu: `所输入的值与此列中的 数字 数据类型不匹配。` | `Ctrl+Z`; seeded value `1` visible. |
-| `VetID` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.VetID' 中输入一个值。` | Entered `Pickle`; Access showed the numeric-type mismatch menu. | Two `Ctrl+Z` actions restored seeded value `1`. |
-| `AppointmentDate` | Entered `Pickle`; Access showed a temporary 日期/时间 type-mismatch menu. | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.AppointmentDate' 中输入一个值。` | Dismissed/closed the prompt and used `Ctrl+Z`; seeded date `2026/11/10` visible. |
-| `DurationMin` | Entered `0`; Access showed `Enter whole minutes from 1 to 1440.` | Entered `1.5`; Access showed `Enter whole minutes from 1 to 1440.` | `Ctrl+Z`; seeded value `30` visible. |
-| `WeightKg` | Entered `0`; Access showed `Pet weight must be greater than 0 kg.` | Entered `Pickle`; the text briefly appeared in the cell, but no stable validation dialog was observed. | `Ctrl+Z`; seeded value `4.20` visible. R2 is `PARTIAL`, not a confirmed rejection. |
-| `VisitReason` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.VisitReason' 中输入一个值。` | Zero-length text cannot be entered reliably in Datasheet View; no `""` keystroke substitute was counted as ZLS. | R1 restore via `Ctrl+Z`; R2 remains not expressible in this view. |
-| `Diagnosis` | Cleared then `Tab`; Access showed `必须在字段 'tblAppointment.Diagnosis' 中输入一个值。` | Zero-length text cannot be entered reliably in Datasheet View; no `""` keystroke substitute was counted as ZLS. | R1 restore via `Ctrl+Z`; R2 remains not expressible in this view. |
-| `AppointmentFee` | Entered `-0.01`; Access showed `Enter a non-negative amount with at most two decimal places.` | Entered `$abc`; Access showed a temporary menu: `所输入的值与此列中的 货币 数据类型不匹配。` | Dismissed with `Esc` and used `Ctrl+Z`; seeded `$120.00` visible. |
-
-### Visible matrix status across all 46 fields
-
-This matrix tracks visible UI coverage separately from the engine matrix above. `NOT_RUN` means the field was not tested in the visible datasheet; `PARTIAL` means the attempted input did not produce a stable, attributable validation result. The quoted-pair attempts on `tblPetParent` are recorded as literal keystrokes and do not establish a valid ZLS input.
-
-| Table.Field | R1 visible status | R2 visible status |
+| Table.Field | R1 visible input and actual response | R2 visible input and actual response |
 |---|---|---|
-| `tblPetParent.ParentID` | `OBSERVED`: typed `2`; ID stayed `1` | `OBSERVED`: copied/pasted ID `2`; ID stayed `1` |
-| `tblPetParent.ParentName` | `OBSERVED`: required-value dialog | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
-| `tblPetParent.Address` | `OBSERVED`: required-value dialog | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
-| `tblPetParent.DayPhone` | `OBSERVED`: required-value dialog | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
-| `tblPetParent.EveningPhone` | `OBSERVED`: Null accepted | `PARTIAL`: literal `""` rejected; not confirmed ZLS input |
-| `tblPet.PetID` | `NOT_RUN` | `NOT_RUN` |
-| `tblPet.ParentID` | `NOT_RUN` | `NOT_RUN` |
-| `tblPet.PetName` | `NOT_RUN` | `NOT_RUN` |
-| `tblPet.Breed` | `NOT_RUN` | `NOT_RUN` |
-| `tblPet.Color` | `NOT_RUN` | `NOT_RUN` |
-| `tblPet.BirthDate` | `NOT_RUN` | `NOT_RUN` |
-| `tblVeterinarian.VetID` | `NOT_RUN` | `NOT_RUN` |
-| `tblVeterinarian.VetName` | `NOT_RUN` | `NOT_RUN` |
-| `tblVeterinarian.RoleTitle` | `NOT_RUN` | `NOT_RUN` |
-| `tblAppointment.AppointmentID` | `OBSERVED`: typed `2`; stayed `1` | `OBSERVED`: attempted edit; stayed `1` |
-| `tblAppointment.PetID` | `OBSERVED`: required-value dialog | `OBSERVED`: numeric mismatch menu for `Pickle` |
-| `tblAppointment.VetID` | `OBSERVED`: required-value dialog | `OBSERVED`: numeric mismatch menu for `Pickle` |
-| `tblAppointment.AppointmentDate` | `OBSERVED`: date/time mismatch menu for `Pickle` | `OBSERVED`: required-value dialog |
-| `tblAppointment.DurationMin` | `OBSERVED`: 0 rejected by whole-minutes rule | `OBSERVED`: 1.5 rejected by whole-minutes rule |
-| `tblAppointment.WeightKg` | `OBSERVED`: 0 rejected by positive-weight rule | `PARTIAL`: `Pickle` appeared; no stable error observed |
-| `tblAppointment.VisitReason` | `OBSERVED`: required-value dialog | `NOT EXPRESSIBLE`: ZLS not entered in Datasheet View |
-| `tblAppointment.Diagnosis` | `OBSERVED`: required-value dialog | `NOT EXPRESSIBLE`: ZLS not entered in Datasheet View |
-| `tblAppointment.AppointmentFee` | `OBSERVED`: negative amount rejected | `OBSERVED`: currency mismatch menu for `$abc` |
-| `tblMedication.MedicationID` | `NOT_RUN` | `NOT_RUN` |
-| `tblMedication.MedicationName` | `NOT_RUN` | `NOT_RUN` |
-| `tblMedication.ListPrice` | `NOT_RUN` | `NOT_RUN` |
-| `tblPrescriptionLine.AppointmentID` | `NOT_RUN` | `NOT_RUN` |
-| `tblPrescriptionLine.MedicationID` | `NOT_RUN` | `NOT_RUN` |
-| `tblPrescriptionLine.Quantity` | `NOT_RUN` | `NOT_RUN` |
-| `tblPrescriptionLine.UnitPriceCharged` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashReceipt.ReceiptID` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashReceipt.ParentID` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashReceipt.AccountID` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashReceipt.CollectedByVetID` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashReceipt.ReceiptDate` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashReceipt.ReceiptTotal` | `NOT_RUN` | `NOT_RUN` |
-| `tblReceiptAllocation.ReceiptID` | `NOT_RUN` | `NOT_RUN` |
-| `tblReceiptAllocation.AppointmentID` | `NOT_RUN` | `NOT_RUN` |
-| `tblReceiptAllocation.AppliedAmount` | `NOT_RUN` | `NOT_RUN` |
-| `tblMedicationInteraction.MedicationAID` | `NOT_RUN` | `NOT_RUN` |
-| `tblMedicationInteraction.MedicationBID` | `NOT_RUN` | `NOT_RUN` |
-| `tblMedicationInteraction.SeverityLevel` | `NOT_RUN` | `NOT_RUN` |
-| `tblMedicationInteraction.InteractionDescription` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashAccount.AccountID` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashAccount.AccountName` | `NOT_RUN` | `NOT_RUN` |
-| `tblCashAccount.AccountType` | `NOT_RUN` | `NOT_RUN` |
+| `tblPetParent.ParentID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblPetParent.ParentName` | `PASS` — `Null` → 必须在字段 'tblPetParent.ParentName' 中输入一个值。 | `PASS` — `""` → 字段 'tblPetParent.ParentName' 不能是零长度的字符串。 |
+| `tblPetParent.Address` | `PASS` — `Null` → 必须在字段 'tblPetParent.Address' 中输入一个值。 | `PASS` — `""` → 字段 'tblPetParent.Address' 不能是零长度的字符串。 |
+| `tblPetParent.DayPhone` | `PASS` — `Null` → 必须在字段 'tblPetParent.DayPhone' 中输入一个值。 | `PASS` — `""` → 字段 'tblPetParent.DayPhone' 不能是零长度的字符串。 |
+| `tblPetParent.EveningPhone` | `PASS` — `Null` → Optional Null accepted; seeded value restored. | `PASS` — `""` → 字段 'tblPetParent.EveningPhone' 不能是零长度的字符串。 |
+| `tblPet.PetID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblPet.ParentID` | `PASS` — `Null` → 必须在字段 'tblPet.ParentID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblPet.PetName` | `PASS` — `Null` → 必须在字段 'tblPet.PetName' 中输入一个值。 | `PASS` — `""` → 字段 'tblPet.PetName' 不能是零长度的字符串。 |
+| `tblPet.Breed` | `PASS` — `Null` → 必须在字段 'tblPet.Breed' 中输入一个值。 | `PASS` — `""` → 字段 'tblPet.Breed' 不能是零长度的字符串。 |
+| `tblPet.Color` | `PASS` — `Null` → 必须在字段 'tblPet.Color' 中输入一个值。 | `PASS` — `""` → 字段 'tblPet.Color' 不能是零长度的字符串。 |
+| `tblPet.BirthDate` | `PASS` — `Pickle` → 所输入的值与此列中的 日期/时间 数据类型不匹配。 | `PASS` — `2099/12/31` → Birth date cannot be in the future. |
+| `tblVeterinarian.VetID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblVeterinarian.VetName` | `PASS` — `Null` → 必须在字段 'tblVeterinarian.VetName' 中输入一个值。 | `PASS` — `""` → 字段 'tblVeterinarian.VetName' 不能是零长度的字符串。 |
+| `tblVeterinarian.RoleTitle` | `PASS` — `Null` → 必须在字段 'tblVeterinarian.RoleTitle' 中输入一个值。 | `PASS` — `""` → 字段 'tblVeterinarian.RoleTitle' 不能是零长度的字符串。 |
+| `tblAppointment.AppointmentID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblAppointment.PetID` | `PASS` — `Null` → 必须在字段 'tblAppointment.PetID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblAppointment.VetID` | `PASS` — `Null` → 必须在字段 'tblAppointment.VetID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblAppointment.AppointmentDate` | `PASS` — `Pickle` → 所输入的值与此列中的 日期/时间 数据类型不匹配。 | `PASS` — `Null` → 必须在字段 'tblAppointment.AppointmentDate' 中输入一个值。 |
+| `tblAppointment.DurationMin` | `PASS` — `0` → Enter whole minutes from 1 to 1440. | `PASS` — `1.5` → Enter whole minutes from 1 to 1440. |
+| `tblAppointment.WeightKg` | `PASS` — `0` → Pet weight must be greater than 0 kg. | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblAppointment.VisitReason` | `PASS` — `Null` → 必须在字段 'tblAppointment.VisitReason' 中输入一个值。 | `PASS` — `""` → 字段 'tblAppointment.VisitReason' 不能是零长度的字符串。 |
+| `tblAppointment.Diagnosis` | `PASS` — `Null` → 必须在字段 'tblAppointment.Diagnosis' 中输入一个值。 | `PASS` — `""` → 字段 'tblAppointment.Diagnosis' 不能是零长度的字符串。 |
+| `tblAppointment.AppointmentFee` | `PASS` — `-0.01` → Enter a non-negative amount with at most two decimal places. | `PASS` — `$abc` → 所输入的值与此列中的 货币 数据类型不匹配。 |
+| `tblMedication.MedicationID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblMedication.MedicationName` | `PASS` — `Null` → 必须在字段 'tblMedication.MedicationName' 中输入一个值。 | `PASS` — `""` → 字段 'tblMedication.MedicationName' 不能是零长度的字符串。 |
+| `tblMedication.ListPrice` | `PASS` — `-0.01` → Enter a non-negative amount with at most two decimal places. | `PASS` — `$abc` → 所输入的值与此列中的 货币 数据类型不匹配。 |
+| `tblPrescriptionLine.AppointmentID` | `PASS` — `Null` → 必须在字段 'tblPrescriptionLine.AppointmentID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblPrescriptionLine.MedicationID` | `PASS` — `Null` → 必须在字段 'tblPrescriptionLine.MedicationID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblPrescriptionLine.Quantity` | `PASS` — `0` → Enter whole units from 1 to 100000. | `PASS` — `1.5` → Enter whole units from 1 to 100000. |
+| `tblPrescriptionLine.UnitPriceCharged` | `PASS` — `-0.01` → Enter a non-negative amount with at most two decimal places. | `PASS` — `$abc` → 所输入的值与此列中的 货币 数据类型不匹配。 |
+| `tblCashReceipt.ReceiptID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblCashReceipt.ParentID` | `PASS` — `Null` → 必须在字段 'tblCashReceipt.ParentID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblCashReceipt.AccountID` | `PASS` — `Null` → 必须在字段 'tblCashReceipt.AccountID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblCashReceipt.CollectedByVetID` | `PASS` — `Null` → 必须在字段 'tblCashReceipt.CollectedByVetID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblCashReceipt.ReceiptDate` | `PASS` — `Pickle` → 所输入的值与此列中的 日期/时间 数据类型不匹配。 | `PASS` — `2099/12/31` → Receipt date cannot be in the future. |
+| `tblCashReceipt.ReceiptTotal` | `PASS` — `0` → Enter a positive amount with at most two decimal places. | `PASS` — `$abc` → 所输入的值与此列中的 货币 数据类型不匹配。 |
+| `tblReceiptAllocation.ReceiptID` | `PASS` — `Null` → 必须在字段 'tblReceiptAllocation.ReceiptID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblReceiptAllocation.AppointmentID` | `PASS` — `Null` → 必须在字段 'tblReceiptAllocation.AppointmentID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblReceiptAllocation.AppliedAmount` | `PASS` — `0` → Enter a positive amount with at most two decimal places. | `PASS` — `$abc` → 所输入的值与此列中的 货币 数据类型不匹配。 |
+| `tblMedicationInteraction.MedicationAID` | `PASS` — `Null` → 必须在字段 'tblMedicationInteraction.MedicationAID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblMedicationInteraction.MedicationBID` | `PASS` — `Null` → 必须在字段 'tblMedicationInteraction.MedicationBID' 中输入一个值。 | `PASS` — `Pickle` → 所输入的值与此列中的 数字 数据类型不匹配。 |
+| `tblMedicationInteraction.SeverityLevel` | `PASS` — `Null` → 必须在字段 'tblMedicationInteraction.SeverityLevel' 中输入一个值。 | `PASS` — `Critical` → Severity must be High, Moderate, or Low. |
+| `tblMedicationInteraction.InteractionDescription` | `PASS` — `Null` → 必须在字段 'tblMedicationInteraction.InteractionDescription' 中输入一个值。 | `PASS` — `""` → 字段 'tblMedicationInteraction.InteractionDescription' 不能是零长度的字符串。 |
+| `tblCashAccount.AccountID` | `PASS` — `9876` → Displayed ID remained 1; focus advanced; no error dialog. | `PASS` — `2 copied from second seeded row` → Displayed ID remained 1; focus advanced; no error dialog. |
+| `tblCashAccount.AccountName` | `PASS` — `Null` → 必须在字段 'tblCashAccount.AccountName' 中输入一个值。 | `PASS` — `""` → 字段 'tblCashAccount.AccountName' 不能是零长度的字符串。 |
+| `tblCashAccount.AccountType` | `PASS` — `Null` → 必须在字段 'tblCashAccount.AccountType' 中输入一个值。 | `PASS` — `Card` → Choose Cash or Bank. |
 
-**Coverage count:** visible interaction occurred on 14 of 46 fields; 32 fields remain `NOT_RUN` in both rounds. Six text-field R2 ZLS slots (four `tblPetParent` text fields and two `tblAppointment` text fields) remain unexpressed or invalidly represented and must not be counted as ZLS UI passes.
+### Restoration and reproducible exceptions
+
+An early tblPetParent restoration attempt left leading quotes in three seeded fields. Those values were repaired through DAO and checked against the baseline, as recorded in the original evidence. Later rejected drafts were canceled through the visible interface.
+
+Final read-only DAO comparison of R6_UIFlat_Test.accdb with Clean_Baseline.accdb found all saved values identical across 21 seeded rows. Field types/sizes, Required, AllowZeroLength, field and table validation rules/text, relationship metadata, and all 11 query SQL definitions matched. Baseline SHA-256 remained BBA10FAB9204057D4AEDDA46D151A3B9166DD6BBC6BC78857702868B0624A6B7. This comparison covers saved data and controls. The test copy retains the display-property adjustment and AutoNumber gaps caused by canceled drafts.
+
+To reproduce type rejection, enter Pickle in a new row's numeric/date target or $abc in a currency target, then Tab. If the yellow error indicator appears, use Alt+Shift+F10 to read the explanation. Refocus the draft cell and press Esc twice. For required fields, leave the target blank, complete valid companions, and press Shift+Enter.
 
 ## T01–T22 integrity and reconciliation scenarios
 
+These are the previously completed Access engine scenarios. Visible supplements follow the table.
+
+| Test | Engine status | Expected | Actual engine result |
+|---|---|---|---|
 | T01 | PASS | WeightKg = −2 and Quantity = 0 are rejected. | WeightKg = -2 → Blocked by Access (Access error: Pet weight must be greater than 0 kg.)<br>Quantity = 0 → Blocked by Access (Access error: Enter whole units from 1 to 100000.) |
 | T02 | PASS | Quantity = 1.5 and DurationMin = 1.5 are rejected without rounding. | Quantity = 1.5 → Blocked by Access (Access error: Enter whole units from 1 to 100000.)<br>DurationMin = 1.5 → Blocked by Access (Access error: Enter whole minutes from 1 to 1440.) |
 | T03 | PASS | Future BirthDate is rejected. | BirthDate = 2099-01-01 → Blocked by Access (Access error: Birth date cannot be in the future.) |
@@ -186,6 +174,22 @@ This matrix tracks visible UI coverage separately from the engine matrix above. 
 
 T01–T20 subcases matched their expected preventive or detective behavior. `qry_Ctrl_InvalidAllocations` reports exceptions after entry; it does not block them.
 
+### Visible T-scenario supplements
+
+| Test | Visible status | Actual observation |
+|---|---|---|
+| T01 | PASS | WeightKg -2 rejected with positive-weight rule; Quantity 0 rejected with whole-units rule. |
+| T02 | PASS | Quantity 1.5 and DurationMin 1.5 rejected with the respective whole-number rules. |
+| T03 | PASS | BirthDate 2099/1/1 rejected with future-date rule. |
+| T04 | PASS | New appointment with PetID 999 and valid companions rejected because tblPet needs a related record. |
+| T05 | PASS | Pet 1 row selected, then Delete. Access rejected due to related tblAppointment records; Pet 1 remained visible. |
+| T06 | PASS | New rows (1,1) and (2,1) rejected by MedicationAID < MedicationBID table rule. Duplicate (1,2) rejected with duplicate index/PK dialog. Two seeded pairs remained after Esc. |
+| T12 | PASS | New allocation (1,1,10) rejected with duplicate index/PK dialog; original pair amount 100 remained. |
+| T19 | PASS | Receipt 1 total 100.001 rejected with at-most-two-decimal-places message; Esc restored displayed 100.00. |
+| T20 | PASS | Null AccountID and CollectedByVetID rejected by named required messages. 999 rejected by tblCashAccount / tblVeterinarian relationship messages. Initial collector attempt missed the value and raised Required; entering 999 and retrying produced the intended relationship message. |
+
+Full visible replay remains NOT_RUN for T07, T08, T09, T10, T11, T13, T14, T15, T16, T17, T18, T21, T22. Their engine results remain in the table above.
+
 ### Known-limitations reproduction steps
 
 1. **T21 — owner history:** Start from a clean test copy. In `tblPet`, change `PetID=1` from `ParentID=1` to `ParentID=2`. Re-run `qry_00_AppointmentOwner`: A1 now shows ParentID 2; the A1 balance remains 0.00. The database has no owner-history table, so prior appointments follow the current pet owner.
@@ -193,7 +197,7 @@ T01–T20 subcases matched their expected preventive or detective behavior. `qry
 
 ## Not tested / handoff
 
-- Visible Datasheet testing is partial: `tblPetParent` (5 fields) and `tblAppointment` (9 fields) have some visible cases, as itemized above; 32 fields have no visible attempts, some text-field R2 zero-length cases are not expressible in Datasheet View, and WeightKg R2 is inconclusive. Visible T01–T22 replay remains unrun. During the earlier table switch, Access surfaced an unexpected “Database Backup As” dialog; that occurrence was canceled without saving. In this continuation, I reopened the isolated database and attempted to open `tblCashAccount`; the CUA state capture returned `Accessibility state unavailable for window 5837828`. A refreshed window inventory showed the database window minimized, and a fresh binding to window 12715224 surfaced the “Database Backup As” dialog again. That final dialog remained open at the last observation; no save was clicked, no additional field attempt was counted, and no backup was created. Resume only after Access exposes a targetable Datasheet View window.
+- Visible R1–R2 field matrix has no untested slots. Full visible T-scenario replay remains unrun for the 13 scenarios listed above. The record includes the seeded-row/new-row procedural difference and the safe-mode/display-property recovery described above.
 - Supplemental M4 cases C01–C04 were outside this request and were not run. C05–C07 are covered by T06. VBA cases V01–V09 were not run (VBA is disabled by the current design). Round 3 plus PK/FK and 12 relationship-direction review remain in M7 scope.
 - **D1 source conflict for M3:** The 2026-11-18 M3 handoff says the lecturer confirmed D1, while the fixed M4 workbook Seed sheet still says `D1 OPEN` and marks M3/M2–M3 provisional. The tested 3-medication/2-interaction fixture matches the file contents; reconcile the workbook status before final integration.
 - D3 (`CollectedByVetID` required) is treated as confirmed per M1/M2 handoff; T20 exercised both invalid ID and Null for both required receipt FKs.
@@ -201,4 +205,14 @@ T01–T20 subcases matched their expected preventive or detective behavior. `qry
 
 ## Evidence file
 
-`workspaces/R6_ControlTestLog/Control_Test_Log_R1R2_Evidence.json` records Access version, fixed-input hashes, query import, baseline values, all 92 engine field attempts, each T subcase, the visible UI subset, and the final restoration check. The `_Test.accdb` and `Clean_Baseline.accdb` are local copies; they are not included in this commit.
+`workspaces/R6_ControlTestLog/Control_Test_Log_R1R2_Evidence.json` records Access version, fixed-input hashes, query import, baseline values, all 92 engine field attempts, each T subcase, all 92 visible field outcomes, visible scenario supplements, and the final read-only baseline comparison. The `_Test.accdb` and `Clean_Baseline.accdb` are local copies; they are not included in this commit.
+
+Local continuation copies were R6_VisibleResume_Test.accdb, R6_UICore_Test.accdb, and R6_UIFlat_Test.accdb. Only the text receipt, evidence JSON and SQL handoff are delivered.
+
+## Consolidation and ledger verification — 2026-11-21
+
+This receipt merges the earlier visible run and its continuation into one 46-field, 92-slot matrix. Historical partial observations remain in the evidence JSON; the completed matrix and input-method correction supersede their coverage/status summaries. In particular, the 14-of-46-field/32-unrun counts in 20261120_1534_M6_visible_datasheet_supplement.sql, 20261120_1705_M6_visible_access_recovery_partial.sql and 20261120_1713_M6_correct_backup_dialog_status.sql describe earlier checkpoints, not the final field coverage. The prior backup-dialog observations remain historical; the completed UI session ended with the test draft canceled.
+
+The consolidation check verified 46 distinct fields with exactly R1 and R2 each, 92 unique UI slots, nine visible T-scenario supplements and 13 explicitly unrun full visible scenarios. Both protected official-source SHA-256 hashes match revision_manifest.json. The historical R3 prototype's full 65-check acceptance was not rerun in this round.
+
+A new append-only entry, handoff_logs/entries/20261121_1058_M6_complete_visible_matrix.sql, records this consolidation and corrections. The repository's query_logs.py --check --summary command successfully validated all 19 SQL entries and rebuilt the local summary/cache; git diff --check also passed. Overall status remains KNOWN_LIMITATION for the documented scope and T21/T22 behavior; 92/92 applies only to the visible R1–R2 field matrix.
