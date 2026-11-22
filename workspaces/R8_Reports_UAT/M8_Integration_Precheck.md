@@ -13,3 +13,9 @@
 成员 8 提供 Moodle 核对结果，正式组号为 3；币种标签按成员 4 样例约定采用 CNY。金额及样例原值沿用底库。已从预检稿另建 Group3_animalhospital.accdb，更新关系报表标题，压缩并重开。关库 SHA-256 为 AF22A4B58809B5C29EB51993DA368F9EFB4930723F6A8DEBB4459AC231E2DD28。
 
 复核 10 张表、46 个非空字段说明、21 条样例、12 条无级联且启用参照完整性的关系及 11 个查询。三份报表各成功导出一页预览，关系报表为 A4 横向，正式标题可见；部分长标签仍被截短。REA 图确认 Embedded 和 Zoom。此为本机候选版，仍待新版原生 Documenter、报表长标签调整及 M7 跨机复验。版面若再修改，应重新关库并生成 SHA-256，交 M7 核对同一版。
+
+## 关系报表修订 · 2026-11-22
+
+基于已交付的 2503c06 制作独立副本。调整关系报表标题宽度、表标题及字段列表字体，并增加就诊字段列表高度。A4 横向单页预览中，完整显示 Group3_animalhospital、tblMedicationInteraction、InteractionDescription、Diagnosis 和 AppointmentFee。压缩重开后，11 个查询均能打开，三份报表均成功预览。
+
+修订库关库 SHA-256 为 02A835410FEDDE73D6762BAAF194B3FFAFFE3B35627DFA62360A8078D48F8676。该摘要取代旧候选版摘要用于后续 M7 验收。原生 Documenter 与跨机 UAT 仍待完成；原生导出的已知阻碍见 M8_Audit_Report.md。
