@@ -1,0 +1,1184 @@
+{
+  "method": "Microsoft Access COM and DAO on same-machine isolated copy, no source PNG in directory",
+  "source_sha256": "acb5f734ba273dafd2b64e6fe001894203bd51e360b9ee1c105b040cc6fa0983",
+  "machine": "LAPTOP-3HR337O9",
+  "checks": [
+    {
+      "name": "isolated directory files before open",
+      "actual": [
+        "Group3_animalhospital.accdb"
+      ],
+      "expected": [
+        "Group3_animalhospital.accdb"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "tables",
+      "actual": 10,
+      "expected": 10,
+      "status": "PASS"
+    },
+    {
+      "name": "fields",
+      "actual": 46,
+      "expected": 46,
+      "status": "PASS"
+    },
+    {
+      "name": "nonempty descriptions",
+      "actual": 46,
+      "expected": 46,
+      "status": "PASS"
+    },
+    {
+      "name": "linked tables",
+      "actual": [],
+      "expected": [],
+      "status": "PASS"
+    },
+    {
+      "name": "sample records",
+      "actual": 21,
+      "expected": 21,
+      "status": "PASS"
+    },
+    {
+      "name": "relationships",
+      "actual": 12,
+      "expected": 12,
+      "status": "PASS"
+    },
+    {
+      "name": "relationship attributes",
+      "actual": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "forms",
+      "actual": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "modules",
+      "actual": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "macros",
+      "actual": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "query count",
+      "actual": 11,
+      "expected": 11,
+      "status": "PASS"
+    },
+    {
+      "name": "allocation exceptions",
+      "actual": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "interaction warnings",
+      "actual": 1,
+      "expected": 1,
+      "status": "PASS"
+    },
+    {
+      "name": "report export rpt_00_Relationships_Report",
+      "actual": true,
+      "expected": true,
+      "status": "PASS"
+    },
+    {
+      "name": "report export rpt_01_REA_Diagram",
+      "actual": true,
+      "expected": true,
+      "status": "PASS"
+    },
+    {
+      "name": "report export rpt_02_System_Design_Notes",
+      "actual": true,
+      "expected": true,
+      "status": "PASS"
+    },
+    {
+      "name": "REA picture embedded",
+      "actual": [
+        0
+      ],
+      "expected": [
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "reopen sample rows",
+      "actual": {
+        "tblAppointment": [
+          [
+            "1",
+            "1",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "30.0",
+            "4.2",
+            "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+            "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+            "120"
+          ],
+          [
+            "2",
+            "2",
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "20.0",
+            "3.8",
+            "Annual wellness checkup",
+            "Healthy; routine exam passed",
+            "90"
+          ]
+        ],
+        "tblCashAccount": [
+          [
+            "1",
+            "Front Desk Cash",
+            "Cash"
+          ],
+          [
+            "2",
+            "Clinic Bank",
+            "Bank"
+          ]
+        ],
+        "tblCashReceipt": [
+          [
+            "1",
+            "1",
+            "1",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "100"
+          ],
+          [
+            "2",
+            "1",
+            "2",
+            "2",
+            "2026-11-14 00:00:00+00:00",
+            "105"
+          ]
+        ],
+        "tblMedication": [
+          [
+            "1",
+            "Doxycycline oral suspension",
+            "35"
+          ],
+          [
+            "2",
+            "Sucralfate oral suspension",
+            "25"
+          ],
+          [
+            "3",
+            "Pradofloxacin oral suspension",
+            "40"
+          ]
+        ],
+        "tblMedicationInteraction": [
+          [
+            "1",
+            "2",
+            "Moderate",
+            "[Coursework demo rule] Sucralfate can reduce oral doxycycline absorption when administered together. Review the medication plan."
+          ],
+          [
+            "2",
+            "3",
+            "High",
+            "[Coursework demo rule] Sucralfate can reduce oral pradofloxacin absorption. Product information advises avoiding concurrent oral administration."
+          ]
+        ],
+        "tblPet": [
+          [
+            "1",
+            "1",
+            "Mochi",
+            "British Shorthair (Cat)",
+            "Cream",
+            "2023-04-15 00:00:00+00:00"
+          ],
+          [
+            "2",
+            "1",
+            "Boba",
+            "Ragdoll (Cat)",
+            "Seal Bicolor",
+            "2024-06-20 00:00:00+00:00"
+          ]
+        ],
+        "tblPetParent": [
+          [
+            "1",
+            "Emily Chen",
+            "199 Taikang East Road, Ningbo",
+            "0574-88180001",
+            "13805740001"
+          ],
+          [
+            "2",
+            "David Wang",
+            "88 Qianhu North Road, Ningbo",
+            "0574-88180002",
+            "13905740002"
+          ]
+        ],
+        "tblPrescriptionLine": [
+          [
+            "1",
+            "1",
+            "2.0",
+            "30"
+          ],
+          [
+            "1",
+            "2",
+            "1.0",
+            "25"
+          ]
+        ],
+        "tblReceiptAllocation": [
+          [
+            "1",
+            "1",
+            "100"
+          ],
+          [
+            "2",
+            "1",
+            "105"
+          ]
+        ],
+        "tblVeterinarian": [
+          [
+            "1",
+            "Dr. Nottingham",
+            "Co-Owner / Lead Veterinarian"
+          ],
+          [
+            "2",
+            "Dr. Lin",
+            "Co-Owner / Veterinarian"
+          ]
+        ]
+      },
+      "expected": {
+        "tblAppointment": [
+          [
+            "1",
+            "1",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "30.0",
+            "4.2",
+            "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+            "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+            "120"
+          ],
+          [
+            "2",
+            "2",
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "20.0",
+            "3.8",
+            "Annual wellness checkup",
+            "Healthy; routine exam passed",
+            "90"
+          ]
+        ],
+        "tblCashAccount": [
+          [
+            "1",
+            "Front Desk Cash",
+            "Cash"
+          ],
+          [
+            "2",
+            "Clinic Bank",
+            "Bank"
+          ]
+        ],
+        "tblCashReceipt": [
+          [
+            "1",
+            "1",
+            "1",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "100"
+          ],
+          [
+            "2",
+            "1",
+            "2",
+            "2",
+            "2026-11-14 00:00:00+00:00",
+            "105"
+          ]
+        ],
+        "tblMedication": [
+          [
+            "1",
+            "Doxycycline oral suspension",
+            "35"
+          ],
+          [
+            "2",
+            "Sucralfate oral suspension",
+            "25"
+          ],
+          [
+            "3",
+            "Pradofloxacin oral suspension",
+            "40"
+          ]
+        ],
+        "tblMedicationInteraction": [
+          [
+            "1",
+            "2",
+            "Moderate",
+            "[Coursework demo rule] Sucralfate can reduce oral doxycycline absorption when administered together. Review the medication plan."
+          ],
+          [
+            "2",
+            "3",
+            "High",
+            "[Coursework demo rule] Sucralfate can reduce oral pradofloxacin absorption. Product information advises avoiding concurrent oral administration."
+          ]
+        ],
+        "tblPet": [
+          [
+            "1",
+            "1",
+            "Mochi",
+            "British Shorthair (Cat)",
+            "Cream",
+            "2023-04-15 00:00:00+00:00"
+          ],
+          [
+            "2",
+            "1",
+            "Boba",
+            "Ragdoll (Cat)",
+            "Seal Bicolor",
+            "2024-06-20 00:00:00+00:00"
+          ]
+        ],
+        "tblPetParent": [
+          [
+            "1",
+            "Emily Chen",
+            "199 Taikang East Road, Ningbo",
+            "0574-88180001",
+            "13805740001"
+          ],
+          [
+            "2",
+            "David Wang",
+            "88 Qianhu North Road, Ningbo",
+            "0574-88180002",
+            "13905740002"
+          ]
+        ],
+        "tblPrescriptionLine": [
+          [
+            "1",
+            "1",
+            "2.0",
+            "30"
+          ],
+          [
+            "1",
+            "2",
+            "1.0",
+            "25"
+          ]
+        ],
+        "tblReceiptAllocation": [
+          [
+            "1",
+            "1",
+            "100"
+          ],
+          [
+            "2",
+            "1",
+            "105"
+          ]
+        ],
+        "tblVeterinarian": [
+          [
+            "1",
+            "Dr. Nottingham",
+            "Co-Owner / Lead Veterinarian"
+          ],
+          [
+            "2",
+            "Dr. Lin",
+            "Co-Owner / Veterinarian"
+          ]
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "reopen query results",
+      "actual": {
+        "qry_00_AppointmentOwner": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "1"
+          ]
+        ],
+        "qry_01_ParentPetCount": [
+          [
+            "1",
+            "Emily Chen",
+            "0574-88180001",
+            "2"
+          ],
+          [
+            "2",
+            "David Wang",
+            "0574-88180002",
+            "0"
+          ]
+        ],
+        "qry_02_PrescriptionCharges": [
+          [
+            "1",
+            "1",
+            "Doxycycline oral suspension",
+            "35",
+            "30",
+            "2.0",
+            "60"
+          ],
+          [
+            "1",
+            "2",
+            "Sucralfate oral suspension",
+            "25",
+            "25",
+            "1.0",
+            "25"
+          ]
+        ],
+        "qry_02b_AppointmentMedSummary": [
+          [
+            "1",
+            "85.0"
+          ]
+        ],
+        "qry_02c_AppointmentPaidSummary": [
+          [
+            "1",
+            "205"
+          ]
+        ],
+        "qry_03_AppointmentTotal": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Emily Chen",
+            "Mochi",
+            "Dr. Nottingham",
+            "120",
+            "85",
+            "205"
+          ],
+          [
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "Emily Chen",
+            "Boba",
+            "Dr. Lin",
+            "90",
+            "0",
+            "90"
+          ]
+        ],
+        "qry_04_AppointmentBalance": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Emily Chen",
+            "Mochi",
+            "120",
+            "85",
+            "205",
+            "205",
+            "0"
+          ],
+          [
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "Emily Chen",
+            "Boba",
+            "90",
+            "0",
+            "90",
+            "0",
+            "90"
+          ]
+        ],
+        "qry_05_ReceiptReconciliation": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Emily Chen",
+            "100",
+            "100",
+            "0"
+          ],
+          [
+            "2",
+            "2026-11-14 00:00:00+00:00",
+            "Emily Chen",
+            "105",
+            "105",
+            "0"
+          ]
+        ],
+        "qry_06_PetMedicalHistory": [
+          [
+            "1",
+            "Mochi",
+            "British Shorthair (Cat)",
+            "Emily Chen",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Dr. Nottingham",
+            "4.2",
+            "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+            "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+            "Sucralfate oral suspension",
+            "1.0",
+            "25"
+          ],
+          [
+            "1",
+            "Mochi",
+            "British Shorthair (Cat)",
+            "Emily Chen",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Dr. Nottingham",
+            "4.2",
+            "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+            "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+            "Doxycycline oral suspension",
+            "2.0",
+            "30"
+          ],
+          [
+            "2",
+            "Boba",
+            "Ragdoll (Cat)",
+            "Emily Chen",
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "Dr. Lin",
+            "3.8",
+            "Annual wellness checkup",
+            "Healthy; routine exam passed",
+            null,
+            null,
+            null
+          ]
+        ],
+        "qry_Ctrl_DrugInteractionWarnings": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Mochi",
+            "Doxycycline oral suspension",
+            "Sucralfate oral suspension",
+            "Moderate",
+            "[Coursework demo rule] Sucralfate can reduce oral doxycycline absorption when administered together. Review the medication plan."
+          ]
+        ],
+        "qry_Ctrl_InvalidAllocations": []
+      },
+      "expected": {
+        "qry_00_AppointmentOwner": [
+          [
+            "1",
+            "1"
+          ],
+          [
+            "2",
+            "1"
+          ]
+        ],
+        "qry_01_ParentPetCount": [
+          [
+            "1",
+            "Emily Chen",
+            "0574-88180001",
+            "2"
+          ],
+          [
+            "2",
+            "David Wang",
+            "0574-88180002",
+            "0"
+          ]
+        ],
+        "qry_02_PrescriptionCharges": [
+          [
+            "1",
+            "1",
+            "Doxycycline oral suspension",
+            "35",
+            "30",
+            "2.0",
+            "60"
+          ],
+          [
+            "1",
+            "2",
+            "Sucralfate oral suspension",
+            "25",
+            "25",
+            "1.0",
+            "25"
+          ]
+        ],
+        "qry_02b_AppointmentMedSummary": [
+          [
+            "1",
+            "85.0"
+          ]
+        ],
+        "qry_02c_AppointmentPaidSummary": [
+          [
+            "1",
+            "205"
+          ]
+        ],
+        "qry_03_AppointmentTotal": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Emily Chen",
+            "Mochi",
+            "Dr. Nottingham",
+            "120",
+            "85",
+            "205"
+          ],
+          [
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "Emily Chen",
+            "Boba",
+            "Dr. Lin",
+            "90",
+            "0",
+            "90"
+          ]
+        ],
+        "qry_04_AppointmentBalance": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Emily Chen",
+            "Mochi",
+            "120",
+            "85",
+            "205",
+            "205",
+            "0"
+          ],
+          [
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "Emily Chen",
+            "Boba",
+            "90",
+            "0",
+            "90",
+            "0",
+            "90"
+          ]
+        ],
+        "qry_05_ReceiptReconciliation": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Emily Chen",
+            "100",
+            "100",
+            "0"
+          ],
+          [
+            "2",
+            "2026-11-14 00:00:00+00:00",
+            "Emily Chen",
+            "105",
+            "105",
+            "0"
+          ]
+        ],
+        "qry_06_PetMedicalHistory": [
+          [
+            "1",
+            "Mochi",
+            "British Shorthair (Cat)",
+            "Emily Chen",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Dr. Nottingham",
+            "4.2",
+            "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+            "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+            "Sucralfate oral suspension",
+            "1.0",
+            "25"
+          ],
+          [
+            "1",
+            "Mochi",
+            "British Shorthair (Cat)",
+            "Emily Chen",
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Dr. Nottingham",
+            "4.2",
+            "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+            "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+            "Doxycycline oral suspension",
+            "2.0",
+            "30"
+          ],
+          [
+            "2",
+            "Boba",
+            "Ragdoll (Cat)",
+            "Emily Chen",
+            "2",
+            "2026-11-12 00:00:00+00:00",
+            "Dr. Lin",
+            "3.8",
+            "Annual wellness checkup",
+            "Healthy; routine exam passed",
+            null,
+            null,
+            null
+          ]
+        ],
+        "qry_Ctrl_DrugInteractionWarnings": [
+          [
+            "1",
+            "2026-11-10 00:00:00+00:00",
+            "Mochi",
+            "Doxycycline oral suspension",
+            "Sucralfate oral suspension",
+            "Moderate",
+            "[Coursework demo rule] Sucralfate can reduce oral doxycycline absorption when administered together. Review the medication plan."
+          ]
+        ],
+        "qry_Ctrl_InvalidAllocations": []
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "published candidate hash preserved",
+      "actual": "acb5f734ba273dafd2b64e6fe001894203bd51e360b9ee1c105b040cc6fa0983",
+      "expected": "acb5f734ba273dafd2b64e6fe001894203bd51e360b9ee1c105b040cc6fa0983",
+      "status": "PASS"
+    }
+  ],
+  "access_version": "16.0",
+  "seed_rows": {
+    "tblAppointment": [
+      [
+        "1",
+        "1",
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "30.0",
+        "4.2",
+        "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+        "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+        "120"
+      ],
+      [
+        "2",
+        "2",
+        "2",
+        "2026-11-12 00:00:00+00:00",
+        "20.0",
+        "3.8",
+        "Annual wellness checkup",
+        "Healthy; routine exam passed",
+        "90"
+      ]
+    ],
+    "tblCashAccount": [
+      [
+        "1",
+        "Front Desk Cash",
+        "Cash"
+      ],
+      [
+        "2",
+        "Clinic Bank",
+        "Bank"
+      ]
+    ],
+    "tblCashReceipt": [
+      [
+        "1",
+        "1",
+        "1",
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "100"
+      ],
+      [
+        "2",
+        "1",
+        "2",
+        "2",
+        "2026-11-14 00:00:00+00:00",
+        "105"
+      ]
+    ],
+    "tblMedication": [
+      [
+        "1",
+        "Doxycycline oral suspension",
+        "35"
+      ],
+      [
+        "2",
+        "Sucralfate oral suspension",
+        "25"
+      ],
+      [
+        "3",
+        "Pradofloxacin oral suspension",
+        "40"
+      ]
+    ],
+    "tblMedicationInteraction": [
+      [
+        "1",
+        "2",
+        "Moderate",
+        "[Coursework demo rule] Sucralfate can reduce oral doxycycline absorption when administered together. Review the medication plan."
+      ],
+      [
+        "2",
+        "3",
+        "High",
+        "[Coursework demo rule] Sucralfate can reduce oral pradofloxacin absorption. Product information advises avoiding concurrent oral administration."
+      ]
+    ],
+    "tblPet": [
+      [
+        "1",
+        "1",
+        "Mochi",
+        "British Shorthair (Cat)",
+        "Cream",
+        "2023-04-15 00:00:00+00:00"
+      ],
+      [
+        "2",
+        "1",
+        "Boba",
+        "Ragdoll (Cat)",
+        "Seal Bicolor",
+        "2024-06-20 00:00:00+00:00"
+      ]
+    ],
+    "tblPetParent": [
+      [
+        "1",
+        "Emily Chen",
+        "199 Taikang East Road, Ningbo",
+        "0574-88180001",
+        "13805740001"
+      ],
+      [
+        "2",
+        "David Wang",
+        "88 Qianhu North Road, Ningbo",
+        "0574-88180002",
+        "13905740002"
+      ]
+    ],
+    "tblPrescriptionLine": [
+      [
+        "1",
+        "1",
+        "2.0",
+        "30"
+      ],
+      [
+        "1",
+        "2",
+        "1.0",
+        "25"
+      ]
+    ],
+    "tblReceiptAllocation": [
+      [
+        "1",
+        "1",
+        "100"
+      ],
+      [
+        "2",
+        "1",
+        "105"
+      ]
+    ],
+    "tblVeterinarian": [
+      [
+        "1",
+        "Dr. Nottingham",
+        "Co-Owner / Lead Veterinarian"
+      ],
+      [
+        "2",
+        "Dr. Lin",
+        "Co-Owner / Veterinarian"
+      ]
+    ]
+  },
+  "queries": {
+    "qry_00_AppointmentOwner": [
+      [
+        "1",
+        "1"
+      ],
+      [
+        "2",
+        "1"
+      ]
+    ],
+    "qry_01_ParentPetCount": [
+      [
+        "1",
+        "Emily Chen",
+        "0574-88180001",
+        "2"
+      ],
+      [
+        "2",
+        "David Wang",
+        "0574-88180002",
+        "0"
+      ]
+    ],
+    "qry_02_PrescriptionCharges": [
+      [
+        "1",
+        "1",
+        "Doxycycline oral suspension",
+        "35",
+        "30",
+        "2.0",
+        "60"
+      ],
+      [
+        "1",
+        "2",
+        "Sucralfate oral suspension",
+        "25",
+        "25",
+        "1.0",
+        "25"
+      ]
+    ],
+    "qry_02b_AppointmentMedSummary": [
+      [
+        "1",
+        "85.0"
+      ]
+    ],
+    "qry_02c_AppointmentPaidSummary": [
+      [
+        "1",
+        "205"
+      ]
+    ],
+    "qry_03_AppointmentTotal": [
+      [
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "Emily Chen",
+        "Mochi",
+        "Dr. Nottingham",
+        "120",
+        "85",
+        "205"
+      ],
+      [
+        "2",
+        "2026-11-12 00:00:00+00:00",
+        "Emily Chen",
+        "Boba",
+        "Dr. Lin",
+        "90",
+        "0",
+        "90"
+      ]
+    ],
+    "qry_04_AppointmentBalance": [
+      [
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "Emily Chen",
+        "Mochi",
+        "120",
+        "85",
+        "205",
+        "205",
+        "0"
+      ],
+      [
+        "2",
+        "2026-11-12 00:00:00+00:00",
+        "Emily Chen",
+        "Boba",
+        "90",
+        "0",
+        "90",
+        "0",
+        "90"
+      ]
+    ],
+    "qry_05_ReceiptReconciliation": [
+      [
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "Emily Chen",
+        "100",
+        "100",
+        "0"
+      ],
+      [
+        "2",
+        "2026-11-14 00:00:00+00:00",
+        "Emily Chen",
+        "105",
+        "105",
+        "0"
+      ]
+    ],
+    "qry_06_PetMedicalHistory": [
+      [
+        "1",
+        "Mochi",
+        "British Shorthair (Cat)",
+        "Emily Chen",
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "Dr. Nottingham",
+        "4.2",
+        "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+        "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+        "Sucralfate oral suspension",
+        "1.0",
+        "25"
+      ],
+      [
+        "1",
+        "Mochi",
+        "British Shorthair (Cat)",
+        "Emily Chen",
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "Dr. Nottingham",
+        "4.2",
+        "Eye discharge and redness; follow-up of previously diagnosed reflux esophagitis",
+        "PCR-confirmed Chlamydia felis conjunctivitis; concurrent reflux esophagitis",
+        "Doxycycline oral suspension",
+        "2.0",
+        "30"
+      ],
+      [
+        "2",
+        "Boba",
+        "Ragdoll (Cat)",
+        "Emily Chen",
+        "2",
+        "2026-11-12 00:00:00+00:00",
+        "Dr. Lin",
+        "3.8",
+        "Annual wellness checkup",
+        "Healthy; routine exam passed",
+        null,
+        null,
+        null
+      ]
+    ],
+    "qry_Ctrl_DrugInteractionWarnings": [
+      [
+        "1",
+        "2026-11-10 00:00:00+00:00",
+        "Mochi",
+        "Doxycycline oral suspension",
+        "Sucralfate oral suspension",
+        "Moderate",
+        "[Coursework demo rule] Sucralfate can reduce oral doxycycline absorption when administered together. Review the medication plan."
+      ]
+    ],
+    "qry_Ctrl_InvalidAllocations": []
+  }
+}

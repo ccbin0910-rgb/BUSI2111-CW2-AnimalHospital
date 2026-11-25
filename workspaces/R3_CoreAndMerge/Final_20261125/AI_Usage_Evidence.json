@@ -1,0 +1,490 @@
+[
+  {
+    "member_role": "M1",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Generated the editable REA diagram, PNG, English assumptions and this handoff record.",
+    "task_summary": "Deliver the M1 conceptual REA diagram and record the group decision on receipt collection.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261117_1959_M1_rea_diagram.sql"
+  },
+  {
+    "member_role": "M1",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed remote role branches and prepared the takeover handoff.",
+    "task_summary": "Record integration progress and remaining Access execution dependencies.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261122_0000_M1_takeover_review.sql"
+  },
+  {
+    "member_role": "M1",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Updated role handoff following user confirmation.",
+    "task_summary": "Assign M8 to Access integration and M7 to cross-machine candidate verification.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261122_0001_M1_assign_m8_merge.sql"
+  },
+  {
+    "member_role": "M2",
+    "ai_tool": "DeepSeek Harness (deepseek-flash)",
+    "ai_usage_scope": "Transcribed 02 blueprint R4 and technical/spec.json into a four-sheet xlsx, then generated a Markdown mirror and a notes file from the same workbook; verified field and FK counts against spec.json programmatically. No Access execution and no Excel visual review.",
+    "task_summary": "M2 Schema_Freeze v1: xlsx (4 sheets) + md mirror + notes - 10 tables / 46 fields / 12 FKs / 3 composite PKs",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261117_2058_M2_schema_freeze_v1.sql"
+  },
+  {
+    "member_role": "M2",
+    "ai_tool": "DeepSeek Harness (deepseek-flash)",
+    "ai_usage_scope": "Opened the M3 review database read-only through ACE/DAO on a machine without Access desktop, dumped table/field/index/relation metadata, and compared it field-by-field against Schema_Freeze.xlsx; drafted the review receipt. No Access UI interaction and no data edits.",
+    "task_summary": "M2 core review of M3 review DB (commit 10d44a7): 10 tables / 46 fields / 12 FKs / 3 composite PKs sign off with 2 documentation-level notes",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261118_1749_M2_core_review.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Prepared a Git-trackable review copy, ran read-only DAO checks and documented review assignments.",
+    "task_summary": "Prepare the M2 and M4 review exchange before releasing the M5 baseline.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261118_1715_M3_review_handoff.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Read review receipts and align onboarding and role branches.",
+    "task_summary": "Assign eight persistent role branches and record M2/M4 review receipt.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261118_1853_M3_role_branches_reviews.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Prepared baseline copy and query handoff; verified the file and reopened its layout in desktop Access.",
+    "task_summary": "Prepare the reviewed Access baseline for M5.",
+    "verification_status": "PASS",
+    "entry_file": "20261118_1901_M3_query_baseline.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Documented proactive cross-role coordination and the recipient prompt.",
+    "task_summary": "Require agents to identify dependencies, prepare scoped requests and close the loop on returned evidence.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261118_1919_M3_proactive_handoff.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Revised six workbook text cells and prepared the M7 handoff.",
+    "task_summary": "Reconcile D1 and zero-length entry instructions before Round 3.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261121_1137_M3_m7_workbook_handoff.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Updated merge responsibilities, pinned inputs, and acceptance sequence.",
+    "task_summary": "Record that member 3 personally performs final Access integration.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261121_1540_M3_manual_merge_plan.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Verified the remote M7 receipt and independently checked database structure and referential integrity on an isolated copy.",
+    "task_summary": "Accept M7 Round 3 evidence with the documented scope and pass the latest receipt to M8.",
+    "verification_status": "PASS",
+    "entry_file": "20261121_1655_M3_verify_m7_delivery.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Documented test scope, ran preliminary DAO retests and recorded verified Access UI cases.",
+    "task_summary": "Prepare human completion of remaining Round 3 interface evidence.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1721_M3_round3_manual_checkpoint.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the Access screenshot supplied by member 3 and recorded the case-level observation.",
+    "task_summary": "Record the ReceiptID UI rejection and isolate the AppointmentID retest.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1731_M3_manual_r3_fk_checkpoint.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the two real Access screenshots supplied by member 3 and updated the case evidence.",
+    "task_summary": "Record manual referential-integrity messages for both medication foreign keys.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1735_M3_manual_r3_medication_fk.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the native Access screenshot supplied by member 3 and recorded its test case.",
+    "task_summary": "Confirm the manual UI evidence for the allocation AppointmentID foreign key.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1739_M3_manual_r3_appointment_fk.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Recorded the user-supplied Access overlength message.",
+    "task_summary": "Capture the ParentName overlength edit response.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1742_M3_manual_r3_parentname.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the Access Zoom screenshot supplied by member 3.",
+    "task_summary": "Record the ParentName Zoom truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1743_M3_manual_r3_parentname_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the native Access Zoom screenshot supplied by member 3.",
+    "task_summary": "Record the Address Zoom truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1745_M3_manual_r3_address_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the Access Zoom screenshot supplied by member 3.",
+    "task_summary": "Record the DayPhone Zoom truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1746_M3_manual_r3_dayphone_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the two Access Zoom screenshots and checked the test copy identity from the open window title.",
+    "task_summary": "Record EveningPhone and PetName warnings and prepare the appropriate read-back.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1748_M3_manual_r3_eveningphone_petname.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Recorded the member-supplied Access screenshot for the Breed overlength test.",
+    "task_summary": "Capture Breed truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1749_M3_manual_r3_breed_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Recorded the member-supplied Access screenshot for Color.",
+    "task_summary": "Capture the Color truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1755_M3_manual_r3_color_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Recorded member 3's Access UI screenshot.",
+    "task_summary": "Capture the VetName truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1757_M3_manual_r3_vetname_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed and recorded member 3's native Access screenshot.",
+    "task_summary": "Record RoleTitle truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1758_M3_manual_r3_roletitle_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed and recorded two native Access Zoom screenshots.",
+    "task_summary": "Capture VisitReason and Diagnosis overlength warnings.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1759_M3_manual_r3_appointment_text.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the native Access Zoom screenshot supplied by member 3.",
+    "task_summary": "Capture MedicationName overlength warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1801_M3_manual_r3_medicationname_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Recorded member 3's native Access Zoom screenshot.",
+    "task_summary": "Capture the first-stage SeverityLevel truncation warning.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1801_M3_manual_r3_severitylevel_zoom.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed the member-supplied Access Zoom screenshots for both account fields.",
+    "task_summary": "Capture the AccountName and AccountType truncation warnings.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1803_M3_manual_r3_account_text.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Prepared a reduced checklist based on the preceding read-only Access results and screenshots.",
+    "task_summary": "List the remaining manual Save Record checks.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1809_M3_manual_r3_remaining_checklist.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Read persisted field values from the open Access scratch file in DAO read-only mode.",
+    "task_summary": "Reduce the manual checklist to fields whose saved values remain original.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1831_M3_manual_r3_save_progress.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Recorded the member-reported outcomes and independently read persisted values without changing the open scratch file.",
+    "task_summary": "Record member completion of both allowed-value cases and verify the original values.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1834_M3_manual_r3_allowed_value_progress.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Compared all persisted rows in two isolated test copies and ran five independent Access DAO replays.",
+    "task_summary": "Consolidate Round 3 supplemental UI evidence and five post-manual regression rounds.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1839_M3_round3_post_manual_retest.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed and archived the Access screenshot supplied by member 3.",
+    "task_summary": "Confirm the AccountType rule at the Save Record step.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_1841_M3_manual_r3_accounttype_save.sql"
+  },
+  {
+    "member_role": "M3",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Ran a closed-file read-back of the member manual Access tests and five independent follow-up Access DAO regressions.",
+    "task_summary": "Close the outstanding Round 3 supplemental test scope.",
+    "verification_status": "PASS",
+    "entry_file": "20261121_1848_M3_round3_closed_copy_and_final_retest.sql"
+  },
+  {
+    "member_role": "M4",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed repository sources and authored the four-sheet Member 4 review workbook, workbook checks and this SQL record. No Access execution.",
+    "task_summary": "Prepare M4 sample data, 11-query expected baseline, 46-field three-round matrix and T07–T20 for user review.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261118_1527_M4_sample_data_review.sql"
+  },
+  {
+    "member_role": "M4",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Reviewed veterinary references and revised the workbook sample narrative and interaction labels. Ran local workbook and arithmetic verification.",
+    "task_summary": "Revise M4 review fixture for clinically plausible fictional feline cases and source-supported interaction examples.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261118_1532_M4_veterinary_sample_review.sql"
+  },
+  {
+    "member_role": "M4",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Compared the user-provided task image with the M4 workbook and updated scenario coverage and labels.",
+    "task_summary": "Align M4 workbook with the Member 4 sample and test brief.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261118_1536_M4_match_task_image.sql"
+  },
+  {
+    "member_role": "M4",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Read the pinned review copy with Jackcess on macOS, compared actual stored records with the workbook, independently recalculated the acceptance values with Python Decimal, and wrote the review receipt and append-only entry.",
+    "task_summary": "Review M3 seeded database for M4 sample data and expected output acceptance.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261118_1745_M4_core_review.sql"
+  },
+  {
+    "member_role": "M5",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Retrieved pinned inputs, created and ran saved queries via actual Access and DAO, compared outputs to the M4 workbook, and drafted the verification record.",
+    "task_summary": "Create and verify all 11 saved Access queries on the released M3 baseline copy.",
+    "verification_status": "PASS",
+    "entry_file": "20261118_1943_M5_saved_queries_and_access_checks.sql"
+  },
+  {
+    "member_role": "M5",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Retested the pinned M8 Access candidate using Access COM/DAO, transactional validation scenarios, and report PDF exports with raster review.",
+    "task_summary": "Retest the integrated Group 3 candidate and publish M5 verification evidence.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261124_1853_M5_candidate_uat.sql"
+  },
+  {
+    "member_role": "M6",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "OpenAI Codex assisted Access COM/DAO test automation, evidence capture and report/log drafting. Results were captured from Microsoft Access 16.0. The visible Datasheet workflow was not verified.",
+    "task_summary": "Completed the M6 Round 1–2 field matrix and T01–T22 on an isolated Access test copy.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261120_0110_M6_controls_r1r2.sql"
+  },
+  {
+    "member_role": "M6",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "OpenAI Codex assisted visible Access UI testing and evidence capture, read-only DAO verification, DAO restoration of three isolated test-copy text fields after the UI helper timed out, and report/log drafting.",
+    "task_summary": "Recorded a partial visible Datasheet View supplement for the M6 Round 1–2 and T01–T22 run.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261120_1534_M6_visible_datasheet_supplement.sql"
+  },
+  {
+    "member_role": "M6",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Assisted with visible Access Datasheet View attempts, evidence documentation, and append-only SQL handoff logging.",
+    "task_summary": "Extended visible Access evidence on tblAppointment and recorded the current CUA recovery failure during tblCashAccount opening.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261120_1705_M6_visible_access_recovery_partial.sql"
+  },
+  {
+    "member_role": "M6",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Assisted with correcting the Access recovery evidence and append-only SQL handoff log.",
+    "task_summary": "Corrects the dialog state recorded by 20261120_1705_M6_visible_access_recovery_partial.sql: an earlier dialog was canceled, but the final Database Backup As dialog remained open at the last observation.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261120_1713_M6_correct_backup_dialog_status.sql"
+  },
+  {
+    "member_role": "M6",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Assisted visible Windows Access keyboard tests, recovery, read-only baseline comparison, evidence consolidation and SQL ledger validation.",
+    "task_summary": "Merge both visible testing runs: all 46 fields have R1/R2 outcomes; preserve engine T01-T22 results and distinguish nine visible supplements from 13 unrun visible scenarios.",
+    "verification_status": "KNOWN_LIMITATION",
+    "entry_file": "20261121_1058_M6_complete_visible_matrix.sql"
+  },
+  {
+    "member_role": "M7",
+    "ai_tool": "DeepSeek Harness",
+    "ai_usage_scope": "AI drove the Access COM automation, wrote the datasheet and DAO/SQL test harnesses, generated the markdown audit report, and drafted this log entry. The auditor reviewed every captured message against the blueprint text and ran the independence check before reading the M6 log.",
+    "task_summary": "Round 3 blind test of all 46 fields plus the PK, FK and 12-relationship audit on an independent copy of the M3 release database.",
+    "verification_status": "PASS",
+    "entry_file": "20261121_1603_M7_round3_relationship_audit.sql"
+  },
+  {
+    "member_role": "M7",
+    "ai_tool": "DeepSeek Harness",
+    "ai_usage_scope": "AI re-drove the datasheet path for the rows that previously had engine evidence only, drove the datasheet Save Record action to capture Access own validation text, selected the screenshots to publish, and drafted this amendment entry. The auditor read every captured string against the earlier engine string and against the blueprint before accepting it.",
+    "task_summary": "Revision of the M7 audit report after the first push: widen the datasheet evidence and publish the relationship and dialog screenshots inside the repository.",
+    "verification_status": "PASS",
+    "entry_file": "20261121_1644_M7_audit_evidence_upgrade.sql"
+  },
+  {
+    "member_role": "M7",
+    "ai_tool": "DeepSeek Harness",
+    "ai_usage_scope": "AI was used to drive Access DAO over a temp copy of the database, export the three reports to PDF, and draft this receipt from the captured numbers. The auditor read the exported PDFs and the Access window before accepting the counts.",
+    "task_summary": "Baseline verification receipt for the M8 Group3 candidate database at commit 34b5587, requested by the group lead before human review of the relationship report labels and the REA diagram.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261122_2015_M7_m8_candidate_baseline_verification.sql"
+  },
+  {
+    "member_role": "M8",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Access COM and DAO audit, pinned input comparison, report import and preview, PDF inspection and delivery documentation.",
+    "task_summary": "Audit supplied R8 and prepare the M8 report handoff from pinned sources.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261121_2247_M8_report_audit_and_delivery.sql"
+  },
+  {
+    "member_role": "M8",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Access COM and DAO integration, native Relationships UI, compact and reopen, print preview and baseline comparison.",
+    "task_summary": "Accept M1 integration handoff and prepare a local precheck copy.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261122_1704_M8_integration_precheck.sql"
+  },
+  {
+    "member_role": "M8",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Access COM and DAO naming, compact and reopen, and report preview verification.",
+    "task_summary": "Create the named Group 3 candidate and record CNY.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261122_1712_M8_group3_candidate.sql"
+  },
+  {
+    "member_role": "M8",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Access COM report layout changes, compact and reopen, and render inspection.",
+    "task_summary": "Fix cropped relationship report labels on a separate candidate copy.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261122_1727_M8_fix_relationship_labels.sql"
+  },
+  {
+    "member_role": "M8",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Transcribed and reviewed six proposed changes from the group lead screenshot.",
+    "task_summary": "Record proposed changes and M8 review without applying database edits.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261125_1959_M8_review_proposed_changes.sql"
+  },
+  {
+    "member_role": "M8",
+    "ai_tool": "OpenAI Codex",
+    "ai_usage_scope": "Access DAO edits and rollback regression, query and report checks, and ReportLab table documentation.",
+    "task_summary": "Apply accepted field updates and generate table definitions from current candidate.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261125_2006_M8_apply_reviewed_field_changes.sql"
+  },
+  {
+    "member_role": "SYS",
+    "ai_tool": "Antigravity + R2 Automation",
+    "ai_usage_scope": "Built R2 real Access 16.0 prototype validation (65 DAO/COM checks) and upgraded R3 documentation, classroom notation, alternatives analysis, and per-role self-check questions.",
+    "task_summary": "Baseline R2 Access prototype checks and R3 SOP/blueprint calibration completed.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261116_1143_SYS_win-main_r2_r3_baseline_and_audit.sql"
+  },
+  {
+    "member_role": "SYS",
+    "ai_tool": "Antigravity",
+    "ai_usage_scope": "Designed multi-machine Git/worktree isolation rules, AGENTS.md enforcement, append-only SQL handoff log schema, SQLite authorizer validator/query CLI, and synchronized 00/03/04/05 docs.",
+    "task_summary": "Initialized multi-machine Agent workflow, AGENTS.md, role workspaces, and append-only SQL handoff log system.",
+    "verification_status": "PASS",
+    "entry_file": "20261116_1200_SYS_win-main_multi_agent_worktree_and_sql_logs.sql"
+  },
+  {
+    "member_role": "SYS",
+    "ai_tool": "Antigravity",
+    "ai_usage_scope": "Integrated official Assignment 2 Grading Rubrics (4x25) and Computer Lab 2 (14 pages) into 05 constraint prompt, task analysis, blueprint, and 8-member Rubric-first SOP rebalancing.",
+    "task_summary": "R4 upgrade: aligned 00-05 with official 4x25 Grading Rubrics and Computer Lab 2, closing D2 and rebalancing M4/M6/M7/M8 around 3-round field validation and PK/FK/Relationship checks.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261116_1730_SYS_win-main_r4_rubric_lab2_rebalance.sql"
+  },
+  {
+    "member_role": "SYS",
+    "ai_tool": "Antigravity",
+    "ai_usage_scope": "Added mandatory per-turn GitHub push confirmation rule to AGENTS.md and 05 prompt, and committed/pushed R4 docs, SQL logs, and screenshots/ per user instruction.",
+    "task_summary": "Added explicit GitHub push-confirmation rule to AGENTS.md & 05 and prepared R4 + screenshots commit to origin/main.",
+    "verification_status": "PARTIAL",
+    "entry_file": "20261116_1735_SYS_win-main_git_push_rule_and_push_r4.sql"
+  },
+  {
+    "member_role": "SYS",
+    "ai_tool": "Antigravity",
+    "ai_usage_scope": "Created root README.md with dual onboarding tutorials (for 8 human teammates and for their AI Agents) and updated COLLABORATION_WORKTREE_GUIDE.md and workspaces/README.md with live GitHub URL and R4 role deliverables.",
+    "task_summary": "Added root README.md landing page tutorial for both human teammates and AI Agents, and synced repository URL and R4 role outputs.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261116_1742_SYS_win-main_add_root_readme_and_tutorials.sql"
+  },
+  {
+    "member_role": "SYS",
+    "ai_tool": "Antigravity",
+    "ai_usage_scope": "Updated team OS configuration across 00, 01, and 03 from 2 Mac + 6 Windows to 1 Mac + 7 Windows, assigning sole Mac teammate to Role 1 (REA) and allowing Roles 2 and 4 to verify directly in Windows Access.",
+    "task_summary": "Calibrated team device configuration to 1 Mac + 7 Windows and fixed optional Display Form note in Role 3 merge steps.",
+    "verification_status": "DOCS_ONLY",
+    "entry_file": "20261116_1750_SYS_win-main_update_device_mix_1mac_7win.sql"
+  }
+]
