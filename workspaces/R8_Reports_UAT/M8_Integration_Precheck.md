@@ -19,3 +19,11 @@
 基于已交付的 2503c06 制作独立副本。调整关系报表标题宽度、表标题及字段列表字体，并增加就诊字段列表高度。A4 横向单页预览中，完整显示 Group3_animalhospital、tblMedicationInteraction、InteractionDescription、Diagnosis 和 AppointmentFee。压缩重开后，11 个查询均能打开，三份报表均成功预览。
 
 修订库关库 SHA-256 为 02A835410FEDDE73D6762BAAF194B3FFAFFE3B35627DFA62360A8078D48F8676。该摘要取代旧候选版摘要用于后续 M7 验收。原生 Documenter 与跨机 UAT 仍待完成；原生导出的已知阻碍见 M8_Audit_Report.md。
+
+## 获准修订与复验 · 2026-11-25
+
+基于 34b5587，保留 GitHub 原验收版本。独立副本中为原来没有允许值规则的 13 个必填短文本字段新增 Len(Trim([Field]))>0，保持 Required 与 AllowZeroLength 设置。其余两个必填短文本字段 SeverityLevel、AccountType 沿用并复测原有允许值规则。更新 tblCashReceipt.CollectedByVetID 字段说明为 “Veterinarian who collected the payment.”，保留库内设计说明的 D3 口径。待团队确认预收款口径后再决定日期侦测查询。此次未采纳可选文档查询和子数据表属性改动，T21/T22 仍为 KNOWN_LIMITATION。
+
+DAO 在独立回归副本以事务执行 58 项测试并逐项回滚。13 个字段的三空格、零长度串和 Null 均拒绝，各自原合法样例值均可保存（52 项）。两个枚举字段均拒绝三空格和非法枚举值，原合法值仍可保存（6 项）。这是 DAO 引擎复测，未重新执行完整跨机或数据表 UI 测试。比对 21 条完整样例记录、12 条关系和 11 条已发布查询 SQL，均与 34b5587 一致。11 条查询可运行，三份报表可预览。
+
+新文件 SHA-256 为 ACB5F734BA273DAFD2B64E6FE001894203BD51E360B9EE1C105B040CC6FA0983。Group3_Table_Definitions_Final.pdf 共 11 页，包含候选库 SHA-256、10 表、46 字段、12 关系及 11 查询。使用 Access DAO 读出结构后用 ReportLab 排版，保留此前的原生 Documenter 历史 PDF。此次未重新运行原生 Database Documenter。待推送后请 M7 使用新摘要复验，既有 M7 回执针对 34b5587。
